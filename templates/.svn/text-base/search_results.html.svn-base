@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+{% if lvn_set and bfr_set and f_set%}
+
+
+<table border="0">
+   <tr>
+       <td colspan="2" align="center"><b><font size="5"> Found {{ lvn_set|length }} author{{ lvn_set|pluralize }} that changed the LVN to {{lvn_set.0.lvn}}.</font></b></td>
+</tr>
+</table>
+
+
+
+
+ {% for lvn in f_set1 %}
+
+<div align="center" class="divtables">
+
+<table border="7" width="800" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cCaption" width="120">LVN</td>
+        <td class="cText"><b>{{ lvn.0.0.lvn }}</b></td>
+    </tr>
+    <tr>
+        <td class="cCaption">Branch name</td>
+        <td class="cText"><b>{{ lvn.0.0.branch_name }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">BFR</td>
+        <td class="cText"><b>{{ lvn.0.1 }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Author</td>
+        <td class="cText"><b>{{ lvn.0.0.author }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Commit date</td>
+        <td class="cText"><b>{{ lvn.0.0.commit_date }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Commited Revision</td>
+        <td class="cText"><b>{{ lvn.0.0.rev_id }}</b></td>
+    </tr>
+    {% if lvn.1 %}
+    <tr>
+         <td class= "cCaption" width "120">Change Reason</td>
+         <td class="cText"><a href="/my_media/lvn_change/{{lvn.1}}">{{lvn.1}}</a></td>
+    </tr>
+    {% endif %}
+</table>
+
+</div>
+{% endfor %}
+  
+{% endif %}
+
+
+{% if branch_set %}
+<div align="center" class="divtables">
+
+<table border="7" width="800" cellspacing="5" cellpadding="5">
+    <tr>
+         <td class= "cCaption" width "120">Unique LVN history</td>
+         <td class="cText"><a href="/my_media/isu_compact/{{branch_set}}">{{branch_set}}</a></td>
+
+    </tr>
+
+</table>
+
+</div>
+{% endif %}
+
+<table border="0" width="100" cellspacing="50" cellpadding="4">
+   <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></b></td>
+</tr>
+</table>
+
+
+<a href="/search-lvn/">return to the previous search page</a>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,126 @@
+from django.db import models
+from django.forms import ModelForm, Textarea
+from django import forms
+
+
+# Create your models here.
+#
+#
+#
+
+class DBUpdate(models.Model):
+  lastUpdDate = models.DateTimeField('date updated')
+  
+  def __str__(self):
+    return 'lastDbUpdate' 
+
+  
+  class Admin:
+    pass
+
+class Branch(models.Model):
+  branch_name  = models.CharField(max_length=50, unique=True)
+  bfr_id       = models.IntegerField()
+
+  class Meta:
+    verbose_name_plural = "Branches"
+    ordering = ["branch_name"]
+
+  def __str__(self):
+    return self.branch_name
+
+  class Admin:
+    pass
+
+class Lvn_entry(models.Model):
+  lvn             = models.IntegerField()
+  branch_name     = models.ForeignKey(Branch,to_field='branch_name')
+  rev_id          = models.IntegerField(unique=True) 
+  src_dir_change  = models.IntegerField()
+  h_file_change   = models.IntegerField()
+  inc_file_change = models.IntegerField()
+  layout_check    = models.IntegerField(null=True)
+  layout_done     = models.IntegerField()
+  layout_status   = models.IntegerField(null=True) 
+  md5sum_str      = models.CharField(max_length=50, null=True)
+  commit_date     = models.DateTimeField('date commit')
+  author          = models.CharField(max_length=10)
+  layout_rev      = models.IntegerField()
+
+  class Meta:
+    verbose_name_plural = "Lvn_entries"
+
+  def __unicode__(self):
+    return u'lvn %s:%s' % (self.branch_name, self.lvn)
+  def __string__(self):
+    return '%s:%s' % (self.lvn, self.branch_name)
+
+
+  def __slvn__(self):
+    return self.lvn
+  def __sbranch__(self):
+    return self.branch_name
+ 
+  class Admin:
+    pass
+ 
+class Wiki_entry(models.Model):
+  bfr_lvn         = models.CharField(max_length=12)
+  branch_name     = models.ForeignKey(Branch,to_field='branch_name')
+  rev_id          = models.IntegerField() 
+  author          = models.CharField(max_length=15)
+  adaptation      = models.CharField(max_length=500, null=True, default='-')
+  other           = models.CharField(max_length=500, null=True, default='-') 
+
+  class Meta:
+    verbose_name_plural = "Wiki_entries"
+
+  def __unicode__(self):
+    return u'Wiki %s:%s' % (self.branch_name, self.bfr_lvn)
+  def __string__(self):
+    return 'Wiki %s:%s' % (self.bfr_lvn, self.branch_name)
+
+
+  def __sbfrlvn__(self):
+    return self.bfr_lvn
+  def __sbranch__(self):
+    return self.branch_name
+ 
+  class Admin:
+    pass
+
+class Wiki_form(ModelForm):
+    class Meta:
+        model = Wiki_entry
+        exclude = ('bfr_lvn','rev_id','author','adaptation','other')
+<<<<<<< .mine
+=======
+
+class Wiki_insert_form(ModelForm):
+    class Meta:
+        model = Wiki_entry
+        exclude = ('branch_name')
+        widgets = {
+			'bfr_lvn': Textarea(attrs={'cols':10, 'rows':1}),
+			'rev_id': Textarea(attrs={'cols':8, 'rows':1}),
+			'author': Textarea({'cols':5, 'rows':1}),
+			'adaptation': Textarea({'cols':20, 'rows':10}),
+			'other': Textarea({'cols':20,'rows':10}),
+        }
+
+
+class Wikientry(ModelForm):
+    delete_box = forms.BooleanField()
+    update_box = forms.BooleanField()
+    class Meta:
+        model = Wiki_entry
+        fields=('bfr_lvn', 'rev_id', 'author', 'adaptation', 'other')
+        widgets = {
+			'bfr_lvn': Textarea(attrs={'cols':10, 'rows':1, 'readonly':"readonly"}),
+			'rev_id': Textarea(attrs={'cols':8, 'rows':1, 'readonly':"readonly"}),
+			'author': Textarea({'cols':8, 'rows':1, 'readonly':"readonly"}),
+			'adaptation': Textarea({'cols':25,'rows':2, 'readonly':"readonly"}),
+                        'other':Textarea({'cols':25,'rows':2, 'readonly':"readonly"}),
+        }
+
+>>>>>>> .r118480

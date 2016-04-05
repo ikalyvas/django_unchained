@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block content %}
+{% if initial %}
+<div>
+<tr>
+<td <b> <font size="5">ISU paths</font></b></td>
+</tr>
+</div>
+{% else %}
+<div>
+<tr>
+	<td <b> <font size="5">Selected ISU paths to {{ action }} </font></b></td>
+</tr>
+</div>
+{% endif %}
+<body>
+
+{% if initial  %}
+  <div align="center" class="divtables">
+<table cellpadding="0" cellspacing="0">
+  <tr>
+  <td>
+      <form action="{% url WeblvnApp.views.insert_ISU_path_form %}" method="get" style="padding: 0; margin: 0" > 
+         <input type="submit" value="insert new entry" name=""/>
+         
+      </form>
+   </td>
+   </form>
+   </tr>
+</font>
+</table>
+</div>
+{% endif %}
+{% if  initial  %}
+   <form size="3" action="{% url WeblvnApp.views.isu_path_table %}" method="post" style="padding: 0; margin: 0" enctype="multipart/form-data"> 
+   {{ entries.management_form }}
+   {% csrf_token %}
+   <input type="submit" value="submit" name=""/>
+   <input type="hidden" name="entries_len" value="{{ entries_len }}" />
+   <div align="center" class="divtables2">
+      <table border="2" width="1000" cellspacing="2" cellpadding="2" border="2">
+      <td class="cCaption2" align="center"><b>src Iso</b></td>
+      <td class="cCaption2" align="center"><b>src build</b></td>
+      <td class="cCaption2" align="center"><b>src branch</b></td>
+      <td class="cCaption2" align="center"><b>trg Iso</b></td>
+      <td class="cCaption2" align="center"><b>trg build</b></td>
+      <td class="cCaption2" align="center"><b>trg branch</b></td>
+      <td class="cCaption2" align="center"><b>Tester</b></td>
+      <td class="cCaption2" align="center"><b>Date</b></td>
+	  <td class="cCaption2" align="center"><b>Info</b></td>
+      <td class="cCaption2" align="center"><b>Success</b></td>
+      <td class="cCaption2" align="center"><b>Type</b></td>
+      <td class="cCaption2" align="center"><b>DEL</b></td>
+      <td class="cCaption2" align="center"><b>UPD</b></td>
+      {% for entry in entries %} 
+      <div class="entry">
+	  <tr>	
+          {{ entry.1.id }}
+<!---	    <td class="cText2">{{ entry.1.id }}</td>--->
+	    <td class="cText2">{{ entry.1.src_iso }}</td>
+	    <td class="cText2">{{ entry.1.src_build_name }}</td>
+	    <td class="cText2">{{ entry.1.src_branch_name }}</td>
+	    <td class="cText2">{{ entry.1.trg_iso }}</td>
+	    <td class="cText2">{{ entry.1.trg_build_name }}</td>
+	    <td class="cText2">{{ entry.1.trg_branch_name }}</td>
+	    <td class="cText2">{{ entry.1.tester}}</td>
+	    <td class="cText2">{{ entry.1.test_date}}</td>
+	    <td class="cText2">{{ entry.1.otherInfo}} 
+         {% if  entry.0  %}
+		 File:<a href="{{entry.0}}" align=left> Click to find more...</a>
+	     {% endif %}
+	 </td> 
+	<td class="cText2">{{ entry.1.success}}</td>
+	<td class="cText2">{{ entry.1.type_of}}</td>
+	<td >{{ entry.1.delete_box}}</td>
+        <td >{{ entry.1.update_box}}</td>
+	   </tr>
+      </div>
+      {% endfor %}
+   </table>
+   </div>
+   </form>
+
+      
+{% else %}
+  {% if action == "update" %} 
+      <form size="3" action="{% url WeblvnApp.views.isu_path_table %}" method="post" style="padding: 0; margin: 0" enctype="multipart/form-data"> 
+      {{ entries.management_form }}
+      {% csrf_token %}
+      <input type="submit" value="submit changes" name=""/>
+	  <input type="hidden" name="action" value={{ action }} />
+      <input type="hidden" name="entries_len" value="{{ entries_len }}" />
+      <table border="1" width="1000" cellspacing="1" cellpadding="1" border="1">
+      <td class="cCaption2" align="center"><b>Upload_file</b></td>
+      <td class="cCaption2" align="center"><b>src Iso</b></td>
+      <td class="cCaption2" align="center"><b>src build</b></td>
+      <td class="cCaption2" align="center"><b>src branch</b></td>
+      <td class="cCaption2" align="center"><b>trg Iso</b></td>
+      <td class="cCaption2" align="center"><b>trg build</b></td>
+      <td class="cCaption2" align="center"><b>trg branch</b></td>
+      <td class="cCaption2" align="center"><b>Tester</b></td>
+      <td class="cCaption2" align="center"><b>Date</b></td>
+      <td class="cCaption2" align="center"><b>Info</b></td>
+      <td class="cCaption2" align="center"><b>success</b></td>
+      <td class="cCaption2" align="center"><b>Type</b></td>
+  	  {% for entry in entries.forms %}
+	  <tr>	
+       {{ entry.id }}
+ 	   <td><font size="0">file to upload (max 5mb): {{ entry.result_file }}
+           {% if entry.result_file %}
+            Delete uploaded file: {{ entry.delete_file }} 
+           {% endif %}</font>    
+	   </td>		
+       	    <td class="cText2">{{ entry.src_iso }}</td>
+	    <td class="cText2">{{ entry.src_build_name }}</td>
+	    <td class="cText2">{{ entry.src_branch_name }}</td>
+	    <td class="cText2">{{ entry.trg_iso }}</td>
+	    <td class="cText2">{{ entry.trg_build_name }}</td>
+	    <td class="cText2">{{ entry.trg_branch_name }}</td>
+	    <td class="cText2">{{ entry.tester}}</td>
+	    <td class="cText2">{{ entry.test_date}}</td>
+	    <td class="cText2">{{ entry.otherInfo}}</td>
+	    <td class="cText2">{{ entry.success }}</td>
+	    <td class="cText2">{{ entry.type_of }}</td>
+	 </tr>
+        </div>
+      {% endfor %}
+      </table>
+  </form>
+  {% else %}
+      <form size="3" action="{% url WeblvnApp.views.isu_path_table %}" method="post" style="padding: 0; margin: 0" > 
+      {{ entries.management_form }}
+      {% csrf_token %}
+      <input type="submit" value="submit changes" name=""/>
+	  <input type="hidden" name="action" value={{ action }} />
+      <input type="hidden" name="entries_len" value="{{ entries_len }}" />
+      <table border="1" width="1000" cellspacing="1" cellpadding="1" border="1">
+      <td class="cCaption2" align="center"><b>src Iso</b></td>
+      <td class="cCaption2" align="center"><b>src build</b></td>
+      <td class="cCaption2" align="center"><b>src branch</b></td>
+      <td class="cCaption2" align="center"><b>trg Iso</b></td>
+      <td class="cCaption2" align="center"><b>trg build</b></td>
+      <td class="cCaption2" align="center"><b>trg branch</b></td>
+      <td class="cCaption2" align="center"><b>Type</b></td>
+      <td class="cCaption2" align="center"><b>Info</b></td>
+      {% for entry in entries.forms %}
+       <tr>	
+       {{ entry.id }}
+       <td class="cText2">{{ entry.src_iso }}</td>
+       <td class="cText2">{{ entry.src_build_name }}</td>
+       <td class="cText2">{{ entry.src_branch_name }}</td>
+       <td class="cText2">{{ entry.trg_iso }}</td>
+       <td class="cText2">{{ entry.trg_build_name }}</td>
+       <td class="cText2">{{ entry.trg_branch_name }}</td>
+       <td class="cText2">{{ entry.type_of }}</td>
+	   <td class="cText2">{{ entry.otherInfo}}</td>
+        </tr>
+        </div>
+      {% endfor %}
+      </table>
+  </form>
+  {% endif %}    
+{% endif %}
+</body>
+
+
+
+
+<ul>
+<li><a href="/main/" align=left>return to the home page</a>
+<li><a href="/manage_ISU_paths/" align=left>return to search page for a new search</a>
+</ul>
+
+{% endblock %}
+
+
+

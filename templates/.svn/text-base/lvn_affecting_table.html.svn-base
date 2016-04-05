@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<br/>
+
+<div align="center" class="formtables">
+<table border="0" width="400" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cHeader" align="center" colspan="5">LVN affecting change table</td>
+    </tr>
+    <tr>
+        <td width="100"></td>
+        <td width="300"></td>
+    </tr>
+    <form action="/manage_wiki_entries/" method="get">
+    {{ form.as_table }}
+    <tr><td/><td/></tr>
+    <tr>
+        <td class="cHeader" align="center" colspan="2">
+            <input type="submit" value="Submit" />
+        </td>
+    </tr>
+    </form>
+</table>
+</div>
+
+<br/>
+<br/>
+<ul>
+<li><a href="/main/" align=right>return to the home page</a>
+<li><a href="/feature_related_table/" align=right>Link to LVN Feature Related table</a>
+</ul>
+
+
+{% endblock %}

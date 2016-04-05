@@ -1,0 +1,7 @@
+#!/bin/bash
+
+REPORTING_DIR=/home/lvnproject/Weblvn/
+
+cd ${REPORTING_DIR}
+echo "im backing up the database at `date`" >>backup.log
+cp WeblvnApp.db ~/sandbox_lvnproject/Weblvn/

@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Search for some lvn in a branch </title>
+</head>
+<body>
+    {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+    <form action="/search/" method="get">
+        <input type="text" name="lvn">
+        <input type="text" name="branch" >
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

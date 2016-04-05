@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<br/>
+
+<div align="center" class="formtables">
+<table border="0"  width="200" cellspacing="1" cellpadding="1">
+    <tr>
+        <td class="cHeader" align="center" colspan="5">Insert new entry for {{branch}}</td>
+    </tr>
+    <tr>
+    <td class="cCaption" align="center"><b>Bfr_lvn</b></td>
+    <td class="cCaption" align="center"><b>rev</b></td>
+    <td class="cCaption" align="center"><b>author</b></td>
+    <td class="cCaption" align="right"><b>adaptation</b></td>
+    <td class="cCaption" align="right"><b>other</b></td>
+    </tr>
+    <form action="{% url WeblvnApp.views.save_on_insert %}" method="post" style="padding: 0; margin: 0" >{% csrf_token %} 
+    <tr>	
+	   <td>{{ form.bfr_lvn }}</td>
+	   <td>{{ form.rev_id }}</td>
+	   <td>{{ form.author }}</td>
+	   <td>{{ form.adaptation}}</td>
+	   <td>{{ form.other}}</td>
+    </tr>
+    <tr>
+        <td colspan="5"><center><input type="submit" value="Submit" /></center></td>
+    </tr>
+    <input type="hidden" value="{{branch}}" name="brname"/>
+    </form>
+</table>
+   </div>
+   
+    <!--{{ form.as_table }}>
+    <tr><td/><td/></tr>
+    <tr>
+       <!-- <td class="cHeader" align="center" colspan="5">-->
+      
+<br/>
+<br/>
+
+
+<a href="/main/">return to the home page</a>
+{% endblock %}

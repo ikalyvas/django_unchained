@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+
+<div>
+<tr>
+	<td <b> <font size="5">New entry for insertion </font></b></td>
+</tr>
+</div>
+
+
+
+
+<div align="center" class="divtables">
+    <tr>
+      <!--  <td class="cHeader" align="center" colspan="5">Insert new LVN affected Feature entry </td> -->
+    </tr>
+     <table border="2" width="1000" cellspacing="1" cellpadding="1" border="1">
+      <td class="cCaption2" align="center"><b>Upload_file</b></td>
+      <td class="cCaption2" align="center"><b>LVN</b></td>
+      <td class="cCaption2" align="center"><b>Revision</b></td>
+      <td class="cCaption2" align="center"><b>Team</b></td>
+      <td class="cCaption2" align="center"><b>Feature</b></td>
+      <td class="cCaption2" align="center"><b>Affected Structures</b></td>
+      <td class="cCaption2" align="center"><b>Other</b></td>
+
+
+
+
+<form size="3" action="{% url WeblvnApp.views.insert_and_upload %}" method="post" enctype="multipart/form-data" > {% csrf_token %} 
+     
+	 <tr>	
+	         <td> {{ uploadform.my_title.help_text }}
+	          {% csrf_token %}
+	          {{ uploadform.my_title }}</td>
+
+                  <td>{{ form.lvn }}</td>
+	          <td>{{ form.rev_id }}</td>
+	          <td>{{ form.team }}</td>
+	          <td>{{ form.feature}}</td>
+	          <td>{{ form.affected_structures}}</td>
+                  <td>{{ form.other}}</td>
+       </tr>
+
+       <tr>
+         
+       </tr>
+<td colspan="5"><center><input type="submit" value="Submit" /></center></td>
+
+  </form>
+</table>
+
+
+</div>
+ 
+{% endblock %}

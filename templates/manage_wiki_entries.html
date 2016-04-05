@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block content %}
+
+<li><a href="/feature_related_table/" align=right>Link to Feature Related Table</a>
+
+{% if initial %}
+ <div>
+  <tr>
+  <td <b> <font size="5">WIKI Entries for: {{branch}} </font></b></td>
+  </tr>
+ </div> 
+{% else %}
+<div>
+ <tr>
+	<td <b> <font size="5">Selected WIKI Entries to {{ action }} for: {{branch}} </font></b></td>
+ </tr>
+ </div>
+{% endif %}
+
+<body>
+{% if initial  %}
+<font size="0"> 
+<div class="divtables"> 
+ <table border="1" align="right" cellpadding="0" cellspacing="0">
+  <tr>
+   <td>
+      <form action="{% url WeblvnApp.views.fetch_row %}" method="get" style="padding: 0; margin: 0" > 
+		  <input type="text" name="lvn" style="width: 50px"> 
+	  </td>  
+	  <td>
+		 <input type="submit" value="search for specific lvn in {{branch}}" name=""/>
+         <input type="hidden" value="{{branch}}" name="bname"/>
+      </form>
+  </td>
+  </tr>
+</table>
+</font>
+</div>
+
+<font size="0"> 
+<div class="divtables"> 
+ <table border="1" align="left" cellpadding="0" cellspacing="0" >
+  <tr>
+  <form action="{% url WeblvnApp.views.fetch_range %}" method="get" style="padding: 0; margin: 0" > 
+   <td>
+	   <!--     <form action="{% url WeblvnApp.views.fetch_range %}" method="get" style="padding: 0; margin: 0" > -->
+		 <li><label for="start_revision">Starting revision:</label><input type="text" name="start_revision" style="width: 60px"></li>
+		 <li><label for="end_revision">Ending revision&nbsp;&nbsp;:</label><input type="text" name="end_revision" style="width: 60px" ></li>
+	 </td>  
+   <td>
+		 <input type="submit" value="search for lvn range in {{branch}}" name=""/>
+         <input type="hidden" value="{{branch}}" name="bname"/>
+		 <!--    </form>  -->
+  </td>
+  </form>
+  </tr>
+</table>
+</font>
+</div>
+
+
+
+
+{% endif %}
+<p>
+&nbsp;&nbsp;&nbsp;</p>
+
+
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp;
+&nbsp;
+
+{% if initial  %}
+  <div align="center" class="divtables">
+<table width="100" cellpadding="0" cellspacing="0">
+  <tr>
+  <td>
+      <form action="{% url WeblvnApp.views.insert_form %}" method="get" style="padding: 0; margin: 0" > 
+         <input type="submit" value="insert new entry" name=""/>
+         <input type="hidden" value="{{branch}}" name="bname"/>
+      </form>
+   </td>
+ </tr>
+</font>
+</table>
+</div>
+{% endif %}
+
+{% if  initial  %}
+   <form size="3" action="{% url WeblvnApp.views.manage_wiki_entries %}" method="post" style="padding: 0; margin: 0" enctype="multipart/form-data"> 
+   {{ entries.management_form }}
+   {% csrf_token %}
+    
+   <input type="submit" value="submit" name=""/>
+  
+ 
+   <input type="hidden" name="branch_name" value="{{ branch }}" />
+   <input type="hidden" name="entries_len" value="{{ entries_len }}" />
+   <div align="center" class="divtables">
+   <table border="1" width="800" cellspacing="1" cellpadding="1" border="1">
+   <td class="cCaption" align="center"><b>Bfr_lvn</b></td>
+   <td class="cCaption" align="center"><b>rev</b></td>
+   <td class="cCaption" align="center"><b>author</b></td>
+   <td class="cCaption" align="center"><b>Change -- Adaptation</b></td>
+   <td class="cCaption" align="center"><b>other</b></td>
+   <td class="cCaption" align="center"><b>DEL</b></td>
+   <td class="cCaption" align="center"><b>UPD</b></td>
+   {% for entry  in entries.object_list %}
+       {{ entry.id }}
+	   <div class="entry">
+	    <tr>	
+            <td>{{ entry.1.bfr_lvn }}</td>
+	    <td>{{ entry.1.rev_id }}</td>
+	    <td>{{ entry.1.author }}</td>
+	    <td>{{ entry.1.adaptation}}</td>
+	    <td>{{ entry.1.other}}
+         {% if  entry.0  %}
+		 File:<a href="{{entry.0}}" align=left> Click to find more...</a>
+		 {% endif %}
+	</td>
+        <td>{{ entry.1.delete_box}}</td>
+        <td>{{ entry.1.update_box}}</td>
+       </tr>
+       </div>
+	   {% endfor %}
+   </table>
+   </div>
+   </form>
+<div class="pagination">
+    <span class="step-links">
+        {% if entries.has_previous %}
+            <a href="?page={{ entries.previous_page_number }}">previous page</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ entries.number }} of {{ entries.paginator.num_pages }}.
+        </span>
+
+        {% if entries.has_next %}
+            <a href="?page={{ entries.next_page_number }}">next page</a>
+        {% endif %}
+    </span>
+</div>
+
+      
+{% else %}
+      <form size="3" action="{% url WeblvnApp.views.manage_wiki_entries %}" method="post" style="padding: 0; margin: 0" enctype="multipart/form-data"> 
+      {{ entries.management_form }}
+      {% csrf_token %}
+      <input type="submit" value="submit changes" name=""/>
+      <input type="hidden" name="branch_name" value="{{ branch }}" />
+	  <input type="hidden" name="action" value={{ action }} />
+      <div align="center" class="divtables">
+      <table border="2" width="800" cellspacing="1" cellpadding="2" border="2">
+      <td class="cCaption" align="center"><b>Related File</b></td>
+      <td class="cCaption" align="center"><b>Bfr_lvn</b></td>
+      <td class="cCaption" align="center"><b>rev</b></td>
+      <td class="cCaption" align="center"><b>author</b></td>
+      <td class="cCaption" align="center"><b>Change -- Adaptation</b></td>
+      <td class="cCaption" align="center"><b>other</b></td>
+      {% for entry in entries.forms %}
+	  {{ entry.id }}
+       <tr>
+	   <td><font size="1">file to upload (max 5mb): {{ entry.title }}
+           {% if entry.title %}
+            Delete uploaded file: {{ entry.delete_file }}
+           {% endif %}</font>    
+	   </td>
+	    <td>{{ entry.bfr_lvn }}</td>
+	    <td>{{ entry.rev_id }}</td>
+	    <td>{{ entry.author }}</td>
+	    <td>{{ entry.adaptation}}</td>
+	    <td>{{ entry.other}}</td>
+       </tr>
+       </div>
+      {% endfor %}
+ 
+     </table>
+      </div>
+      </form>
+   
+{% endif %}
+</body>
+
+
+<ul>
+<li><a href="/main/" align=right>return to the home page</a>
+<li><a href="/lvnaffectingtable/" align=right>return to search page for a new search</a>
+</ul>
+
+
+
+{% endblock %}
+
+
+

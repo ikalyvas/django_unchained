@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if revision_set %}
+
+
+  <table border="0">  
+     <tr>
+         <td  colspan="2" align="center"><b><font size="5"> Found {{ revision_set|length }} commit{{ revision_set|pluralize }} that increased the LVN to {{revision_set.0.lvn}}</font></b></td>
+    </tr>
+   </table>
+
+ {% for revision in revision_set %}
+
+<div align="center" class="divtables">
+
+<table border="5" width="800" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cCaption" width="120">LVN</td>
+        <td class="cText"><b>{{ revision.lvn }} (changed)</b></td>
+    </tr>
+    <tr>
+        <td class="cCaption" width="120">BFR</td>
+        <td class="cText"><b>{{ bfr_set.0 }} </b></td>
+    </tr>
+    <tr>
+        <td class="cCaption">Branch</td>
+        <td class="cText"><b>{{ revision.branch_name }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Author</td>
+        <td class="cText"><b>{{ revision.author }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Commit date</td>
+        <td class="cText"><b>{{ revision.commit_date }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Revision you searched for:</td>
+        <td class="cText"><b>{{ revision.rev_id }}</b></td>
+    </tr>
+     <tr>
+         <td class= "cCaption" width "120">Svn Log</td>
+         <td class="cText"><a href="/my_media/svnhistory/{{arg_rev}}.txt">r{{arg_rev}}</a></td>
+    </tr>
+</table>
+
+</div>
+{% endfor %}
+  
+{% endif %}
+
+<table border="0" width="100" cellspacing="50" cellpadding="4">
+   <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></b></td>
+</tr>
+</table>
+
+<BR>&nbsp<BR>
+
+<html>
+<head>
+<script type="text/javascript">
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+</head>
+<body>
+
+<input type="button" value="Go Back" onclick="goBack()" />
+
+</body>
+</html>
+
+{% endblock %}

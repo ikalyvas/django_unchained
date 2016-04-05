@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+</head>
+
+
+
+<div>
+<tr>
+	<td <b> <font size="5">New KB ISU entry to insert </font></b></td>
+</tr>
+</div>
+
+
+<div align="center" class="divtables">
+    <tr>
+    </tr>
+     <table border="2" width="800" cellspacing="1" cellpadding="1" border="1">
+		 <!--      <td class="cCaption2" align="center"><b>Upload file</b></td> -->
+      <td class="cCaption2" align="center"><b>Category</b></td>
+      <td class="cCaption2" align="center"><b>Brief Description</b></td>
+      <td class="cCaption2" align="center"><b>Detailed Description</b></td>
+
+
+<form size="3" action="{% url WeblvnApp.views.insert_KBEntry_form %}" method="post" enctype="multipart/form-data"> {% csrf_token %} 
+     
+	 <tr>	
+		 <!--	 <td>{{ form.result_file }} </td> -->
+     <td>{{ form.category }}</td>
+	 <td>{{ form.brief_desc }}</td>
+	 <td>{{ form.det_desc }}</td>
+     </tr>
+
+     <tr>
+         
+     </tr>
+<td colspan="5"><center><input type="submit" value="Submit" /></center></td>
+
+  </form>
+</table>
+
+
+</div>
+ 
+{% endblock %}

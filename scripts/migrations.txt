@@ -1,0 +1,6 @@
+1. When a new migration
+
+1. Modify table
+2. run: python manage.py schemamigration WeblvnApp --auto
+3. run: python manage.py migrate WeblvnApp
+

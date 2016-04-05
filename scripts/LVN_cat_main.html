@@ -1,0 +1,24 @@
+146791	 - 132480_14	 - louzakou	 - "libtrace_dbd_dump_req_msg_t" needs adaptation regarding "filter" struct member. TRACE_INFO_TYPE_DB_DUMP msg is splitted to TRACE_INFO_TYPE_DB_DUMP_REQ and TRACE_INFO_TYPE_DB_DUMP_RESP
+142845	 - 132480_13	 - rentifis	 - A new attribute in header enrichment profile has been added accoring to the US FC085_001565_1_1. (CLI & configuration)
+The new CLI command is "set/add ng service-awareness enrichment-profile NAME he-overwrite-option.
+139648	 - 132480_11	 - siatos	 - Added new types in ipc_encoding_scheme.conf.
+Handling in libisu_mc_task.c for 
+CLI_GWUP_PROXY_NODE_FP_CPU_USAGE_REQ CLI_GWUP_PROXY_NODE_FP_CPU_USAGE_RESP
+should be added.
+- No adaptation required. The lines from libisu should be removed (in future builds) as soon as isu from ng21->ng211 is ready.
+
+139429	 - 132480_10	 - kouzmitc	 - -added new parameter uint64_t   granted_default_quota :32 to charging_pool_t
+Default value is 0xFFFFFFFF
+-added new parameter uint32_t    granted_default_quota to cc_msg_res_rg_t
+Default value is 0xFFFFFFFF
+
+138719	 - 132480_9	 - notkola	 - Added  dia_mscc_default_quota_t to dia_mscc_cca_t. Adaptation: All parameters set to 0.
+138401	 - 132480_8	 - mentakis	 - - Modify CLI command "show fastpath-cpu-load" so as the script 
+"fetch_oct_stats.sh" not to be used. Instead of this, fastpath CPU load is now retrieved by gwup_proxy code. No adaptation is needed on upgrade.
+136491	 - 132480_7	 - melgosa	 - - Clean change of variable name from sgw_changed to flags. Default value (0) remains. No adaptation needed on upgrade.
+135919	 - 132480_6	 - papakons	 - -VALIDATOR_CP_LICENSE_PERMISSION_RESP added the msg_version.
+Adaptation: Default value is 0.
+132961	 - 132480_5	 - notkola	 - -New TLV CM_TLV_ID_3GPP_R7_RULEBASE_ID_C from dia_client to session_ctrl. No adaptation needed.
+132694	 - 132480_4	 - pmadetoj	 - -intra node messages GWUP_SC_PING_GWUP_REQ and GWUP_SC_PING_GWUP_RESP removed. There in no effect to ISUG adaptation.
+132634	 - 132480_3	 - kalyvas	 - -revert previous change. adaptation: Not needed.
+132628	 - 132480_2	 - kalyvas	 - -change in ipc encoding scheme to provoke lvn change - Adaptation: Not needed

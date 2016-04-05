@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+ {% for item in res %}
+
+<div align="center" class="divtables">
+
+<table border="5" width="800" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cCaption" width="120">BFR_LVN</td>
+        <td class="cText"><b>{{ item.bfr_lvn }} </b></td>
+    </tr>
+    <tr>
+        <td class="cCaption" width="120">rev</td>
+        <td class="cText"><b>{{ item.rev_id }} </b></td>
+    </tr>
+    <tr>
+        <td class="cCaption">author</td>
+        <td class="cText"><b>{{ item.author }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Change--Adaptation</td>
+        <td class="cText"><b>{{ item.adaptation }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Other</td>
+        <td class="cText"><b>{{ item.other }}</b></td>
+    </tr>
+     <tr>
+         <td class= "cCaption" width "120">Svn Log</td>
+         <td class="cText"><a href="/my_media/svnhistory/{{item.rev_id}}.txt">r{{item.rev_id}}</a></td>
+    </tr>
+</table>
+
+</div>
+{% endfor %}
+  
+
+<table border="0" width="100" cellspacing="50" cellpadding="4">
+   <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></b></td>
+</tr>
+</table>
+
+<a href="/manage_wiki_entries/">return to the previous search page</a>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+if [ ! -d /home/hudson/lvnproject/Weblvn/my_media/lvn_change ] &&  [ ! -d ../my_media/isu_compact ];then
+    echo "Creating lvn_change and isu_compact directories..."
+    mkdir -v /home/django/lvnproject/Weblvn/my_media/lvn_change && mkdir -v /home/django/lvnproject/Weblvn/my_media/isu_compact
+fi
+
+date
+rsync -i kalyvas@10.23.50.7://scratch/isu/ISU_dmn_2011_12_12/daemon_work/svn_follower/troubleshoot/layout_work/svn_follower_work/rev_db*.txt /home/django/lvnproject/Weblvn/scripts/rev_dbs/
+
+rsync -i  kalyvas@10.23.50.7://home/isu/ISU_dmn_2011_12_12/daemon_work/lvn_follower/troubleshoot/layout_work/lvn_follower_work/gen_report/LVN_change_reason*.txt /home/django/lvnproject/Weblvn/my_media/lvn_change/
+
+##compact versions are in a crontab in home dir since isu user runs it with sudo privileges
+rsync -i kalyvas@10.23.50.7://home/kalyvas/compact_versions_of_cache_db/compact*.txt /home/django/lvnproject/Weblvn/my_media/isu_compact/
+date

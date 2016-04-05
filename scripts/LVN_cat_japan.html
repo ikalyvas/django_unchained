@@ -1,0 +1,67 @@
+185282	 - 133406_50	 - siatos	 - Dummy change revert to prepare for NG2.1 PT4.17-Adaptation: Not needed.
+185281	 - 133406_49	 - siatos	 - Dummy change to prepare for dummy NG2.1 PT4.17-Adaptation: Not needed.
+176106	 - 133406_44	 - ujmarkvi	 - Ignore.
+168334	 - 133406_41	 - siatos	 - Revert of Dummy commit- Not needed
+168333	 - 133406_40	 - siatos	 - Dummy commit to prepare for test NG2.1 PT4.13 TEST 1 dummy build- Not needed
+166395	 - 133406_39	 - aalhonie	 - - M: sc_ha_rab_bearer_list_t. When this tag comes to new standby, empty sc_ha_rab_bearer_list_t structure must be given in payload.
+162727	 - 133406_38	 - siatos	 - Revert of dummy change to create build NG2.1 PT4.12 TEST1 - Adaptation not needed -
+162725	 - 133406_37	 - siatos	 - Dummy change to create build NG2.1 PT4.12 TEST1 - Adaptation not needed
+160363	 - 133406_36	 - kalyvas	 - -revert the 160362
+160362	 - 133406_35	 - kalyvas	 - -dummy commit
+157841	 - 133406_34	 - kalyvas	 - -revert of previous
+157830	 - 133406_33	 - kalyvas	 - -not needed
+
+153973	 - 133406_32	 - kalyvas	 - -not needed.take back previous commit
+
+LVN=31
+153972	 - 133406_31	 - kalyvas	 - -not needed.dummy commit for new ISO
+153393	 - 133406_30	 - siatos	 - Revert of previous dummy change to prepare for dummy build NG2.1 PT4.9 TEST1. Adaptation: Not needed.
+153390	 - 133406_29	 - siatos	 - Dummy change to increase LVN to 29 to prepare for dummy NG2.1 PT4.9 TEST1 build. Adaptation: Not needed.
+152814	 - 133406_28	 - siatos	 - Revert of previous dummy change. Adaptation: Not needed
+152813	 - 133406_27	 - siatos	 - Dummy change to create new build. Adaptation: Not needed
+152095	 - 133406_26	 - ampatzid	 - -intra node message no  adaptation needed
+151434	 - 133406_25	 - notkola	 - Intra-Node, Not Needed
+151189	 - 133406_24	 - siatos	 - Revert of dummy change to prepare for dummy NG2.1 PT.6 build. - adaptation: Not needed.
+151185	 - 133406_23	 - siatos	 - Dummy change to increase LVN to 23 to prepare for NG2.1 PT4.6 dummy build - Adaptation: Not needed.
+149596	 - 133406_22	 - kalyvas	 - -not needed
+149594	 - 133406_21	 - kalyvas	 - -not needed
+148956	 - 133406_20	 - kalyvas	 - -revert previous commit for LVN in ipc scheme
+
+adaptation not needed
+148954	 - 133406_19	 - kalyvas	 - -not needed
+just increased the LVN for dummy build
+
+
+148493	 - 133406_18	 - ujmarkvi	 - No adaptation needed.
+144666	 - 133406_17	 - siatos	 - -Updated ipc_encoding_scheme to include TRACE_INFO_TYPE_DB_DUMP_OBSOLETE instead of the removed TRACE_INFO_TYPE_DB_DUMP. Also changed the trace_msg_type_t types (put TRACE_INFO_TYPE_DB_DUMP_REQ & RESP at the end and not in the middle). Special adaptation needed  because related types are not shown in the layouts before.
+144241	 - 133406_16	 - siatos	 - typo error correction libtrace_dbd_dump_rsp_msg_t was written as libtrace_dbd_dump_resp_msg_t in ipc_encoding_cheme.conf- Adaptation: Not needed.
+143063	 - 133406_15	 - ujmarkvi	 - sc_ha_dynrule_t___dynrule___status: up_dynrule_t structs status bit field size has changed from 1 bit to 3 bits.  ISUG adaptation is needed, as the rule status is synchronized to standby peer SC.
+
+NG_FLOW_STATE_ENABLED == NG_FLOW_STATUS_ACTIVE
+NG_FLOW_STATE_DISABLED == NG_FLOW_STATUS_INACTIVE
+
+
+142736	 - 133406_14	 - louzakou	 - -Same adaptation with the LVN change 133406_17 is needed. <Updated ipc_encoding_scheme to include TRACE_INFO_TYPE_DB_DUMP_OBSOLETE instead of the removed TRACE_INFO_TYPE_DB_DUMP. Also changed the trace_msg_type_t types (put TRACE_INFO_TYPE_DB_DUMP_REQ & RESP at the end and not in the middle). Special adaptation needed  because related types are not shown in the layouts before>
+142559	 - 133406_13	 - louzakou	 - -split TRACE_INFO_TYPE_DB_DUMP msg to req, resp
+- move req, resp structs to srlz.h
+- insert field target_process to req msg. Special adaptation is needed similar to the LVN change 133406_17.
+
+142411	 - 133406_12	 - aalhonie	 - - New fields in ng_rule_t can be skipped in adaptation (fill with zeros), they are irrelevant between session control and gtpc_sig
+141600	 - 133406_11	 - vasilogi	 - -New messages SC_HA_CTRL_SHUTDOWN_PREPARE, SC_HA_CTRL_SHUTDOWN_PREPARE_ACK.No adaptation action.
+141524	 - 133406_10	 - siatos	 - Updated ipc_encoding_scheme.conf with missing types, MSG_IDS.txt for libisu to compile and (unesessary) libis_mc_vpe_path.h supported versions_path.conf - isu prepare ng21_12a to ng21_12b
+Adaptation: No action
+140194	 - 133406_9	 - vasilogi	 - -New messages SC_HA_CTRL_SHUTDOWN_PREPARE, SC_HA_CTRL_SHUTDOWN_PREPARE_ACK. No adaptation action.
+137545	 - 133406_8	 - notkola	 - New parameter install_rule_type_t added to dia_charging_rule_install. Adaptation: not needed.
+136571	 - 133406_7	 - melgosa	 - - Clean change of variable name from sgw_changed to flags. Default value (0) remains. No adaptation needed on upgrade.
+135904	 - 133406_6	 - papakons	 - -VALIDATOR_CP_LICENSE_PERMISSION_RESP added the msg_version.
+Adaptation: Default value is 0.
+134401	 - 133406_5	 - vasilogi	 - 2 new messages: 
+GWUP_SC_PREPARE_CONTROLLED_SWO_REQ
+
+GWUP_SC_PREPARE_CONTROLLED_SWO_RESP
+
+Action none
+134397	 - 133406_4	 - mfoukara	 - New messages SC_HA_CTRL_SHUTDOWN_PREPARE, SC_HA_CTRL_SHUTDOWN_PREPARE_ACK. No adaptation action.
+134340	 - 133406_3	 - mfoukara	 - Removal of messages SC_HA_CTRL_SHUTDOWN_PREPARE, SC_HA_CTRL_SHUTDOWN_PREPARE_ACK. No adaptation action.
+134135	 - 133406_2	 - mfoukara	 - New messages SC_HA_CTRL_SHUTDOWN_PREPARE, SC_HA_CTRL_SHUTDOWN_PREPARE_ACK. No adaptation action.
+133406	 - 133406_1	 - metsi	 - initial commit for branch

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+<title>Author History</title>
+</head>
+
+<div>
+<tr>
+<td <b> <font size="5">Found total: {{entries}} entries for {{author}} </font></b></td>
+</div>
+</tr>
+
+<body>
+<div align="center" class="divtables">
+<font face="comic-sans" size="3">
+{% if authorslist.object_list %}
+    <table border="4" width="700" cellspacing="5" cellpadding="4" border="2">
+    <td class="cCaption"><b>Branch</b></td>
+    <td class="cCaption"><b>LVN</b></td>
+    <td class="cCaption"><b>Revision</b></td>
+    <td class="cCaption"><b>Date & Time</b></td>
+
+   {% for entry  in authorslist.object_list %}
+	<tr>	
+	<td class="cText">{{ entry.branch_name}}</td>
+   {% if entry.rev_id == entry.layout_rev %}
+       <td class="cText"> <font color="red" >{{ entry.lvn}} (changed)</font></td>
+       <td class="cText"><a href="/my_media/svnhistory/{{entry.rev_id}}.txt"><font color="red" >{{entry.rev_id}}</font></a></td>
+   {% else %}
+        <td class="cText">{{ entry.lvn}}</td>
+        <td class="cText"><a href="/my_media/svnhistory/{{entry.rev_id}}.txt">{{entry.rev_id}}</a></td>
+   {% endif %} 
+	<td class="cText">{{ entry.commit_date}}</td>
+        <tr>
+
+    {% endfor %}
+
+</table>
+{% endif %}
+</div>
+<table border="0" width="100" cellspacing="30" cellpadding="4">
+   <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></b></td>
+</tr>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if authorslist.has_previous %}
+            <a href="?page={{ authorslist.previous_page_number }}">go to previous page</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ authorslist.number }} of {{ authorslist.paginator.num_pages }}.
+        </span>
+
+        {% if authorslist.has_next %}
+            <a href="?page={{ authorslist.next_page_number }}">go to next page</a>
+        {% endif %}
+    </span>
+</div>
+
+
+<!---
+<div>
+{% if authorslist.has_previous %}
+<a href="{% url authorslist authorslist.previous_page_number %}">previous page</a>
+{% endif %}
+{% if authorslist.has_next %}
+<a href="{% url authorslist authorslist.next_page_number %}">next page</a>
+{% endif %}
+</div>
+-->
+
+</body>
+</font>
+<!---
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page={{ authorslist.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ authors.number }} of {{ authorslist.paginator.num_pages }}.
+        </span>
+
+        {% if authorslist.has_next %}
+            <a href="?page={{ authorslist.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+--->
+<ul>
+<li><a href="/main/" align=right>return to the home page</a>
+<li><a href="/search-author-commits/" align=right>return to search page for a new search</a>
+</ul>
+
+
+{% endblock %}
+
+

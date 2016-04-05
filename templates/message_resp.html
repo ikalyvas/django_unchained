@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+
+<table border="0">
+    <tr>
+        <td colspan="2" align="center"><b><font size="5">{{ msg }}</font></b></td>
+    </tr>
+
+{% if not revision_set %}
+{% if arg_rev %}
+     <tr>
+         <td class= "cCaption" width "120">Svn Log</td>
+         <td class="cText"><a href="/my_media/svnhistory/{{arg_rev}}.txt">r{{arg_rev}}</a></td>
+    </tr>
+{% endif %}
+{% endif %}
+
+
+</table>
+{% if revision_set %}
+{% for revision in revision_set %}
+
+<div align="center" class="divtables">
+
+<table border="5" width="800" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cCaption" width="120">LVN</td>
+        <td class="cText"><b>{{ revision.lvn }} </b></td>
+    </tr>
+    <tr>
+        <td class="cCaption">Branch</td>
+        <td class="cText"><b>{{ revision.branch_name }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Author</td>
+        <td class="cText"><b>{{ revision.author }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Commit date</td>
+        <td class="cText"><b>{{ revision.commit_date }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Revision you searched for:</td>
+        <td class="cText"><b>{{ revision.rev_id }}</b></td>
+    </tr>
+     <tr>
+         <td class= "cCaption" width "120">Svn Log</td>
+         <td class="cText"><a href="/my_media/svnhistory/{{arg_rev}}.txt">r{{arg_rev}}</a></td>
+    </tr>
+
+
+</table>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if msg %}
+
+<html>
+<head>
+</head>
+<body>
+
+</body>
+</html>
+{% endif %}
+
+<table><tr><td colspan="2"></td><tr></table>
+<a href="{{ return_to }}">return to the search page</a>
+
+
+{% endblock %}

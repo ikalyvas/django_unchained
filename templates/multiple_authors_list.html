@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+<title>Total authors found for: </title>
+</head>
+
+
+<br/>
+<br/>
+<br/>
+
+<table border="0">
+    <tr>
+        <td colspan="2" align="center"><b><font size="5">{{ msg }}</font></b></td>
+    </tr>
+</table>
+
+<body>
+<div align="center" class="divtables">
+<font face="arial" size="5">
+    <table border="7" width="700" cellspacing="8" cellpadding="8" border="4">
+   <tr> <td class="cCaption" ><b><font size="4">Author-Committers</font></b></td></tr>
+{% if lvn_ret %}
+   {% for lvn_entry in lvn_ret %}
+	<tr>	
+	<td class="cText" align="center">{{ lvn_entry.author}}</td>
+        </tr>
+        </tr>
+   {% endfor %}
+{% endif %}
+   </table>
+</div>
+</body>
+</font>
+
+<a href="{{ return_to }}">return to the search page</a>
+<br/>
+
+{% endblock %}

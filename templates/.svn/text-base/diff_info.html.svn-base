@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+
+<div align="center" class="divtables">
+
+<table border="5" width="800" cellspacing="5" cellpadding="5">
+    
+         <td class= "cCaption" width "120">Svn diff -c </td>
+         <td class="cText"><a href="/my_media/deliveries/diff_for_{{my_rev}}.txt">{{my_rev}}</a></td>
+    </tr>
+</table>
+
+</div>
+{% endblock %}

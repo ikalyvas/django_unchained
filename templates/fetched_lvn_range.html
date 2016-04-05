@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+ {% for item in res %}
+
+<div align="center" class="divtables">
+
+<table border="5" width="800" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cCaption" width="120">BFR_LVN</td>
+        <td class="cText"><b>{{ item.bfr_lvn }} </b></td>
+    </tr>
+    <tr>
+        <td class="cCaption" width="120">rev</td>
+        <td class="cText"><b>{{ item.rev_id }} </b></td>
+    </tr>
+    <tr>
+        <td class="cCaption">author</td>
+        <td class="cText"><b>{{ item.author }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Change--Adaptation</td>
+        <td class="cText"><b>{{ item.adaptation }}</b></td>
+    </tr>
+    <tr>
+        <td class= "cCaption" width "120">Other</td>
+        <td class="cText"><b>{{ item.other }}</b></td>
+    </tr>
+     <tr>
+         <td class= "cCaption" width "120">Svn Log</td>
+		 <td class="cText">
+			   <a href="/my_media/svnhistory/{{item.rev_id}}.txt">r{{item.rev_id}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <a href='javascript:void(0);' onclick='open_change_reason("{{ item.bfr_lvn }}");'>Change Reason</a>&nbsp;&nbsp;&nbsp;
+         <a href='javascript:void(0);' onclick='open_diff_for("{{ item.rev_id }}");'>Svn Diff</a>&nbsp;&nbsp;&nbsp;
+         <a href='javascript:void(0);' onclick='open_fetched_row("{{ item.bfr_lvn }}", "{{ item.branch_name }}");'>Lvn Entry</a>
+		 </td>
+    </tr>
+</table>
+
+</div>
+{% endfor %}
+  
+
+<table border="0" width="100" cellspacing="50" cellpadding="4">
+   <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></b></td>
+</tr>
+</table>
+
+<a href="/manage_wiki_entries/">return to the previous search page</a>
+
+<script>
+function get_bfr_from_bfr_lvn(bfr_lvn) {
+    return bfr_lvn.split("_")[0];
+}
+
+function get_lvn_from_bfr_lvn(bfr_lvn) {
+    return bfr_lvn.split("_")[1];
+}
+
+function open_change_reason(bfr_lvn) {
+    window.open("/my_media/lvn_change/LVN_change_reason_"+get_bfr_from_bfr_lvn(bfr_lvn)+"_"+(get_lvn_from_bfr_lvn(bfr_lvn)-1)+"_"+get_bfr_from_bfr_lvn(bfr_lvn)+"_"+get_lvn_from_bfr_lvn(bfr_lvn)+".txt");
+}
+
+function open_diff_for(rev_id) {
+    window.open("/do_svndiff/?revision="+rev_id+"&auto=auto");
+    //window.open("/my_media/deliveries/diff_for_"+rev_id+".txt");
+}
+
+function open_fetched_row(bfr_lvn, branch_name) {
+    window.open("/fetched_row/?lvn="+get_lvn_from_bfr_lvn(bfr_lvn)+"&bname="+branch_name);
+}
+</script>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<br/>
+
+<div align="center" class="formtables">
+<table border="0" width="400" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cHeader" align="center" colspan="5">check if a commit caused LVN change</td>
+    </tr>
+    <tr>
+        <td width="100"></td>
+        <td width="300"></td>
+    </tr>
+    <form action="/find_revision_change/" method="get">
+    {{ form.as_table }}
+    <tr><td/><td/></tr>
+    <tr>
+        <td class="cHeader" align="center" colspan="2">
+            <input type="submit" value="Submit" />
+        </td>
+    </tr>
+    </form>
+</table>
+</div>
+
+<br/>
+<br/>
+
+<a href="/main/">return to the home page</a>
+
+{% endblock %}

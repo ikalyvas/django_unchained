@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<link rel="icon" type="image/png" href="/my_media/favicon.png?v=2" /> 
+	<link rel="stylesheet" href="/my_media/lvnproject.css" />
+    <title>{% block title %}LVN parsing tool{% endblock %}</title>
+    <style type="text/css" media="all">
+	
+    body {
+        font: 0.8em arial, helvetica, sans-serif;
+    }
+    
+    #header ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #header li {
+        float: left;
+        border: 1px solid #bbb;
+                border-color: black;
+        border-bottom-width: 5;
+        margin: 0;
+    }
+    
+    #header a {
+        text-decoration: none;
+&lt;!--display: block; --&gt;
+        padding: 0.24em 1em;
+        color: #00c;
+        width: 8em;
+        text-align: center;
+    }
+    
+    #header a:hover {
+    color: white;
+    }
+    
+    #header #selected a {
+        position: relative;
+        top: 1px;
+        color: black;
+        font-weight: bold;
+    }
+    
+    #content {
+        border: 1px solid black;
+                display: block;
+        clear: both;
+        padding: 0 1em;
+    }
+    
+    h1 {
+        margin: 0;
+        padding: 0 0 1em 0;
+    }
+	</style>
+        <div class="dbupdate"></div>
+        <br/>
+        <div class="apptitle"><a class="apptitle" href="/main/">Lamda-Q</a></div>
+        <br/>
+        <div id="content" align="center">
+        {% block content %}{% endblock %}
+        </div>
+</body>
+	
+</head>
+
+<body>
+
+
+<div id="header">
+
+<h1></h1>
+
+<ul>
+	<li id="selected"><h3><a href="/main/">Home</a></h3></li>
+	<li><h3><a href="/search-current-lvn/">search for current LVN per Branch</font></a></h3></li>
+	<li><h3><a href="/search-lvn/">search for unique LVN per branch</font></a></h3></li>
+	<li><h3><a href="/search-author-commits/">Find commit history for an author</a></h3></li>
+	<li><h3><a href="/lvnaffectingtable/">LVN Affecting Table</a></h3></li>
+	<li><h3><a href="/buildstable/">Build Manifest Table</a></h3></li>
+	<!--	<li><h3><a href="/manage_ISU_paths/"><font color="black">tested ISU paths</a></h3></li></font> -->
+
+
+</ul>
+
+</div>
+
+</b>
+<!--
+<table border="0" width="100" cellspacing="8" cellpadding="4">
+    <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></td>
+    </tr>
+</table>
+--->       
+
+<table border="0" width="100" cellspacing="8" cellpadding="4">
+<!--    <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></td>
+    </tr>
+--->    <tr>
+       <td colspan="0" align="center"><b><font size="0"></font></td>
+    </tr>
+</table>
+<p>
+</br>
+</br>
+</br>
+</br>
+</p>
+<p>
+<b><div align="left"><h4><font size=+1> Layout Version Number Detector Tool</h4></font></b>
+	</p>
+	<font size=+0>
+This tool is used to support the Inservice upgrade feature (ISU) which makes
+possible to update FlexiNG software without interrupting
+services. In particular, it can be used to find the following:
+</p>
+</div>
+<ul>
+          <li><font size=+0>Search for current LVN per branch</font>
+          <li><font size=+0>Search for an LVN in all branches. It will provide only the first line where the LVN has changed</font>
+          <li><font size=+0>Search if a specific revision has produced an LVN change</font>
+          <li><font size=+0>Commit history for an author</font>
+          <li><font size=+0>Add adaptation related info (LVN affecting table)</font>
+          <li><font size=+0>Provide additional info and links on the ISU (see below...)</font>
+</ul>
+
+<div id="text" align="left">
+	<h3>General description
+</h3>
+
+<p><font size=+0>
+During an ISU procedure, NG is upgraded while existing bearers remain and all external signaling is served.
+Data traffic flows through FlexiNG with minimum interruption during upgrade.
+Traffic is interrupted just for the time needed to make a normal high availability switchover
+between nodes. Traffic interrupt does not affect mobile to terminal tcp connections.
+</p></font>
+<p><font size=+0>
+During the inservice upgrade it comes to a situation where different versions of software are
+installed on different nodes, but still the processes need to be able to communicate with each
+other. For this case message adaptations are needed.
+
+Message adaptation is implemented so, that whenever a message is received by the application
+running on a node having newer software installed, the necessary conversion from older message
+version to newer is carried out (only if needed, in most of cases the messages are in the same
+format). Conversion is also needed when an application running on node having newer software
+installed, sends a message to an application which is running on a node with older software
+installed. In this case conversion is done from newer message version to older before sending
+the message. Library libmsg checks whether message conversion is needed or not and calls
+libisu_mc conversion function to perform it.
+</p></font>
+<p><h3><font size=+0 color="black"> 
+		click here for an introduction to ISU<a href="/my_media/info/description.html">...info related to ISU</font></a></h3></font>
+</p></font>
+
+</div>
+
+
+<!--<div align="center" class="divtables">
+<font face="arial" size="5">
+    <table border="1" width="580" cellspacing="5" cellpadding="4" border="1">
+		--->	
+{% for lupd in last_upd %}
+	<p>	
+Last DB update at: {{ lupd.lastUpdDate }}</p>
+{% endfor %}
+
+</body>
+</html>
+
+

@@ -1,0 +1,29 @@
+A brief description of the scripts used will be given:
+
+upddb.pl: runs in a crontab to update the weblvnapp_lvn_entry table in db. This is the main table 
+kept in db. The usage is: './uppdb.pl' to run it from current directory. First of all it copies all rev_db files from vevak into rev_db directory. Based on the branches selected to be displayed converts each rev_db txt dile into a csv file and then scans through the entries to find those that are not present in db. It does not scan backwards only adds entries after the last present. 
+
+filldb.pl: This is a script that fills above mentioned table (provided that LVN Affecting Table wiki entries hav been converted 
+from .html to csv). It was used once to initially fill the table and never before. Table is kept insync by upddb.pl script.
+
+fillwikidb.pl: The second important script to fill the weblvnapp_wiki_entry table in db. Due to a problem  (LVN Affecting Table entries do not have a key and they are not unique) each time the whole table is cleared and the csv input (LVN affecting table html page is converted to csv by a script whenever there is a need to do that) is imported into the table. When LVN Affecting Table wiki will cease to be used there will no need to run this script.
+
+fillBranchesdb.pl: It is used to fill the weblvnapp_branch table when ther is a new branch to be displayed.
+
+printallWiki.pl: Will be used to print in a file (currently LVN_<branch>.html) all entries from Wiki_entry table for a specific branch. To be used with real.sh script to send email to those that have forgotten to put entry in Wiki_entry table.
+
+printWiki_rev1_2_rev2.pl: Used to print in a txt file (report.txt) all entries from rev1 (in branch A) to rev2 (in branch B).
+
+###################################################################       ADD-REMOVE BRANCHES  #################################################
+Actions to do when we have a new branch creation:
+
+a)edit fillBranchesdb.pl with the new branch name
+b)edit upddb.pl with the new branch name
+
+
+Actions to do when we have to remove a branch from the django tool(drop-down menu and all the related items,lvn affecting table etc)
+
+a)remove from fillBranchesdb.pl the  branch name
+b)same in upddb.pl 
+c)select from admin interface the branch to be removed,and delete this and the related items.
+###################################################################################################################################################

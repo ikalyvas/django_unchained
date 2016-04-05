@@ -1,0 +1,2162 @@
+317814	 - 1_1314	 - verigos	 - none needed. MBMS<->HA_CTRL related message, libisu used.
+317250	 - 1_1313	 - magoulas	 - -Moving dc_to_dc_if_srlz.h to src/include.
+316768	 - 1_1310	 - aandriko	 - -updated src/include/dia_client_mc_if_srlz.h 
+
+Remove DC_MC_MSG_SGMB_RAA_ERR_OBSOLETE  from structure dia_mc_msg_type_t
+since it will not be used any more. (this msg was added in trunk)
+316724	 - 1_1309	 - sklavos	 - -Adaptation not needed
+316168	 - 1_1305	 - rakopoul	 - -No adaptation (it is user data if)
+315522	 - 1_1303	 - ujmarkvi	 - u8 pres filed converted to a bit struct:
+    u8 pres: 1;
+    u8 pre_r8_rel: 3;
+    u8 spare: 4;
+
+Adaptation:
+pres = pres
+pre_r8_rel = see below
+spare = 0
+
+On sby running newer SW it's possible to fill in the pre_r8_rel, by converting it from PRE-R8-params length with the following function:
+ 
+libqos_i_get_release(dst->pre_r8_params.length);
+314497	 - 1_1302	 - moschos	 - -new HA_SYNC_TAG_MBMS_CDR sync tag for MBMS_ctrl_HA interface. The struct that holds the data to be synced is mbms_ctrl_ha_cdr_sync_data_t
+
+312883	 - 1_1301	 - liakaris	 - no adaption is needed revert changes in cli_featuremem_enable_req_t made in commit 312542
+312843	 - 1_1300	 - liakaris	 - no adaption needed revert of commit 312794
+312794	 - 1_1299	 - liakaris	 - no adaption needed reverted with revision 312843
+312542	 - 1_1298	 - liakaris	 - no adaption needed change in cli_featuremem_enable_req_t was reverted in commit 312883
+312535	 - 1_1297	 - aandriko	 - -updated src/include/dia_client_mc_if_srlz.h 
+
+Renaming the DC_MC_MSG_SGMB_RAA_ERR to DC_MC_MSG_SGMB_RAA_ERR_OBSOLETE
+312296	 - 1_1296	 - iilia	 - - New interface between MBMS_CTRL and GTP_PRIME through LIBCDR (INTERFACE_TYPE_GTPP_MBMS_CTRL).
+- The new messages are the following: GTPP_MBMS_CTRL_CDR_MSG, GTPP_MBMS_CTRL_CDR_ACK, GTPP_MBMS_CTRL_ERROR_ACK, GTPP_MBMS_CTRL_MSG_MAX
+311916	 - 1_1295	 - sklavos	 - -Updated definitions of interface INTERFACE_TYPE_SLOWLOOP_SC and internal message SC_SLOWLOOP_COMPLETED_MSG
+Also updated ipc_encoding_scheme.conf with the new message
+311776	 - 1_1294	 - magoulas	 - -not needed
+311738	 - 1_1293	 - aandriko	 - -not needed
+311420	 - 1_1292	 - aandriko	 - -Updated dia_client_mc_if_srlz.h:
+Removed  DC_MC_MSG_SGMB_RAA_ERR  from structure dia_mc_msg_type_t
+
+311023	 - 1_1291	 - arvaniti	 - Adaptation not needed.
+310391	 - 1_1290	 - sklavos	 - -Added new interface INTERFACE_TYPE_SLOWLOOP_SC and new internal message SC_SLOWLOOP_COMPLETED_MSG (send from a SC instance to all SC instances in the same node)
+310125	 - 1_1287	 - arvaniti	 - -
+310116	 - 1_1286	 - nafas	 - -Updated ipc_encoding_scheme.conf:
+Added CM_TLV_ID_TWAN_USER_LOCATION_INFO_C
+Removed
+CM_TLV_ID_SSID_C,
+CM_TLV_ID_BSSID_C
+310014	 - 1_1285	 - atsourti	 - -not needed
+309981	 - 1_1284	 - simopoul	 - Adaptation not needed
+309525	 - 1_1283	 - nanou	 - Set the ext_session_id to be an empty string
+309337	 - 1_1282	 - nafas	 - -updated src/include/dia_client_sc_if_srlz.h
+Added dia_twan_uli_t struct
+
+
+-updated src/include/cm_tlv_ids_srlz.h
+Added CM_TLV_ID_TWAN_USER_LOCATION_INFO_C
+Removed CM_TLV_ID_SSID_C, CM_TLV_ID_BSSID_C
+309266	 - 1_1281	 - atsourti	 - -not needed
+308810	 - 1_1280	 - nafas	 - -not needed
+308807	 - 1_1279	 - nafas	 - -not needed
+308794	 - 1_1278	 - nafas	 - -not needed
+308787	 - 1_1277	 - nafas	 - -not needed
+308587	 - 1_1276	 - shisu	 - -Removal NF related feature memory definition and allocation in src/include/featuremem_definitions.h, src/include/featuremem_features.inc, src/include/featuremem_malloc_purposes.inc, src/include/featuremem_purposes.inc
+
+-Removal NF related type definition in src/include/gwup_types_srlz.h, src/include/libif_conf_types.h, src/include/conf_ctrl_types.h, src/include/cm_hw_definitions.h, src/include/cm_system_definitions_srlz.h, src/include/se_shared_mem.h
+308445	 - 1_1275	 - saousopo	 - Addition of MBMS related LIBSYNC tag from ipc encoding scheme. No need for ISUG on mbms ha msgs.
+308260	 - 1_1274	 - psourlis	 - -None 
+No ISUG related
+1. Scale in should not be given during ISUG
+
+308193	 - 1_1273	 - shisu	 - -Not needed
+308183	 - 1_1272	 - shisu	 - -Removal NF related feature memory definition and allocation in src/include/featuremem_definitions.h, src/include/featuremem_features.inc, src/include/featuremem_malloc_purposes.inc, src/include/featuremem_purposes.inc
+
+-Removal NF related type definition in src/include/gwup_types_srlz.h, src/include/libif_conf_types.h, src/include/conf_ctrl_types.h, src/include/cm_hw_definitions.h, src/include/cm_system_definitions_srlz.h, src/include/se_shared_mem.h
+307817	 - 1_1271	 - ladopoul	 - - No adaptation is needed.
+307128	 - 1_1270	 - atsourti	 - - No adaptation is needed.
+307123	 - 1_1269	 - gretsina	 - - No adaptation is needed.
+306915	 - 1_1268	 - kouzmitc	 - - added  flag5 to struct flags under dia_session_ha_sync_t, default value 0 for adaptation
+306665	 - 1_1267	 - mentakis	 - - no adaption needed
+306545	 - 1_1266	 - arvaniti	 - Adaptation needed
+306002	 - 1_1265	 - liyozhao	 - -
+comment TRACE_INFO_SYSTEM_DUMP_REQ adding _OBSOLETE out
+305513	 - 1_1264	 - foyuan	 - - Validator field added.
+Forced by a previous commit.
+Octomore's decision is to set it to Zero "0"
+305125	 - 1_1263	 - chaidou	 - -update src/include/dia_client_sc_if_srlz.h.
+Add new member named "token_u32_t charging_correlat_indic;" in struct ng_rule_carrier_t.
+
+pres=0, val=1
+305054	 - 1_1262	 - mentakis	 - -Message CM_TLV_ID_CHARG_PROFILE_ID_C added on ipc_encoding_scheme.conf(commented)
+No adaptation is needed. session_ctrl - dia_client, intra node, communication.
+304426	 - 1_1261	 - derzioti	 - - New interface added, between SYS_CTRL and HA_CTRL (cloud only).
+- New messages SYS_CTRL_HA_CTRL_REBOOT_ALARM_REQ, SYS_CTRL_HA_CTRL_REBOOT_ALARM_RESP
+303955	 - 1_1260	 - m21zhang	 - - Validator field removed.
+Forced by a previous commit.
+303676	 - 1_1258	 - atsourti	 - - On the interface between cli and sys_ctrl
+
+- New messages CLI_SYS_CTRL_CORE_ALLOC_CHANGED_REQ towards sys_ctrl and CLI_SYS_CTRL_CORE_ALLOC_CHANGED_RESP
+towards cli
+303666	 - 1_1257	 - aandriko	 - -Moved TLV definition to end of enum as requested by ISUG guardian team.
+303490	 - 1_1255	 - katsiamp	 - -Renaming and movement under new created file (pem_ctrl_pem_users_if_srlz.h) of the following:
+1.messages between SC-PEM_CTRL
+2.all relevant structs of the aforementioned messages
+
+-Renaming of the interface type between SC-PEM_CTRL
+303471	 - 1_1253	 - chryssin	 - no adaptation
+303454	 - 1_1252	 - katsiamp	 - -reverting commit 303445
+303445	 - 1_1251	 - katsiamp	 - --Renaming and movement under new created file (pem_ctrl_pem_users_if_srlz.h) of the following:
+1.messages between SC-PEM_CTRL
+2.all relevant structs of the aforementioned messages
+
+-Renaming of the interface type between SC-PEM_CTRL
+303249	 - 1_1250	 - zarodimo	 - Old structure
+-------------
+
+ typedef struct {
+     uint32_t      rulebase_act_time[RULEBASES_PER_SESSION];
+     uint32_t      rulebase_dec_time[RULEBASES_PER_SESSION];
+ } dpi_rulebase_times_t;
+
+
+New structure
+-------------
+
+ typedef struct {
+     uint32_t      rulebase_act_time[RULEBASES_PER_SESSION];
+     uint32_t      rulebase_dec_time[RULEBASES_PER_SESSION];
+
+     /** If rulebase has been send from PCRF then merge of the 
+         act/dec time, which kept in fp with the list of 
+         rulebases received from session_ctrl, is not needed.
+         (sm.c: sm_merge_session_rulebases_times
+                   (session_rulebases_t *sess_ctrl_rulebases))
+         0: false, 1: true */
+     uint8_t merge_is_not_needed[RULEBASES_PER_SESSION];
+ } dpi_rulebase_times_t;
+
+
+Old -> New
+----------
+merge_is_not_needed[RULEBASES_PER_SESSION] = {0,0,0,...,0}
+
+303123	 - 1_1249	 - bimplis	 - Moved TLV definition to end of enum as requested by ISUG guardian team.
+303116	 - 1_1248	 - koutsian	 - Added intra-node messages between ip_pool_ctrl and mbms_ctrl. No need for ISUG.
+302850	 - 1_1247	 - erwang	 - -added "s32 pre_tbl_id" to sc_ha_slow_loop_synch_data_t
+
+default value 0 for adaptation.
+302650	 - 1_1246	 - kimaenpa	 - -added "uint8_t gy_reestablished;" to dia_session_ha_sync_t;
+
+default value 0 for adaptation.
+302539	 - 1_1245	 - verigos	 - Removed MBMS related LIBSYNC tags from ipc encoding scheme. No need for ISUG on mbms ha msgs.
+302532	 - 1_1244	 - verigos	 - Removed MBMS related LIBSYNC tags from ipc encoding scheme. No need for ISUG on mbms ha msgs.
+302227	 - 1_1243	 - koutsian	 - Added intra-node messages between ip_pool_ctrl and mbms_ctrl. No need for ISUG.
+301956	 - 1_1242	 - verigos	 - add below new item to ipc_encoding_scheme.conf 
+
+ HA_SYNC_TAG_MBMS_BEARER
+301493	 - 1_1240	 - dkonstan	 - reverted the adaptation 1_1238
+301459	 - 1_1238	 - dkonstan	 - 
+300795	 - 1_1236	 - derzioti	 - -New interface added, between active and standby SYS_CTRL in MN (cloud only).
+-New message SYS_CTRL_PEER_RES_ALLOC_HIST_UPDATE
+300529	 - 1_1234	 - liyozhao	 - -
+Atcommit r300529:
+many new fields were added and deleted, and
+TRACE_INFO_SYSTEM_DUMP_REQ is removed.This change has no effect to ISUG.
+300330	 - 1_1233	 - mimilidi	 - DROP
+M=VALIDATOR_CP_START_TRANSACTION
+M=VALIDATOR_CP_ALL_CHANGE_INDICATIONS_SENT
+
+No adaptation
+M=LIBCONF_CP_START_NOTIFICATIONS_TXN
+M=LIBCONF_CP_START_NOTIFICATIONS_TXN_ACK
+M=LIBCONF_CP_END_NOTIFICATIONS_TXN
+M=LIBCONF_CP_END_NOTIFICATIONS_TXN_ACK
+
+Adaptation
+M=LIBCONF_CP_CONF_STATUS_UPDATE_MSG -> new fied peer_cfg_mode be set to zero (0)
+
+
+
+
+
+
+300155	 - 1_1232	 - braimiot	 - No need to change as this is internal counter.
+300046	 - 1_1231	 - derzioti	 - - New interface between cli and sys_ctrl
+
+- New messages CLI_SYS_CTRL_TOTAL_CORES_REQ towards sys_ctrl and CLI_SYS_CTRL_TOTAL_CORES_RESP
+towards cli
+299979	 - 1_1230	 - bimplis	 - Addidion of parameter mbms_gw_udp_port inside mbms bearer data, and definition of new experimental causes for mbms control diameter user.
+299653	 - 1_1224	 - verigos	 - Added HA_SYNC_TAG_MBMS_BEARER in cm_ha_sync_types.h and incremented HA_SYNC_TAG_LAST by one.
+299611	 - 1_1222	 - derzioti	 - -Not needed
+299585	 - 1_1221	 - derzioti	 - -Not needed
+299355	 - 1_1220	 - huizhong	 - add below new item to ipc_encoding_scheme.conf
+HA_SYNC_TAG_GX_CONN_FAIL_RENEW_TIMER
+HA_SYNC_REQUEST_TAG_CONN_FAIL_TIMER      
+HA_SYNC_TAG_GX_ERRO_CODE_RENEW_TIMER        
+HA_SYNC_REQUEST_TAG_ERRO_CODE_TIMER
+299130	 - 1_1219	 - moschos	 - - 2 new messages have been created between Ip_pool(IPPC) and Mbms_ctrl to inform Mbms-ctrl that ip_pool_ctrl has completed shared pool fragment warm up.
+298452	 - 1_1218	 - magoulas	 - -
+298442	 - 1_1217	 - atsourti	 - - New interface between gwup_proxy and sys_ctrl
+
+- New messages GWUP_PROXY_SYS_CTRL_RES_ALLOC_UPDATE towards gwup_proxy and GWUP_PROXY_SYS_CTRL_RES_ALLOC_UPDATE_ACK
+towards sys_ctrl
+298348	 - 1_1215	 - magoulas	 - -not needed
+298261	 - 1_1214	 - atsourti	 - -not needed
+298258	 - 1_1213	 - atsourti	 - -not needed
+297535	 - 1_1212	 - jerryli	 - I add a variable named "uli_when_cdr_open" in struct sc_eg_cdr_t to store the ULI when CDR open.
+
+OLD->NEW
+ memset(&uli_when_cdr_open, 0, sizeof(ng_user_location_info_t))
+
+NEW->OLD
+ do nothing
+296581	 - 1_1208	 - y3gao	 - -Update ipc_encoding_scheme.conf
+296525	 - 1_1207	 - y3gao	 - 1.New interface between pem-ctrl and pmip-sig.
+2.New message type between pem-ctrl and session-ctrl.
+3.New message type between pem-ctrl and gtpc-sig.
+4.New message type between pem-ctrls.
+
+No ISU needed
+296362	 - 1_1206	 - politaki	 - -No ISU needed
+296190	 - 1_1204	 - krommyda	 - Inserted new M1 Interface for eMBMS
+296174	 - 1_1203	 - tryfonop	 - -failover_info_flag_t struct has been removed at all.
+
+- multiple_failover_info_t, cfgd_swo_status_t structs and variable u8 
+is_failover_allowed_flag have been inserted in pcrf_conn_info_t struct.
+
+-OLD SW -> NEW SW
+------------------
+-if failover_flag == FAILOVER_CLOSE then is_failover_allowed_flag = 0. 
+
+-if failover_flag==FAILOVER_NONE then is_failover_allowed_flag=1.
+
+-if failover_flag==FAILOVER_DONE then is_failover_allowed_flag=1, failover_cnt=1.
+
+-if failover_flag==FAILOVER_CFGD_SWO_DONE then is_failover_allowed_flag=1, is_cfgd_swo_done=1, is_cfg_swo_successful=0. 
+
+NEW SW -> OLD SW
+----------------
+
+-if is_failover_allowed_flag==0 then failover_flag=FAILOVER_CLOSE
+
+-if is_failover_allowed_flag==1 and failover_cnt==0 then failover_flag=FAILOVER_NONE
+
+-if is_failover_allowed_flag==1 and failover_cnt==1 then failover_falg=FAILOVER_DONE
+
+if is_cfgd_swo_done=1 and is_cfgd_swo_successful=0 then failover_flag=FAILOVER_CFGD_SWO_DONE
+295819	 - 1_1202	 - psourlis	 - -Remove new created messages 
+CLI_HACTRL_NODE_DEACT_REQ  and
+CLI_HACTRL_NODE_DEACT_RESP
+295760	 - 1_1201	 - chanhan	 - -Undo the modification of SVN 288844.
+
+Now modify the order of  enum_string to match the order of enum.
+295492	 - 1_1200	 - x16zhao	 - -Add two timer type in db_timer.h
+Add two new internal statistic
+renaming and adding a field
+295370	 - 1_1199	 - nanou	 - -
+295098	 - 1_1197	 - nanou	 - no adaptation, code is reverted in r 295126
+294744	 - 1_1195	 - magoulas	 - -New messages (RAR,RAA,STR,STA) between dia client and mbms controller.
+294743	 - 1_1194	 - psourlis	 - Change the msg names from
+-SYS_CTRL_SC_MSG_STATUS_UPDATE_REQ        -SYS_CTRL_SC_MSG_STATUS_UPDATE_RESP
+
+to 
+-SYS_CTRL_CLIENT_MSG_STATUS_UPDATE_REQ
+-SYS_CTRL_CLIENT_MSG_STATUS_UPDATE_RESP
+
+and the structures from
+
+-sc_sys_ctrl_update_req_t
+-sc_sys_ctrl_update_resp_t
+
+to
+-client_sys_ctrl_update_req_t
+-client_sys_ctrl_update_resp_t
+294732	 - 1_1193	 - kokkinos	 - -add new internal statistic
+-renaming of a field
+294441	 - 1_1191	 - magoulas	 - -not needed
+294428	 - 1_1190	 - magoulas	 - -not needed
+294424	 - 1_1189	 - trapezan	 - Added CM_TLV_ID_PDP_DYNAMIC_ADDRESS_FLAG_C and CM_TLV_ID_PDP_DYNAMIC_ADDRESS_FLAG_EXTENSION_C in ipc_encoding_scheme.conf
+For more information see also rev 287488
+294245	 - 1_1188	 - psourlis	 - a)For session-ctrl process
+-For structure sc_sys_ctrl_update_req_t set the capacity_used[mbms] equal to 0.
+-For structure sc_sys_ctrl_update_resp_t do nothing
+
+
+
+b)for mbms ctrl process
+-We add the below messages between mbms / sys ctrl
+SYS_CTRL_SC_MSG_STATUS_UPDATE_REQ 
+SYS_CTRL_SC_MSG_STATUS_UPDATE_RESP
+294138	 - 1_1187	 - ampatzid	 - not needed
+293952	 - 1_1186	 - chronis	 - -new messages CM_TLV_ID_CHARGING_ID_ACS_NW_CHRG_ID_GX_C and CM_TLV_ID_RULE_NAME_ACS_NW_CHRG_ID_GX_C added in ipc_encoding_scheme.conf
+293849	 - 1_1185	 - chronis	 - -new TLV_IDs for charging_id and rule_names:
+CM_TLV_ID_CHARGING_ID_ACS_NW_CHRG_ID_GX_C and CM_TLV_ID_RULE_NAME_ACS_NW_CHRG_ID_GX_C to be exchanged from session_ctrl to dia_client
+293668	 - 1_1184	 - politaki	 - -removed obselete counters from ipc_encoding_scheme.conf in revision 293972
+293653	 - 1_1183	 - goyuan	 - - 
+Pyrat:
+ADDED trace_system_dump_message_t, 
+removed @ LVN 1234
+293506	 - 1_1181	 - moschos	 - -A new message has been created between Ip_pool(IPPC) and Mbms_ctrl to inform Mbms that CPM is down, so as to delete MBMS sessions with multicast shared ip-pools
+293397	 - 1_1180	 - boulouga	 - Message CM_TLV_ID_DIAGNOSTICS_C added on ipc_encoding_scheme.conf
+
+Relative with commit r285725
+293324	 - 1_1179	 - psourlis	 - -not needed
+293137	 - 1_1178	 - theofani	 - -Added CM_TLV_ID_BSSID_C, CM_TLV_ID_SSID_C messages in tools/troubleshoot/msgmon/conf/ipc_encoding_scheme.conf, missing in commit 292556. All values within struct token_str6_t can be initiated using zero values.
+293055	 - 1_1177	 - sideri	 - Added message CM_TLV_ID_NODE_ID_C in  ipc_encoding_scheme.conf.
+No adaptation is needed. session_ctrl - dia_client, intra node, communication.
+292898	 - 1_1176	 - larrliu	 - -rename the exist inter node message HA_SYNC_TAG_IP_POOL_FRAGMENT to HA_SYNC_TAG_IP_POOL_FRAGMENT_CPM and  add a inter node message HA_SYNC_TAG_IP_POOL_FRAGMENT_IPPC
+292724	 - 1_1175	 - psourlis	 - -not needed
+292556	 - 1_1174	 - theofani	 - -Added new AVPs SSID and BSSID in dictionary file src/include/cm_tlv_ids_srlz.h. Furthermore New fteid instance values,instance 10 and instance 11, have been added to bearer context in file src/include/gtpcv2_srlz.h. No adaption is needed.Values of gtpcv2_fteid_10_instance and gtpcv2_fteid_11_instance can be initiated with zero values.
+292423	 - 1_1173	 - bimplis	 - Modified header of internal messages between gtpc_sig <-> mbms_ctrl processes.
+292331	 - 1_1172	 - bruhuang	 - OLD -> NEW: 
+            sc_bearer_isupld_t.charging_id.pres = 1 
+            sc_bearer_isupld_t.charging_id.val = sc_bearer_isupld_t.charging_id 
+NEW - > OLD: 
+            sc_bearer_isupld_t.charging_id = sc_bearer_isupld_t.charging_id.val
+
+292326	 - 1_1171	 - verigos	 - Refactored cpm_ippc_sess_prof_id_t to use u8 type for prof_type and not enum cpm_ippc_sess_prof_type_t. There is a risk when using enum type for messages exchanged between 32bit and 64bit systems because its size is same as int. E.g AB2 HW atca has 64bit amp blades and 32bit CLA blades. Type would be u8.
+
+No ISUG impact, no adaptation needed.
+292187	 - 1_1170	 - verigos	 - reverting 292165
+292165	 - 1_1169	 - verigos	 - Refactored cpm_ippc_sess_prof_id_t to use u8 type for prof_type and not enum cpm_ippc_sess_prof_type_t. There is a risk when using enum type for messages exchanged between 32bit and 64bit systems because its size is same as int. E.g AB2 HW atca has 64bit amp blades and 32bit CLA blades. Type would be u8.
+292036	 - 1_1168	 - goyuan	 - -
+The message could be send betwteen:
+AS->CLA(trace_proxy to trace_ctrl)
+AS->AS(session_ctrl to trace_proxy at same node)
+CLA-0->CLA-0(ha_ctrl to trace_ctrl at same CLA)
+CLA-1->CLA-0(stand by  
+ha_ctrl to active trace_ctrl at different managment node)
+291981	 - 1_1167	 - lazaropo	 - - ng_twan_id_t added as member field in session struct. To be HA-synched.
+291907	 - 1_1166	 - krommyda	 - -No adaptation. Change has been "reverted" in r308587 (Removal NF related feature memory definition and allocation)
+291900	 - 1_1165	 - bimplis	 - Modified definition of new internal messages between gtpc_sig <-> mbms_ctrl.
+291344	 - 1_1164	 - louka	 - -Adding intra-node message MBMS_CTRL_PM_EVENT_MSG from mbms_ctrl process to mbms_ctrl process. No adaptation needed.
+291319	 - 1_1163	 - kalathop	 - -Add charging_correlat_indic parameter within struct dia_charging_rule_install_t
+-Add DIA_GX_INT_CHARGING_CORRELAT_INDICATOR
+AVP within Charging-Rule-Install AVP in CCA message dictionary.
+-Add DIA_GX_INT_CHARGING_CORRELAT_INDICATOR
+AVP within Charging-Rule-Install AVP in RAR message dictionary.
+-Add 3GPP AVP value
+DIA_AVP_CHARGING_CORRELAT_INDIC = 1073
+-Add new AVP DIA_AVP_CHARGING_CORRELAT_INDIC with AVP Code 1073 within enum dia_avp_gx_t
+-add DIA_GX_INT_CHARGING_CORRELAT_INDICATOR within dia_apps_int_avp.inc
+include file for Gx AVP
+
+default values can be zero (from e-mail)
+291317	 - 1_1162	 - eikonomo	 - New message VALIDATOR_CP_START_TRANSACTION ha been created to indicate that transaction handling has started.
+this message is exchanged during upgrade (when validator runs with new code while conf_proxy runs with old software) so it must be dropped
+291017	 - 1_1161	 - larrliu	 - -Revert of 290595, no adaptation needed
+290886	 - 1_1160	 - politaki	 - -Already done. Corresponding changes commited in ipc_encoding_scheme.conf
+290837	 - 1_1159	 - travlos	 - Naming change from GWUP_MBMS_CTRL_* to MBMS_CTRL_GWUP_*
+290595	 - 1_1158	 - larrliu	 - -Reverted @ 291017, no adaptation needed
+290585	 - 1_1157	 - theofani	 - - Added Information Element TWAN identifier to Create Session Request Message, as well as decoding of said element. Struct for ng_twan_id_t added in ng_types_srlz.h file, and twan_id field added in create session request. No adaption is necessary for this field. Values within structs ng_twan_id_t and twan_id_t can be initiated with zero values.
+290440	 - 1_1156	 - precopio	 - New TLVs added in cm_tlv_ids_srlz.h used for dia_client - mbms_ctrl intra-node communication.
+No adaptation is needed.
+290042	 - 1_1155	 - patsioti	 - -gtp_version is removed from gtpc_rai_t struct. This was added in previous revision but due to refactoring of the solution it had to be removed. -struct rac_t was changed from ‘u16 rac’ to ‘u8 rac[RAC_SIZE]’ where RAC_SIZE=2. There is no difference regarding the field usage. In any case (old->new/u16->u8 || new->old/u8->u16), we need to have the rac.rac[0] which is the useful and important data and has to be transferred from/to rac.rac.
+289891	 - 1_1154	 - patsioti	 - - revert of commit in r289870
+289874	 - 1_1153	 - archagge	 - GWUP_CONFIG_SERV_QOS_ACTIVITY_STATUS_REQ/ GWUP_CONFIG_SERV_QOS_ACTIVITY_STATUS_RESP
+-New messages. These are intranode messages and no adaptations are needed in terms of ISUG
+289870	 - 1_1152	 - patsioti	 - -commit has been reverted in r289891
+
+(In NG the useful RAC value included in GTP is always in byte position 1, out of 2 bytes of RAC field within ULI RAI.
+Previous modifications of r279765 are enhanced and rac_t is declared as a struct of size 2, in order to transfer the 
+correct information within RAI AVP in CCR message from DIAMETER. 
+For compatibility reasons with RAI (included in ULI IE), in RAI IE the rac[1] is always set as 0xFF.
+Changes are done within dia_apps_gx.c, gtpc_sig_decoder.c and dia_common_priv.c to use&store the rai.val.rac.rac[0] data for the AVP.
+Unittests are also respectively updated.)
+289765	 - 1_1151	 - melgosa	 - - No adaptation needed
+289601	 - 1_1150	 - saousopo	 - I have split session_profile_id into prof_id and prof_type. The prof_id field is the same with the previous session_profile_id while prof_type takes two values at the moment:
+"0" for session control session profiles(the existing one)
+"1" for mbms session profiles(new one)
+
+288974	 - 1_1149	 - bimplis	 - Handling for new external interface Sm defined. Also new internal interface between mbms_ctrl and gtpc_sig defined, together with new intra-node messages between these processes.
+
+New interface type AN_ENDP_TYPE_SM_GTPC has been defined, which may be exchanged during pem_ctrl peer warmup. The parameter is only applicable when eMBMS feature is enabled.
+288875	 - 1_1148	 - melomaa	 - - Adaptation not needed. lb_ctrl doesn't use lb_grace_period albeit it is added to message.
+288844	 - 1_1147	 - chanhan	 - -modify the order of enum to match the order of enum_string.
+
+This was undid at svn 295760.
+288722	 - 1_1146	 - sideri	 - No adaptation is needed. Just some new fields were added in session_ctrl - dia_client, intra node, communication.
+288665	 - 1_1145	 - archagge	 - GWUP_CONFIG_SESS_PROF_SERV_QOS_REQ/GWUP_CONFIG_SESS_PROF_SERV_QOS_RESP.
+
+New messages. These are intranode messages and no adaptations are needed in terms of ISUG
+288389	 - 1_1144	 - tzamicha	 - -The new fields were added for validation for new license of eMBMS feature.
+These fields should have the default value (0) while message exchanged between nodes with different sw.
+
+288268	 - 1_1143	 - p10liu	 - -Old structure:
+typedef struct trace_deact_msg {
+    u8 remove_files_flag;
+    u8 gtp_trace_type;
+} libtrace_trace_deact_msg_t;
+
+New structure:
+typedef struct trace_deact_msg {
+    u8 remove_files_flag;
+    u8 trace_type;
+    u8 gtp_trace_type;
+} libtrace_trace_deact_msg_t;
+
+By default value is 0, and it's equal to CLI trace type while message exchanged.
+
+288231	 - 1_1142	 - shisu	 - Add two internal message in pem_ctrl_if_srlz.h and ipc_encoding_scheme.conf.
+PEM_CTRL_PEER_REQ will be sent from pem_ctrl on AS node to pem_ctrl on IB node to request the peer information
+PEM_CTRL_PEER_RESP will be sent from pem_ctrl on IB node to pem_ctrl on AS node to response the requested peer information
+287662	 - 1_1141	 - javainol	 - - no adaptation needed
+287488	 - 1_1140	 - trapezan	 - Added CM_TLV_ID_PDP_DYNAMIC_ADDRESS_FLAG_C and CM_TLV_ID_PDP_DYNAMIC_ADDRESS_FLAG_EXTENSION_C. These are TLVs that are sent form session_control to dia_client.
+Since this is intra-node communication, probably no ISUG adaptation is needed.
+
+These two tlvs added in ipc_encoding_scheme.conf @ commit 294424
+287167	 - 1_1139	 - shisu	 - no need.
+revert
+287095	 - 1_1138	 - shisu	 - Add two internal message in pem_ctrl_if_srlz.h and ipc_encoding_scheme.conf.
+PEM_CTRL_PEER_REQ will be sent from pem_ctrl on AS node to pem_ctrl on IB node to request the peer information
+PEM_CTRL_PEER_RESP will be sent from pem_ctrl on IB node to pem_ctrl on AS node to response the requested peer information
+286880	 - 1_1137	 - eikonomo	 - --additional fields: 1. timer_index has been added to cp_configuration_status_msg_t 
+2. new field index has been added to the corresponding cp_ack_msg_t
+Those might be exchanged during upgrade (cp_configuration_status_msg_t from old sw and the cp_ack_msg_t from new sw) but no special adaptations are needed for the extra fields (memset to 0 is ok)
+286808	 - 1_1136	 - verigos	 - not need
+286698	 - 1_1135	 - goyuan	 - -Added message 
+close_file_req in  ipc_encoding_scheme.conf.
+From CLA(TraceCtrl) to AS node(TraceProxy).
+286357	 - 1_1134	 - verigos	 - not need
+285961	 - 1_1133	 - jonkorho	 - -not needed
+285912	 - 1_1132	 - psourlis	 - -Just insert the new messages in the ipc_encoding_scheme.conf
+285725	 - 1_1131	 - boulouga	 - A new internal TLV field was added, called CM_TLV_ID_DIAGNOSTICS_C. It is sent from session_ctrl to dia_client running on the same AS-node. Since this is intra-node communication, probably no ISUG adaptation is needed.
+
+CM_TLV_ID_DIAGNOSTICS_C has been added on ipc_encoding_scheme.conf @ commit 293397
+285663	 - 1_1130	 - goyuan	 - --not needed
+285542	 - 1_1129	 - spgianna	 - - In CLI_FEATUREMEM_ENABLE_REQ message, the fields fval and ftype should be set to zero. 
+
+-Due to refactoring of gtpc_sig_header_t (used to be a struct, will be a union in ng16) we need to copy all the sc related info that NG had before ISU under sc header of the union
+284624	 - 1_1128	 - kalyvas	 - -not really sure,since currently ISUG is outscoped from dynamic scalability feature.
+This means that the operator will not do ISUG whilst trying to deactivate an existing VM.
+To be discussed much later on...
+For the time being fill it with zero if needed. 
+No Adaptation on ATCA
+284568	 - 1_1127	 - kalyvas	 - -not needed
+284531	 - 1_1126	 - kalyvas	 - -not needed
+284527	 - 1_1125	 - kalyvas	 - -not needed.revert
+284520	 - 1_1124	 - kalyvas	 - -not needed as its reverted later at 284527
+283679	 - 1_1123	 - psourlis	 - -not really sure,since currently ISUG is outscoped from dynamic scalability feature. This means that the operator will not do ISUG whilst trying to activate or deactivate an existing VM. To be discussed much later on... For the time being fill it with zero if needed.
+282991	 - 1_1122	 - mimilidi	 - - LIBCONF_CP_REGISTER_MSG has now an extra field (u8 registration_in_progress)
+
+- Besides current usage, it will also be sent as mark signal for beginning and end of conf_ctrl and gwup_proxy's initialization period.
+- In the above two cases it will be sent with conf_set=0 and should be visible before and after regular conf_set registration messages.
+
+- For needs of ISUG
+the field should always be initialized to FALSE (0).
+282447	 - 1_1121	 - jonkorho	 - -No Adaptation needed
+280078	 - 1_1120	 - chronis	 - -correction for 123493ESPE01: 15A(REQ-199): supported-feature in CCR became “0” after AS switch-over.
+
+added dia_supp_feature to be HA-synched
+279765	 - 1_1119	 - patsioti	 - -
+src/include/gtpc_sc_if_srlz.h
+Within gtpc_sc_if_srlz.h the struct gtpc_rai_t has been enhanced in order to include the gtp_version flag. 
+This is necessary for dia_client to differentiate the rai.rac encoding depending on the gtp version (GTPV1/GTPV2).
+
+-
+src/bin/session_ctrl/dia/src/dia_common_priv.c
+respective changes done in dia_get_data_rai() to fill up the new gtp_version flag
+
+-src/bin/dia_client/dia_apps/src/dia_apps_gx.c
+respective changes done in get_GXX_data() to encode the rac value for AVP depending on gtp_version flag.
+
+-src/include/cm_3gpp_srlz.h
+no actual change done within this
+278997	 - 1_1117	 - achliopt	 - -No Adaptation needed
+278993	 - 1_1116	 - achliopt	 - -No Adaptation needed
+278094	 - 1_1115	 - provolop	 - Commit is adaptaion needed for previous LVN affecting change @ 273034
+277779	 - 1_1114	 - finocchi	 - - in session control, fill access field from bearer struct: something like ng_read_access(bearer->ha.ue_bearer_id);
+- if in libclient, then you need to find out if the s2a/b interface is currently used -> access = ng_non_3gpp_access_c;
+- if other interfaces are used: access = ng_3gpp_access_c;
+
+277094	 - 1_1113	 - minadaki	 - No adaptation needed.
+277047	 - 1_1112	 - minadaki	 - Added inter Node Message: SC_HA_CTRL_RESTART_COUNTER_INIT_REQ
+added in: sc_ha_ctrl_if_srlz.h
+No adaptation needed
+276790	 - 1_1111	 - arvaniti	 - Adaptation is needed.
+
+- Removed 1 occurrence of ng_pco_t apco from /src/bin/session_ctrl/proc/include/proc_types.h
+- Removed 1 occurrence of ng_pco_t apco from /src/bin/session_ctrl/proc_data/include/proc_data_types.h
+- Removed 2 occurrences of ng_pco_t apco from /src/include/gtpcv2_srlz.h within CSReq/CSRes messages
+- Removed 2 occurrences of ng_pco_t apco from /src/include/pmip_sig_sc_if_srlz.h within PBU/PBA messages
+- Modified ng_pco_t in /src/include/ng_types_srlz.h, which is widely used in fNG
+
+The aforementioned apco occurrences were added in r262167 and now are removed in r276790. Instead of using ng_pco_t twice for PCO and APCO in internal messages, ng_pco_t is enhanced by a type flag indicating the IE type included in data part, if any. Thus, during ISU, PCO/APCO data are both saved in this common structure (instead of separate ones) and the type flag indicates the further proper handling.
+276200	 - 1_1109	 - theofani	 - -Added intra-node message GWUP_SC_REDUCE_BUFFERED_PACKETS_AGE_CMD in gwup_sess_mgmt_if_srlz.h file. No adaptation is needed.
+275542	 - 1_1108	 - mantzoun	 - not needed. message is intra node, from session ctrl to dhcp_sig, does not affect isug
+275531	 - 1_1107	 - eikonomo	 - --Added intra-node message LIBIF_CONF_CC_STATUS_QUERY. No adaptation is needed.
+274557	 - 1_1105	 - kokkinos	 - -An extra flagn is needed to be send from lic client to lib client to distinguish the cases that we are about to deactivate a secondary target or a second lib server
+273274	 - 1_1104	 - gretsina	 - 1) New inter-node message (DC_HA_CTRL_RESTART_COUNTER_REQ) from IB to MB with payload: sc_ha_ctrl_restart_cntr_req_t
+
+2) New inter-node message (DC_HA_CTRL_RESTART_COUNTER_RESP) from MB to IB with payload:
+sc_ha_ctrl_restart_cntr_resp_t
+
+3) New inter-node message (DC_HA_CTRL_RESTART_COUNTER_ACK) from IB to MB with payload:
+sc_ha_ctrl_restart_cntr_ack_t
+273090	 - 1_1103	 - kourpas	 - -In the "session_ctrl", in the struct "ims_charg_flows", we changed the type of the variable "fua". The new type is "token_u8_t" which is struct that includes a present flag, called "pres".
+
+In the old code: fua.
+In the new code: fua.val = fua, fua.pres=0.
+273034	 - 1_1102	 - provolop	 - Needed actions for adding GTPP_HA_CTRL_SHUTDOWN_NOTIFY_FOR_RESTART and GTPP_HA_CTRL_SHUTDOWN_NOTIFY_ACK_FOR_RESTART in ipc_encoding_scheme.conf done in later revision 278094
+271844	 - 1_1101	 - melgosa	 - - No need for adaptation
+271537	 - 1_1100	 - arvaniti	 - -
+271242	 - 1_1099	 - douratso	 - -no
+271240	 - 1_1098	 - douratso	 - -no
+271194	 - 1_1097	 - arvaniti	 - Adaptation is needed.
+- token_u32_t idle_timeout is added in struct sc_session_radius_t (src/bin/session_ctrl/db/include/sc_session.h)
+271178	 - 1_1096	 - louzakou	 - -TRACE_INFO_TYPE_ID_REQ msg marked OBSOLETE, as agreed with ISU team.
+This msg has been removed at commit r253559.
+
+271125	 - 1_1095	 - arvaniti	 - -
+271123	 - 1_1094	 - arvaniti	 - -
+269962	 - 1_1093	 - magoulas	 - -The field should be filled with IPC_PROCESS_INSTANCE_UNDEFINED MAX_U8
+269428	 - 1_1092	 - myllarin	 - -No need for any adaptation
+269160	 - 1_1091	 - nerantza	 - -not needed
+269153	 - 1_1090	 - jonkorho	 - Drop during ISUG, load-balancing not supported during ISUG
+
+
+268990	 - 1_1089	 - mantzoun	 - no adaptation is necessary. The modifications are in the libgremonitoring library which is now being implemented, and is not in use.
+268976	 - 1_1088	 - provolop	 - No further adaptation needed
+268960	 - 1_1087	 - magoulas	 - -
+268214	 - 1_1085	 - henryin	 - ----- China LI related changes. No need for adaptation.
+268040	 - 1_1084	 - chronis	 - -not needed
+267942	 - 1_1083	 - javainol	 - - no adaptation needed. Use value zero (0)
+267516	 - 1_1082	 - louka	 - -Adding new intra-node message PMIPSIG_SC_UPDATE_NOTIFICATION. This is an internal message between pmip_sig process and session_ctrl process.
+267273	 - 1_1081	 - kordali	 - Added new field (trid) in "failover_info_t" sent to session_ctrl by dia_client through DC_SC_MSG_DIA_SERVER_DISCONNECT_INFO. It is only used when "server-gracefully-disable" is enabled.
+266436	 - 1_1080	 - douratso	 - -Not needed
+266435	 - 1_1079	 - douratso	 - -Not needed
+
+266353	 - 1_1078	 - rakopoul	 - -Intra node messages
+266239	 - 1_1077	 - bindu	 - -Not needed
+
+266170	 - 1_1076	 - arvaniti	 - -
+266155	 - 1_1075	 - arvaniti	 - -
+265801	 - 1_1074	 - javainol	 - -Not needed. Value can be set to zero (0).
+265548	 - 1_1073	 - chronis	 - -new attribute "user-name-leading-digit" under DiameterAAAProfile configuration added.
+
+type "string"
+default value "none"
+valid values "none, 0, 6"
+
+265177	 - 1_1072	 - myllarin	 - - Added new fields to messages:
+gtpcv2_create_session_request_t;  
+new field: gtpc_piggybag_key_data_t  req_key;
+gtpcv2_create_bearer_request_t
+new field: gtpc_piggybag_data_t pb_data;
+
+gtpc_internal_ack_t
+new field: gtpc_piggybag_key_data_t resp_key;
+264894	 - 1_1071	 - rakopoul	 - -Not needed
+264153	 - 1_1070	 - tietavai	 - -SA_INTER_CORE_MSG_HICUT_TREE_DELETE is message which is sent between cores inside same CPU node --> no ISUG adaptation needed.
+262861	 - 1_1068	 - nafas	 - -adaptation needed.
+262167	 - 1_1067	 - arvaniti	 - Adaptation is needed
+262100	 - 1_1065	 - kokkinos	 - ----- China LI related changes. Added u8 is_default_bearer to 
+sc_libc_chk_interception_rsp_body_t and
+sc_libc_chk_interception_req_body_t;
+262052	 - 1_1066	 - chronis	 - -not needed
+262007	 - 1_1065	 - chronis	 - -not needed
+261705	 - 1_1064	 - trapezan	 - ----- China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+261666	 - 1_1063	 - spgianna	 - - Changed/added some macros and modified/added the following structs:
+
+added gtpc_extended_common_flags_ie_t
+modified gtpc_update_pdp_ctxt_req_t, gtpcv2_indication_flags_t
+
+new fields can be set to 0 if sent to any inter-node message.
+261450	 - 1_1062	 - milonaki	 - user_location_extended_info.pres = user_location_info.pres
+user_location_extended_info.uli_release = user_location_info.uli_release
+user_location_extended_info.geo_loc_length = user_location_info.length
+user_location_extended_info.timestamp = 0
+user_location_extended_info.is_timestamp_pres = 0
+user_location_extended_info.geographic_location_type = user_location_info.geographic_location_type
+user_location_extended_info.crsi = 0
+user_location_extended_info.cra = 0
+memcpy user_location_info.geographic_location[] to user_location_extended_info.geographic_location[] array.
+
+old_data.ho_s1_session_data.user_location_extended_info.pres = old_data.ho_s1_session_data.user_location_info.pres
+old_data.ho_s1_session_data.user_location_extended_info.uli_release = old_data.ho_s1_session_data.user_location_info.uli_release
+old_data.ho_s1_session_data.user_location_extended_info.geo_loc_length = old_data.ho_s1_session_data.user_location_info.length
+old_data.ho_s1_session_data.user_location_extended_info.timestamp = 0
+old_data.ho_s1_session_data.user_location_extended_info.is_timestamp_pres = 0
+old_data.ho_s1_session_data.user_location_extended_info.geographic_location_type = old_data.ho_s1_session_data.user_location_info.geographic_location_type
+old_data.ho_s1_session_data.user_location_extended_info.crsi = 0
+old_data.ho_s1_session_data.user_location_extended_info.cra = 0
+memcpy old_data.ho_s1_session_data.user_location_info.geographic_location[] to old_data.ho_s1_session_data.user_location_extended_info.geographic_location[] array.
+261254	 - 1_1061	 - gretsina	 - -NA
+260730	 - 1_1060	 - gretsina	 - -added new tag HA_SYNC_TAG_TRACE_DB
+
+Old --> New: No adaptation
+New --> Old: Ignore HA_SYNC_TAG_TRACE_DB
+
+(ipc_encoding_scheme.conf updated accordingly)
+
+-added new type SC_HA_PROC_TRACE_DB_UPDATE under the enum sc_ha_sync_type_e
+
+Old --> New: No adaptation
+New --> Old: Ignore SC_HA_PROC_TRACE_DB_UPDATE
+259459	 - 1_1059	 - amanika	 - -adaptation needed.
+259064	 - 1_1058	 - louzakou	 - -No adaptation needed.
+258809	 - 1_1057	 - finocchi	 - - A: new parameter added to session. Value can be set to zero.
+258715	 - 1_1056	 - apmattil	 - -none
+258485	 - 1_1055	 - annhirvo	 - ng_ue_bearer_id_t changed from 
+
+typedef struct {
+#if BYTE_ORDER == LITTLE_ENDIAN
+    u8 ebi : 7;
+    u8 non3gpp_access : 1;
+#elif BYTE_ORDER == BIG_ENDIAN
+    u8 non3gpp_access : 1;
+    u8 ebi : 7;
+#endif
+} ng_ue_bearer_id_t;
+
+to
+
+typedef struct {
+#if BYTE_ORDER == LITTLE_ENDIAN
+    u8 ebi : 6;
+    u8 access : 2;
+#elif BYTE_ORDER == BIG_ENDIAN
+    u8 access : 2;
+    u8 ebi : 6;
+#endif
+} ng_ue_bearer_id_t;
+
+new ng_ue_bearer_id_t.ebi = old ng_ue_bearer_id_t.ebi
+new ng_ue_bearer_id_t.access = 1 /* from rev. 259310 onwards ng_3gpp_access_c == 1 */
+
+
+258423	 - 1_1054	 - lbouloug	 - No adaptation is needed.
+258269	 - 1_1053	 - tryfonop	 - - The new messages TRACE_INFO_DISK_QUOTA_IND and TRACE_INFO_FILE_QUOTA_IND affect the ISU only in case we have new CLA and old AS. These two msgs are sent only from CLA to AS. So, these msgs should be ignored by AS.
+256022	 - 1_1052	 - rentifis	 - ----- China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+255925	 - 1_1051	 - rentifis	 - ----- China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+255902	 - 1_1050	 - aalhonie	 - - A: new parameter added to session. Value can be set to zero.
+255757	 - 1_1049	 - louzakou	 - -New member "filename" at struct trace_tracing_header_t
+that is send along with every trace msg from SB to CLA.
+
+Adaptation:
+From old SB to new CLA -> fill with zeros
+255236	 - 1_1048	 - helokunn	 - Essential modification:
+Removed field rsp_status;
+Added field alloc_status;
+in message cpm_ippc_msg_allocate_fragment_rsp_t;
+
+Message is sent from CLA to AS.
+
+Adaptation: 
+Convert new alloc_status to old rsp_status.
+Conversion.
+Copy the value. If the value is 2, set it to 1.
+
+255203	 - 1_1047	 - anskauto	 - -ng_ue_bearer_id_t
+changed from u8 to
+typedef struct {
+#if BYTE_ORDER == LITTLE_ENDIAN
+    u8 ebi : 7;
+    u8 non3gpp_access : 1;
+#elif BYTE_ORDER == BIG_ENDIAN
+    u8 non3gpp_access : 1;
+    u8 ebi : 7;
+#endif
+} ng_ue_bearer_id_t;
+
+new ng_ue_bearer_id_t.ebi = old ng_ue_bearer_id_t
+new ng_ue_bearer_id_t.non3gpp_access = 0
+
+255164	 - 1_1046	 - manousel	 - - FNGInternalAttributes have now license validation check "on". License validation is performed only for attributes related to CLI command "set sw-manage activate..."
+255134	 - 1_1045	 - lazaropo	 - - u8 crsi added in sc_session_ha_t struct, which is temporarily used to pass CRSI flag from proc create data to session struct.
+254937	 - 1_1044	 - tryfonop	 - - New LIBTRACE and TRACE_INFO messages were added.
+254757	 - 1_1043	 - manousel	 - -Reverted changes from revision 254736
+254736	 - 1_1042	 - manousel	 - Code was later reverted with commit 254757 (changes was for: -FC085_000760_1: As an operator, I want to be able to install and remove update bundles)
+254476	 - 1_1041	 - arvaniti	 - Field ng_apn_t apn_original is added in struct gtpcv2_create_session_request_t (src/include/gtpcv2_srlz.h) which is used in inter node loadbalancing
+253869	 - 1_1040	 - lbouloug	 - An extra bit was added to variable required_access_info. This variable exists inside up_dynrule_t structure. The new bit should be initialized to 0.
+253670	 - 1_1039	 - lbouloug	 - This is a revert commit. No adaptation is needed.
+253658	 - 1_1038	 - lbouloug	 - This commit was reverted a few revisions later. No action is needed.
+253559	 - 1_1037	 - louzakou	 - -No adaptation is needed. See comments
+252633	 - 1_1036	 - rentifis	 - ---- China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+252497	 - 1_1035	 - melgosa	 - - new loadbalancing message. No adaptation, load balancing message are dropped
+
+
+252452	 - 1_1034	 - rentifis	 - --- China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+251907	 - 1_1033	 - gretsina	 - -No adaptation is needed
+251831	 - 1_1032	 - louzakou	 - -No adaptation is needed
+251287	 - 1_1031	 - provolop	 - New inter-blade hactrl node restart messages added. Adaptation is needed.
+251076	 - 1_1030	 - dkonstan	 - - No adaptation is needed
+250815	 - 1_1029	 - czuo	 - no adaptation needed for this ChinaLI related change.
+250744	 - 1_1028	 - lazaropo	 - -none, see comments
+250735	 - 1_1027	 - rakopoul	 - -
+250587	 - 1_1026	 - rakopoul	 - -
+250577	 - 1_1025	 - moschos	 - -none, see comments
+250452	 - 1_1024	 - vilhunen	 - not needed
+250236	 - 1_1023	 - vilhunen	 - -
+250213	 - 1_1022	 - vilhunen	 - -
+250140	 - 1_1021	 - dkonstan	 - - No adaptation required. No actual change in struct sizes. Only rearrangements and name changes
+249988	 - 1_1020	 - rakopoul	 - -Not needed
+248955	 - 1_1019	 - triantop	 - -I have added some extra fields regarding CLIED_CLIEC_IF_STATS internal message between clie_client (AS node) and clied(CLA node). The message is sent from clie_client to clied.
+From ISUG point of view there is no problem if clied receives this message with zero values.
+248744	 - 1_1018	 - bimplis	 - No adaptation required. Intra-node session_ctrl<->session_ctrl interface removed.
+248733	 - 1_1017	 - rakopoul	 - -
+246445	 - 1_1015	 - jonkorho	 - loadbalancing message change. No adaptation, load balancing message are dropped
+
+
+
+
+
+
+246289	 - 1_1014	 - toweckst	 - ng_qos_pre_r8_params_t -> remap_pre_r8 bit can be always 0.
+245940	 - 1_1013	 - moschos	 - -none
+245697	 - 1_1012	 - q5xiao	 - -- China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+245501	 - 1_1011	 - finocchi	 - - None, see comment
+245250	 - 1_1010	 - fsv003	 - Should be within CLA so no adaptation needed. Similar to 1_1008.
+245229	 - 1_1009	 - lazaropo	 - - fill the added  fields with the zero value.
+
+244790	 - 1_1008	 - jonkorho	 - Should be within CLA so no adaptation needed
+244732	 - 1_1007	 - aalhonie	 - - NA
+244590	 - 1_1006	 - annhirvo	 - - Removed obsolete manual_echo flag from pem_ctrl_db_peer_ha_t struct. No adaptation needed.
+244550	 - 1_1005	 - jonkorho	 - 
+   M /trunk/src/include/gtpc_gtpc_if_srlz.h
+
+   Two message numbers are in practise obsolete:
+   GTPCSIG_GTPCSIG_CREATE_PDP_CONTEXT_REQUEST_V1
+   GTPCSIG_GTPCSIG_CREATE_PDP_CONTEXT_REQUEST_V2
+
+   Three new messages are added:
+
+   GTPCSIG_GTPCSIG_FORWARD_AFTER_STATIC_LB
+   GTPCSIG_GTPCSIG_CREATE_PDP_CONTEXT_REQUEST_V1_DYNAMIC
+   GTPCSIG_GTPCSIG_CREATE_PDP_CONTEXT_REQUEST_V2_DYNAMIC
+
+   Old gtpc_sig does not understand new messages from new gtpc_sig.
+   Significant part of create session requests will fail during the period, when 
+   part of "active" AS units are running new software and part of "active" 
+   AS units are running old software.
+
+   Feasibility study and user story definition accepts this about 30 second period
+   No specific conversion or adaptation is planned or needed.
+
+   A /trunk/src/include/lb_ctrl_lb_mgr_if_srlz.h (from /branches/rd_dev/ng15_dyn_lb/src/include/lb_ctrl_lb_mgr_if_srlz.h:244549)
+
+   Two new processes and new message interface between them were added:
+   lb_mgr in CLA unit  and lb_ctrl in AS unit.
+   New lb_mgr in CLA unit does not receive new messages from AS unit with old sofware.
+   Then it does not even try to respond to non existing lb_ctrl in old SA unit.
+   No need for message conversion.
+244116	 - 1_1004	 - papatheo	 - -China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+244075	 - 1_1003	 - q5xiao	 - - China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+243945	 - 1_1002	 - siatos	 - revert of dummy change
+243944	 - 1_1001	 - siatos	 - dummy change to check the tools
+243234	 - 1_1000	 - touloupi	 - - China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+242260	 - 1_999	 - q5xiao	 - -- China LI related changes. Message between clied and clie_client has a new field. Messages between different versions could be dropped, hence no effect on ISU.
+241548	 - 1_998	 - touloupi	 - - China LI related changes. No real need for adaptation. Messages between different versions could be dropped.
+240918	 - 1_997	 - kalyvas	 - -remove of Ctrl-M characters/no functionality change.
+the LVN increased as the tools detected a change in the layouts,since a new type is visible now.
+240434	 - 1_996	 - dkonstan	 - Moved the declaration of lie_target_info_rsp_result_e from clie_common to lie_common_srlz.h. No actual change
+239883	 - 1_995	 - rentifis	 - --Some fields were added in a message regarding China-LI functionality. No adaptation is needed.
+238722	 - 1_993	 - eikonomo	 - -one field was added in the LIBCONF_CP_CONF_STATUS_UPDATE_MSG. This field is initialized to NULL
+237827	 - 1_992	 - papatheo	 - -Some fields were added in a message regarding China-LI functionality. No adaptation is needed.
+237381	 - 1_991	 - aalhonie	 - - adding HA_SYNC_TAG_SEQ_NUM to ipc_encoding_scheme.conf. No adaptation.
+237379	 - 1_990	 - aalhonie	 - - A: HA_SYNC_TAG_SEQ_NUM. No adaptation needed, new sby blade handles this if it comes, but it is not required.
+237318	 - 1_989	 - rentifis	 - --Some fields were added in a message regarding China-LI functionality. No adaptation is needed.
+236923	 - 1_988	 - benis	 - - No adaptation needed. Intra node message.
+236772	 - 1_987	 - liakaris	 - when we send sc_ha_dynrule_t___dynrule___old_flow_status to the old blade old_flow_status should not be send. When we receive dynrules from the old blade, old_flow_status should be initialized to zero.
+235957	 - 1_986	 - notkola	 - Not needed
+235715	 - 1_985	 - kitsinis	 - --Is handled with adaptation for lvn 969
+235607	 - 1_984	 - jarilait	 - -
+235488	 - 1_983	 - ampatzid	 - -Is handled with adaptation for lvn 969
+235158	 - 1_982	 - kitsinis	 - --Is handled with adaptation for lvn 969
+235020	 - 1_981	 - rentifis	 - - An internal msg was added between clied and clie_client processes. This is for china Li and no addaption is needed
+234079	 - 1_980	 - touloupi	 - - Introduced China LI to featuremem. No adaptation is needed.
+233660	 - 1_979	 - archagge	 - -No adaptation needed
+233618	 - 1_978	 - triantop	 - -
+233594	 - 1_977	 - archagge	 - None
+233423	 - 1_976	 - kordali	 - -No adaptation is needed.
+233260	 - 1_975	 - anskauto	 - - Added rule for HA_SYNC_TAG_RULES_TRANSFERRED.
+(file ipc_enconding_scheme.conf)
+233117	 - 1_974	 - anskauto	 - -added new tag HA_SYNC_TAG_RULES_TRANSFERRED
+
+Old --> New: No adaptation
+New --> Old: Ignore HA_SYNC_TAG_RULES_TRANSFERRED
+233012	 - 1_973	 - toweckst	 - -
+232982	 - 1_972	 - toweckst	 - -
+232050	 - 1_971	 - siatos	 - Adding missing entries in the ipc_encoding scheme.conf - No adaptation required
+231908	 - 1_970	 - nanou	 - No adaptation needed, reverted commit made in rev 231695
+231856	 - 1_969	 - finocchi	 - -
+231695	 - 1_968	 - nanou	 - No adaptation needed, change has been reverted in rev231908
+231421	 - 1_967	 - archagge	 - Not needed
+231414	 - 1_966	 - archagge	 - -No adaptation needed
+231408	 - 1_965	 - archagge	 - -No adapation needed
+231393	 - 1_964	 - archagge	 - -No adaptation needed
+231389	 - 1_963	 - archagge	 - -No adaptation needed
+
+230143	 - 1_962	 - koropoul	 - -
+Intra Node message description changed,
+No adaptation needed
+229897	 - 1_961	 - merzlako	 - 1)PEM_CTRL_PEER_CREATE_REQ:
+Old => New: new fields (nf_ie_local_present and nf_ie_local) must be set to zero.
+New => Old: fields nf_ie_local_present and nf_ie_local must be removed.
+2)PEM_CTRL_PEER_UPDATE_REQ:
+Old => New: new fields (nf_ie_remote_present and nf_ie_remote) must be set to zero.
+New => Old: fields nf_ie_remote_present and nf_ie_remote must be removed.
+229578	 - 1_960	 - knets	 - PEM_CTRL_WARMING_ENTRY_REQ, PEM_CTRL_WARMING_DONE_REQ messages between AS's should be dropped. 
+
+New array field source_pids in pem_ctrl_db_peer_ha_t can be filled with 0's, but this message shouldn't be sent to stand by pem_ctrl in any way.
+
+All new peer_restarted fields should be set to 0 in PEM_CTRL_PEER_UPDATE_REQ, PEM_GTPC_SIG_PEER_UPDATE_IN, PEM_CTRL_GWUP_PEER_UPDATE_IN
+229051	 - 1_959	 - ampatzid	 - -Added rule for  HA_SYNC_TAG_ICID_DATA
+(file ipc_encoding_scheme.conf)
+229039	 - 1_958	 - tsintzir	 - -added u8 num_of_flow_numbers parameter inside dia_flows_t struct
+228879	 - 1_957	 - koropoul	 - -
+Intra node message no need for any adaptations
+228679	 - 1_956	 - jouhaapa	 - -Added rule for  HA_SYNC_TAG_SERVICES_REF_WARMING
+(file ipc_encoding_scheme.conf)
+228664	 - 1_955	 - kouzmitc	 - -added new HA tag HA_SYNC_TAG_SERVICES_REF_ENTRIES to 
+ipc_encoding_scheme.conf
+228086	 - 1_954	 - jouhaapa	 - -added new tag HA_SYNC_TAG_SERVICES_REF_WARMING
+
+-old->new:: No adaptation (New functionality)
+New --> Old: ignore HA_SYNC_TAG_SERVICES_REF_WARMING 
+with its container.
+228038	 - 1_953	 - annhirvo	 - - revert of 935
+227982	 - 1_952	 - foukaras	 - -Initialization with zero should be done at those two fteid fields.
+227614	 - 1_951	 - lalos	 - -A new CLI command for enabling/disabling the ICID reporting functionality is added. This feature should be disabled by default. Memory is allocated when operator enables the feature.
+227347	 - 1_950	 - sotiropo	 - Changed the type of af_charging_id (ng_rule_t struct) from token_u32_t to token_str32_t
+
+Fill field with zero
+227279	 - 1_949	 - sotiropo	 - revert of 948
+227244	 - 1_948	 - sotiropo	 - Changed the type of af_charging_id (ng_rule_t struct) from token_u32_t to token_str32_t
+
+Fill field with zero
+227135	 - 1_947	 - rentifis	 - -Changes are for China Li. China Li doesn't affect ISUG.
+227078	 - 1_946	 - papatheo	 - -revert of 945
+227060	 - 1_945	 - rentifis	 - -pls see comments in 946
+226784	 - 1_944	 - benis	 - -Added two new messages from SB to IB.
+
+old--->new: Will never be the case
+new--->old: Ignore message.
+226669	 - 1_943	 - kouzmitc	 - -added new tag HA_SYNC_TAG_SERVICES_REF_ENTRIES 
+
+Old --> New: No adaptation
+New --> Old: ignore HA_SYNC_TAG_SERVICES_REF_ENTRIES 
+with its container.
+
+added new parameter 
+services_ref_entry_list_t to proc_ha_data_t
+
+Old --> New: set to zero.
+New --> Old: set to zero.
+
+
+226654	 - 1_942	 - jtiihone	 - This change should not affect isu any way. There is change to data type libmsg_address_t (which is actually a typedef to ipc_address_t) which is used inside of libmsg only. This structure is not used in libmsg messages – instead of that type “libmsg_header_address_t” is used inside messages. See functions “libmsg_copy_address_to_header_address” and “libmsg_copy_header_address_to_address”
+
+
+226261	 - 1_941	 - liakaris	 - revert of 940-
+226216	 - 1_940	 - liakaris	 - pls see comments in 941-
+226123	 - 1_939	 - javainol	 - - No adaptation needed
+225906	 - 1_938	 - javainol	 - New CLI command is not allowed to be executed during ISU. But if "ISU ongoing" check does not work on CLI adaptation is following.
+Old --> New: No adaptation as old SW does not have new message definitions
+New --> Old: PEM_CTRL_GWUP_HOST_CHECK_PEER_CREATE_OUT should be dropped if such message is sent from new to old.
+225786	 - 1_937	 - tietavai	 - No adaptation needed
+225095	 - 1_936	 - georgaka	 - -not needed
+224860	 - 1_935	 - annhirvo	 - - pls see comments in 953
+224690	 - 1_934	 - finocchi	 - No adaptation needed
+224586	 - 1_933	 - provolop	 - Not needed since feturemem entry added in previous revision (224133) has been removed here.
+224453	 - 1_932	 - anskauto	 - -Adaptation not needed.
+224321	 - 1_931	 - tietavai	 - Old --> New: No adaptation
+New --> Old: ignore HA_SYNC_REQUEST_TAG_PCC_ENTRIES TAG with its container.
+224133	 - 1_930	 - provolop	 - Not needed since featuremem entry added here has been removed in later (224586) revision
+223977	 - 1_929	 - archagge	 - -No adaptation needed.
+Intranode message.
+223905	 - 1_928	 - ktaube	 - - field restart_counters has been changed from array to just one element in both pem_ctrl_db_peer_ha_t and pem_ctrl_peer_create_data_t.
+
+same goes for both pem_ctrl_db_peer_ha_t and pem_ctrl_peer_create_data_t:
+
+old -> new: 0th value should be taken from restart_counters array. If, in old, counters_count field is > 0 set restart_counter_present to 1, else 0.
+
+new -> old: value should be placed in 0th index in array and rest of the array set to 255. If restart_counter_present field in new equals 1, then counters_count field in old should be set to 1, else 0.
+221715	 - 1_927	 - keezhpat	 - -The change is such that the structure is modified to 
+-    uint32_t len        :15;
+-    uint32_t more_records :1;
++    uint32_t len          :16;
+
+This message is between the fastpath and the adaptation if needed should be such that the more records should be FALSE(0) always as we were never sending more than one records per message.
+221681	 - 1_926	 - kouzmitc	 - No adaptation needed
+220100	 - 1_924	 - e0252572	 - - Adaptation not needed
+
+1. Changes for NetworkFiler (IB) memory region defines. Now they differ on AB2/AB4 hardware.
+2. New feature memory block for NetworkFilter
+220047	 - 1_923	 - grigorje	 - - adaptation is not needed.
+
+The new message "GTPCSIG_GTPCSIG_SLB_S5_TUNNEL" should be ignored by old node.
+
+The changed message "GTPCSIG_SC_CREATE_PDP_CONTEXT_REQUEST" is internal one and do not used for inter-node communication.
+219885	 - 1_922	 - myllarin	 - -0 if field exists.
+219872	 - 1_921	 - koropoul	 - -No adaptation needed
+219677	 - 1_920	 - kalyvas	 - -revert of previous
+219676	 - 1_919	 - kalyvas	 - -dummy-not-needed
+219625	 - 1_918	 - koropoul	 - -No adaptation needed
+219458	 - 1_917	 - merzlako	 - Adaptation is not needed (this is reversion of commit r219450)
+219450	 - 1_916	 - merzlako	 - This commit reverted in r219458
+219079	 - 1_915	 - benis	 - - Two new intra node messages are added. From SC to radius client. So ISUG is not affected.
+219030	 - 1_914	 - benis	 - - This is just a revert of commit 219022
+219022	 - 1_913	 - benis	 - -reverted on r219030
+218119	 - 1_912	 - rentifis	 - -Some elements were added and removed in tunnel DB (Feature: China Li, Process: clie_client, Blade: AS). This DB is also used for the sync between the active and stand by SB. Also extra field was added in a message between clied(CLA) and clie_client(SB) related to China Li.
+ISUG is not generally supported for China LI functionality, and the recommendation to the customer is to keep it disabled during upgrade.
+217469	 - 1_911	 - touloupi	 - -Introduced new message (request and response) for status exchange between clied (CLA) and clie_client (AS), related to China LI. ISUG is not generally supported for China LI functionality, and the recommendation to the customer is to keep it disabled during upgrade. Messages between different versions could be dropped.
+216501	 - 1_910	 - toumilov	 - Change related to IB-specific deployment only (Network Filter).
+
+NF_SYNC_MSG_IE_IS_GW_BYPASS moved to the end of nf_sync_tlv_id_t enum for compatibility.
+216427	 - 1_909	 - toumilov	 - All changes related to IB-specific deployment only (Network Filter).
+
+Modified:
+1) "bool_t up" changed to "nf_gw_serv_status_t assoc_status" in nf_conf_pl_gw_pool_assoc_status_t.
+
+2) NF_RV_GW_BYPASS and NF_RV_POOL_BYPASS added to nf_rule_verdict_t enum.
+
+3) NF_SYNC_MSG_IE_IS_GW_BYPASS added to nf_sync_tlv_id_t enum.
+
+4) nf_sync_ie_is_gw_bypass_t structure defined.
+
+5) nf_gw_serv_status_t enum defined.
+216265	 - 1_908	 - mantzoun	 - no adaptation necessary, this message will not be triggerred during ISUG, as it involves configuration change. If necessary, the field can be set to 0.
+216150	 - 1_907	 - touloupi	 - -Change related to new China LI spec (FC085_001307). ISUG is not generally supported for China LI functionality, and the recommendation to the customer is to keep it disabled during upgrade. Internode messages between different versions could be dropped.
+215415	 - 1_906	 - helokunn	 - Added sc_sys_ctrl_capacity_percent_t to 
+sys_ctrl_resp_t 
+
+Fill new field with zero
+214515	 - 1_905	 - mantzari	 - -New member "u8 type" inserted to struct "trace_tracing_header_t". This header is sent with all trace msgs from SB to CLA.
+
+old->new: fill u8 type with zeros
+
+new->old: remove this "u8 type" from "trace_tracing_header_t".
+
+214515	 - 1_904	 - mantzari	 - -New member "u8 type" inserted to struct "trace_tracing_header_t". This header is sent with all trace msgs from SB to CLA.
+
+old->new: fill u8 type with zeros
+
+new->old: remove this "u8 type" from "trace_tracing_header_t".
+
+214088	 - 1_903	 - siatos	 - Not needed revert dummy change
+214084	 - 1_902	 - siatos	 - Not needed - changed to produce a dummy iso for Juliet
+213920	 - 1_901	 - ujmarkvi	 - -when new sw receives old message it is ok 
+if this value is set to zero.
+
+213034	 - 1_900	 - alakujal	 - Change 1: The libmsg message interface of GWUP_SC_TERMINATE_SESSION_IND and GWUP_SC_RULE_ACTION_IND has changed from "normal" to "low priority".
+Change 2: The numbers of the following messages have changed.
+GWUP_SC_TERMINATE_SESSION_IND_ACK
+GWUP_SC_DUMP_BEARER_REQ        
+GWUP_SC_DUMP_BEARER_RSP
+GWUP_SC_DELETE_SESSION_REQ
+GWUP_SC_DELETE_SESSION_RESP
+GWUP_SC_DELETE_SESSION_CMD
+GWUP_SC_RESET_AN_UP_ENDP_REQ
+GWUP_SC_RESET_AN_UP_ENDP_RESP
+GWUP_SC_PREPARE_CONTROLLED_SWO_REQ
+GWUP_SC_PREPARE_CONTROLLED_SWO_RESP
+GWUP_SC_DELETE_SESSION_IND
+GWUP_SC_DELETE_BEARER_IND
+GWUP_SC_MODIFY_AN_REMOTE_ENDPOINT_CMD
+GWUP_SC_SUSPEND_NOTIFICATION
+GWUP_SC_SUSPEND_NOTIFICATION_RESP
+GWUP_SC_RESUME_NOTIFICATION
+GWUP_SC_RESUME_NOTIFICATION_RESP
+GWUP_SC_SESSION_WARMUP_REQ
+GWUP_SC_SESSION_WARMUP_RESP
+GWUP_SC_FP_DIRTY_IND_REQ
+GWUP_SC_FP_DIRTY_IND_RESP
+GWUP_SC_RULE_ACTION_IND_ACK
+
+212237	 - 1_899	 - keezhpat	 - -No adaptation needed as this is configuration related and no configuration should be happening during ISUG.
+
+If needed then the field value should be 0.
+211715	 - 1_898	 - foukaras	 - -    old SC->new sys_ctrl : 
+two extra fields added at the update_request msg sent to sys_ctrl. 
+Initialize those two fields with zero.
+
+new SC->old sys_ctrl:
+In the response from sys_ctrl to session_ctrl, set the new VoLTE bits to allow(1)
+211508	 - 1_897	 - finocchi	 - - no adaptation should be needed as neither the old "u8 emergency_call" nor the new struct containing a bit field "call_type" are in use (read) yet
+
+211500	 - 1_896	 - archagge	 - -deleted the field locator that was introduced in 895
+211275	 - 1_895	 - archagge	 - -added field locator under radius in sc_session_isupld
+210388	 - 1_894	 - urpalain	 - -no adaptation needed
+209712	 - 1_893	 - silden	 - -intra-node message, no adaptations needed.
+207636	 - 1_892	 - kainonen	 - In gtpcv2_indication_flags_t, changed the name of one field FFS_2 -> UIMSI according to specs. No size changes etc.
+
+Old -> new:
+copy the value from FFS_2 to UIMSI
+
+new -> old:
+no changes needed
+207213	 - 1_891	 - helokunn	 - Added  emergency_call into 
+sc_session_ha_t;
+Initialise to 0
+
+206695	 - 1_890	 - jonkorho	 - - added new bit-fields to ng_imsi_t; bogus and two spare bits
+- changed also pres from u8 to u8 :1 (one bit) and len from u8 to u8 :4 (four bits)
+- as a result sizeof ng_imsi_t decreased by one byte (u8)
+- US FC085_000867_RSdev_3
+- adapatation needed:
+
+old to new:
+pres -> pres
+len -> len
+bogus set to zero
+spare set to zero
+
+new to old:
+pres -> pres
+len -> len
+bogus -> drop/skip
+spare -> drop/skip
+
+205752	 - 1_889	 - mamalis	 - - Added a 4byte member (failover_status_t) under pcrf_conn_info struct which in turn is contained in dia_session_ha_t struct and is transfered from active to sby node due to sync/warmup of SCs DBs.
+205692	 - 1_888	 - vilhunen	 - - Changed all internal charging messages that used cc_msg_t to use "new" piggy packet format gwup_cc_*_msg_t
+- Removed cc_msg_t
+- US: RD_Id_000120_2_3
+205562	 - 1_887	 - kalyvas	 - -not needed
+205555	 - 1_886	 - kalyvas	 - -not needed
+205554	 - 1_885	 - kalyvas	 - -not needed
+205444	 - 1_884	 - georgaka	 - -if role not present set to 0 (undefined)
+204069	 - 1_883	 - koropoul	 - -No adaptation needed
+202334	 - 1_882	 - katachan	 - HA_SYNC_TAG_HANDOVER_INFO (tag 36) (introduced in NG3.1) is renamed to HA_SYNC_TAG_PGW_PMIP_IND and length changed from handover_info_t to pmip_pgw_ind_t
+201787	 - 1_880	 - anskauto	 - Added tag
+HA_SYNC_TAG_UP_FILTERS_REMOVED
+201759	 - 1_879	 - anskauto	 - Added tag
+HA_SYNC_TAG_UP_FILTERS_REMOVED
+201717	 - 1_878	 - provolop	 - -Usage of u8 and u16 type instead of int for pem_ctrl_tunnel_ref_tbl_warmup_entry_t struct variables. No adaptation needed.
+200942	 - 1_877	 - kainonen	 - Changed the order of members in the struct. No adaptation needed.
+199327	 - 1_876	 - r1taylor	 - - change flow status defines to an enum 
+- renamed status in up_dynrule_t to flow_status
+- No adaptation needed
+196447	 - 1_875	 - provolop	 - pem_ctrl_tunnel_ref_tbl_warmup_entry_t size modification. No adaptation needed.
+196049	 - 1_874	 - keezhpat	 - -Not needed as the change is inside the same node. The message is between fastpath and gwup-proxy in same node.
+195987	 - 1_873	 - provolop	 - pem_ctrl_tunnel_ref_tbl_warmup_entry_t size modification. No adaptation needed.
+195736	 - 1_872	 - katachan	 - No real change. Type handover_info_t committed in r195562 (1_870) has been moved inside a srlz file (i.e.: sc_ha_types_srlz.h)
+195611	 - 1_871	 - kalyvas	 - -add HA_SYNC_REQUEST_tAG_DIRTY_SESSION
+195562	 - 1_870	 - katachan	 - HA_SYNC_TAG_HANDOVER_TYPE (tag 36) renamed to HA_SYNC_TAG_HANDOVER_INFO and length changed to handover_info_t
+195482	 - 1_869	 - provolop	 - New pem_ctrl message type added (PEM_CTRL_TUN_REF_TBL_ENTRY_REQ) for pem_ctrl_gre_tunnel_ref_tbl_msg_t
+195465	 - 1_868	 - kalyvas	 - -add DIRTY SESSION
+with u32
+195403	 - 1_867	 - provolop	 - New pem_ctrl message type added (PEM_CTRL_TUN_REF_TBL_ENTRY_REQ) for pem_ctrl_gre_tunnel_ref_tbl_msg_t
+195345	 - 1_866	 - benis	 - -Intra node message. No adaptation needed
+195232	 - 1_865	 - provolop	 - pem_ctrl message type PEM_CTRL_TUN_REF_TBL_ENTRY_REQ removed (code revert)
+195220	 - 1_864	 - provolop	 - pem_ctrl_tunnel_ref_tbl_warmup_entry_t size modification. No adaptation needed.
+195211	 - 1_863	 - pmadetoj	 - -no adaptation needed
+195209	 - 1_862	 - rakopoul	 - Not needed
+195105	 - 1_861	 - nanou	 - Changed type of IPv6 address to be struct in6_addr in dns_ip_addr_info_t struct.
+Action same as in LVN rev 1_800
+195065	 - 1_860	 - lbouloug	 - - No adaptation needed. selected_tunnel attribute had been added in trunk some weeks ago, but with this commit the addition is reverted.
+194946	 - 1_859	 - qa4758	 - 
+194817	 - 1_858	 - travlos	 - - Updated ipc_encoding_scheme.conf : Added new message PEM_CTRL_GRE_PEER_SYNC_REQ, sent from active pem_ctrl to standby pem_ctrl (inter AS node), to synchronize the tunnel status of a GRE peer.
+194338	 - 1_857	 - cgs062	 - - No adaptation needed.
+194249	 - 1_856	 - pmadetoj	 - - default adaptation (zero for new fileds) is enough
+194227	 - 1_855	 - benis	 - - Added two new sync types:
+SC_HA_PROC_SL_SESS_TUNNELS_DOWN_PROF and SC_HA_PROC_WARM_SL_SESS_TUNNELS_DOWN_PROF.
+194196	 - 1_854	 - pmadetoj	 - - default adaptation (zero for new fileds) is enough
+194075	 - 1_853	 - lbouloug	 - - No adaptation needed.
+194040	 - 1_852	 - myllarin	 - - No adaptation needed.
+
+193760	 - 1_851	 - mantzoun	 - -Not needed. New intranode message from pem_ctrl to fastpath pem
+193736	 - 1_850	 - travlos	 - - Added new message PEM_CTRL_GRE_PEER_SYNC_REQ, sent from active pem_ctrl to standby pem_ctrl (inter AS node), to synchronize the tunnel status of a GRE peer.
+- Added new message PEM_CTRL_GWUP_SYNC_GRE_PEER_OUT,     sent from standby pem_ctrl to fastpath (intra-node), to synchronize the tunnel status of a GRE peer.
+193695	 - 1_849	 - kitsinis	 - -the type of the synced value (handover_type) is corrected from u8 to u32 since its type is enum.
+
+related to 193610
+193639	 - 1_848	 - helokunn	 - renamed .h file, no functional changes
+193610	 - 1_847	 - kitsinis	 - -revert 1_830 change.
+-HA_SYNC_TAG_HANDOVER_TYPE was added
+193598	 - 1_846	 - kainonen	 - Not needed.
+This reverts the commit 191693, which concerned intra node messages.
+193568	 - 1_845	 - helokunn	 - Belongs to commit -r192788, where 
+HA_SYNC_TAG_CPM_LPT 
+was added
+193535	 - 1_844	 - benis	 - - intra-node from Session_ctrl to pem_ctrl AS. No adaptation needed.
+193499	 - 1_843	 - koropoul	 - -
+msg should not be sent to node with old software
+193450	 - 1_842	 - lbouloug	 - - Commit 193450 simply reverted  193430. No need for adaptation.
+193430	 - 1_841	 - benis	 - -This was reverted, and recommitted on rev 193535. So see@ rev 193535(LVN 844)
+192928	 - 1_840	 - aalhonie	 - -A:rule_update in ng_rule_t. This value can always be 0 during ISU.
+192891	 - 1_839	 - mantzoun	 - no adaptation required, this is an intranode message between pem_ctrl and fastpath pem
+192874	 - 1_838	 - travlos	 - Added intra-node messages PEM_CTRL_GWUP_ENABLE_GRE_TUNNEL_OUT and PEM_CTRL_GWUP_DISABLE_GRE_TUNNEL_OUT to IF INTERFACE_TYPE_PEM_CTRL_GWUP, that can be sent from pem_ctrl to fastpath.
+192806	 - 1_837	 - avasilje	 - all changes are within inter-node communication. No adaptation needed
+192798	 - 1_836	 - rakopoul	 - -
+192788	 - 1_835	 - helokunn	 - change in libsync usage in central_pool_mgr
+new enum value HA_SYNC_TAG_CPM_LPT
+replaces 
+HA_SYNC_TAG_IP_POOL_FRAGMENT
+when 
+sync type is      CPM_HA_LPT_POOL_CFG_CHANGE
+
+192671	 - 1_834	 - mantzoun	 - this is revert of r192664, which modified only intranode communication between radius client and pem control.
+192664	 - 1_833	 - rakopoul	 - -
+192331	 - 1_832	 - rakopoul	 - -
+192205	 - 1_831	 - kalyvas	 - -added u32 as RULE2 payload for
+HA_SYNC_TAG_CSFB_RESUME & SUSPEND
+192203	 - 1_830	 - kitsinis	 - -Add handover_type under ha data in sc_session_t structure.
+
+Handover type is filled at least for now in proc_handover.c when Create Session Request is received from GTPv2 and is needed in standby blade for further checks in case of PMIP S5 TAU/RAU Handover with S-GW relocation.
+192177	 - 1_829	 - travlos	 - - Added gre_tun_prof_id (u16) in pem_ctrl_peer_timeout_data_t.
+Message PEM_CTRL_PEER_TIMEOUT_REQ is used when a GTP/GRE peer element goes down.
+It is sent from pem_ctrl to all other SB pem_ctrls for HA purposes.
+
+- Added gre_tun_prof_id (u16) in pem_ctrl_sc_peer_down_msg_t.
+Message PEM_CTRL_SC_PEER_DOWN_INDICATION is used when a GTP/GRE peer element goes down.
+It is sent from pem_ctrl to session_ctrl in the same node.
+
+- Added gre_tun_prof_id (u16) in pem_ctrl_gwup_peer_timeout_in_msg_t.
+Message PEM_CTRL_GWUP_PEER_TIMEOUT_IN is used when a GTP/GRE peer element goes down.
+It is sent from fastpath to pem_ctrl in the same node.
+191980	 - 1_828	 - urpalain	 - -no adaptation needed
+191858	 - 1_827	 - urpalain	 - -no adaptation needed
+191693	 - 1_826	 - kainonen	 - Not needed. These changes are inside a same node and Recovery Group.
+191587	 - 1_825	 - rakopoul	 - -
+191575	 - 1_824	 - koropoul	 - -remove u32 orig_id
+added in previous commit no ISU action needed
+191269	 - 1_823	 - georgaka	 - -
+191017	 - 1_822	 - kalyvas	 - -added two new HA tags
+
+HA_SYNC_TAG_CSFB_RESUME & SUSPEND
+190854	 - 1_821	 - muravjov	 - Not needed
+190686	 - 1_820	 - ssun2	 - -Added failover_reason to the failover_info_t structure in src/include/dia_client_sc_if_srlz.h. THis is internal message between dia_client and session_ctrl. No Upgrade/Downgrade adaptations needed. However the feature 2440_2 changes behavior of sessions attached to a diameter-server when its admin state change from enable to disable at the SCLI. Not sure if any impact there.
+ 
+
+190652	 - 1_819	 - muravjov	 - Adaptation not needed. 
+Added message (PEM_CTRL_GWUP_IBS_OUT) is intranode.
+190531	 - 1_818	 - toweckst	 - Not needed
+190071	 - 1_817	 - travlos	 - 1)Added gtpcv2_bearer_flags_t in gtpcv2_bearer_context_t.
+190011	 - 1_816	 - tietavai	 - Not needed.
+189973	 - 1_815	 - fkk011	 - -Added HA sync and proc tags to checkpoint list of suspended/resumed bearers between active and standby nodes.
+HA_SYNC_TAG_CSFB_SUSPEND               HA_SYNC_TAG_CSFB_RESUME                 SC_HA_PROC_CSFB_SUSPEND 
+SC_HA_PROC_CSFB_SUSPEND                                    
+Adaptation: Upgrade and Downgrade adaptations needed
+189717	 - 1_814	 - juhhytti	 - one to one copy. u32 was extended to u64.
+189378	 - 1_813	 - tietavai	 - -not needed
+189190	 - 1_812	 - tjlindqv	 - up_dynrule_t changed:
+
+renamed fields:
+================
+mbr_present -> dl_mbr_present
+policydb_record_id ->
+dl_policydb_record_id
+
+new fields
+===========
+ul_mbr_present:
+if up_dynrule_t.mbr.ul > 0 set up_dynrule_t.ul_mbr_present to 1.
+ul_policydb_record_id: can be initialized to  0x7FFFFF
+189039	 - 1_811	 - mantzari	 - 1) Added  new indication flags under the structure:gtpcv2_indication_flags_t
+
+2) Added new fields under the structure that handles the msg GTPC_UPDATE_BEARER_RESPONSE: gtpcv2_update_bearer_response_t (uli, indication)
+188948	 - 1_810	 - helokunn	 - size of charging_profile_id
+changed from u8 to u16. Copy and cast if necessary.
+188822	 - 1_809	 - koropoul	 - -
+"orig_id" (u32) added in 'dia_session_ha_sync_t' struct. This struct is used to synchronize dia_session s in standby side. We could set this field to 0
+188251	 - 1_808	 - juhhytti	 - one to one variable copy as order of variables has changed to optimize size of struct.
+187882	 - 1_807	 - helokunn	 - Renamed fields in sc_session_ha_t
+
+serving_node_supplied_charging_characteristics
+->
+supplied_charging_characteristics_non_sgw
+
+non_sgw_applied_charging_characteristics
+->
+applied_charging_characteristics_non_sgw
+
+charging_characteristics;
+->
+supplied_charging_characteristics_sgw
+
+applied_charging_characteristics
+->
+applied_charging_characteristics_sgw
+
+No functional change
+
+187617	 - 1_806	 - fsv003	 - Name change to better reflect the type of message sent/received.
+No adaptation needed.
+187553	 - 1_805	 - myllarin	 - - No adaptation needed.
+
+187304	 - 1_804	 - helokunn	 - in sc_session_ha_t
+
+Existing field: charging_characteristics
+
+A: serving_node_supplied_charging_characteristics
+Copy value from charging_characteristics
+
+
+A:non_sgw_applied_charging_characteristics
+copy value from charging_characteristics
+
+A: charchar_source
+Initialize with SC_CHARCHAR_SOURCE_SERVING_NODE
+
+186706	 - 1_803	 - tjlindqv	 - - adaptation needed.
+Added field mbr_present to up_dynrule_t.
+
+if up_dynrule_t.mbr.dl > 0 set up_dynrule_t.mbr_present to TRUE.
+186644	 - 1_802	 - merzlako	 - Fix for Bfr_lvn:1_795 (rev:184886)
+Adaptation: Upgrade and Downgrade adaptations needed.
+186591	 - 1_801	 - merzlako	 - Fix for Bfr_lvn:1_795 (rev:184886)
+Adaptation: Upgrade and Downgrade adaptations needed.
+186565	 - 1_800	 - nanou	 - - Field domain_name of struct "gwup_dns_cache_update_hdr_t" has been renamed.
+- Field domain_name_hash of struct "gwup_dns_cache_update_hdr_t" has been removed.
+- Field fqdn_idx (uint16_t) has been added in struct "gwup_dns_cache_update_hdr_t".
+- The type of array "ip_address_ets" in struct "gwup_dns_cache_update_hdr_t" was changed from "ip_address_instance_t" to "dns_ip_addr_info_t".
+
+The file in which this change is included is "src/include/gwup_dns_if_srlz.h"
+
+Actions:
+Convert struct "gwup_dns_cache_update_hdr_t"(OLD) to "gwup_dns_cache_update_hdr_t"(NEW):
+
+1) copy value of domain_name to fqdn_name
+2) don't copy value of domain_name_hash at all
+3) set value of fqdn_idx to MAXIMUM_CONFIGURED_FQDNS (1000)
+4) field ip_addr_number stays the same
+5) Convert "ip_address_instance_t"(OLD) to "dns_ip_addr_info_t"(NEW):
+   i) copy value of ip_address_instance_t:ip:type to dns_ip_addr_info_t:type
+   ii) new field dns_ip_addr_info_t:fqdn_idx , default value 0
+   iii) new field next_ip , default value {0, 0}
+   iv) if ip_address_instance_t:ip:type is IPv4, copy value of ip_address_instance_t:ip:version:ip4:addr to dns_ip_addr_info_t:ip_addr:ip4
+       else copy value of ip_address_instance_t:ip:version:ip6:addr to dns_ip_addr_info_t:ip_addr:ip6
+   v) copy value of ip_address_instance_t:expiration_timestamp to dns_ip_addr_info_t:ets
+
+
+Since the AS blade running the new software will never send this message to the AS blade running the old software, conversion from "gwup_dns_cache_update_hdr_t"(NEW) to "gwup_dns_cache_update_hdr_t"(OLD) is not needed.
+186126	 - 1_799	 - gretsina	 - 1) Add a new field under the structure that handles the external message: GTPV2_CREATE_BEARER_RESPONSE
+-> gtpcv2_create_bearer_response_t (uli)
+
+2) Add a new field under the following structures:
+--gwup_sc_rule_t (required_access_info)
+--ng_rule_t (required_access_info)
+--up_dynrule_t (required_access_info)
+
+3) Add a value under the enumeration ext_event_triggers_t (EVENT_TRIGGER_ACCESS_NETWORK_INFO_REPORT = 45)
+
+4)Add a value under the enumeration dia_avp_gx_t (DIA_AVP_REQUIRED_ACCESS_INFO = 536)
+186118	 - 1_798	 - myllarin	 - -conversion needed.
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.max_br_ul.pres = 1
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.max_br_ul.val = GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.max_br_ul
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.max_br_dl.pres = 1
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.max_br_dl.val = GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.max_br_dl
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.gbr_ul.pres = 1
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.gbr_ul.val = GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.gbr_ul
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.gbr_dl.pres = 1
+GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.gbr_dl.val = GWUP_SC_CREATE_BEARER_REQ.packet_filters.u.cp_to_up.rule[x].qos.gbr_dl
+
+GWUP_SC_MODIFY_BEARER_REQ
+same fields than in GWUP_SC_CREATE_BEARER_REQ
+185209	 - 1_797	 - smerali1	 - -- This change will be used only for intra node messages, so it is not affecting ISUG.
+No adaptation needed.
+185052	 - 1_796	 - koropoul	 - -
+two new slowloop types
+sent to standby node.
+One is not used at all.
+The other must not be sent to stanby side 
+(therefore SL in standby should not be registered at all)
+184886	 - 1_795	 - merzlako	 - Adaptation: New message type PEM_CTRL_PEER_TIMEOUT_REQ was created and field timeout was moved from message PEM_CTRL_PEER_UPDATE_REQ to PEM_CTRL_PEER_TIMEOUT_REQ. Upgrade and Downgrade adaptations needed.
+184852	 - 1_794	 - fkk011	 - -not needed
+184755	 - 1_793	 - merzlako	 - -not needed
+184385	 - 1_792	 - gjohann1	 - - The change involved the removal of 'trace_id' from the gtpc_sig_sc_header_t data structure used for intra node messages resulting in no effect to ISUG.
+
+No adaptation needed.
+183843	 - 1_791	 - tjlindqv	 - - Added new field policydb_record_id to up_dynrule_t. 
+
+No adaptation needed.
+183787	 - 1_790	 - rakopoul	 - Change affects only intranode messages
+183560	 - 1_789	 - lbouloug	 - - Change only affects the intra node interface between GWUP and radius_client. No message adaptations are needed.
+183387	 - 1_788	 - nanou	 - See the most updated and final adaptation in LVN 1_800
+182727	 - 1_787	 - kalyvas	 - -not needed
+182725	 - 1_786	 - kalyvas	 - -revert of dummy
+182433	 - 1_785	 - kalyvas	 - -dummy
+182432	 - 1_784	 - kalyvas	 - -not needed
+181787	 - 1_783	 - rakopoul	 - -Intra node only message
+Not affecting ISUG
+181599	 - 1_782	 - rakopoul	 - - This change will be used only for intra node messages, so it is not affecting ISUG.
+No adaptation needed.
+181163	 - 1_781	 - papakons	 - -Not needed
+180881	 - 1_779	 - archagge	 - -revert of previous selected tunnel
+180866	 - 1_778	 - archagge	 - -selected tunnel added in session isupld
+180843	 - 1_777	 - kouzmitc	 - -added new structure sc_roaming_status_t
++typedef struct {
++    u8 status : 7;
++    u8 interface : 1;
++} __attribute__((packed)) sc_roaming_status_t;
+
+"old" roaming_status of  sc_session_ha 
+should be copied to status field 
+
+s5_gn_remote_cp_endp.use_s8_interface
+value should be copied to interface field
+
+180234	 - 1_776	 - papakons	 - -Not needed
+180038	 - 1_775	 - pmadetoj	 - internal qci field added to up_dynrule_t
+Default adaptation (zero filling for new field) is enough.
+179880	 - 1_774	 - dievange	 - Adaptation not needed.-
+179808	 - 1_773	 - kouzmitc	 - M: added Gp/Gpu address to gwup_config_t; 
+
+No action
+178640	 - 1_772	 - lukasevi	 - Not needed
+178007	 - 1_770	 - kalyvas	 - -not needed
+178003	 - 1_769	 - kalyvas	 - -not needed
+177777	 - 1_768	 - siatos	 - Revert of dummy change to prepare isu to NG30 PT9 to NG3 PT9 dummy- Adaptation: Not needed.
+177776	 - 1_767	 - siatos	 - Dummy change to prepare isu to NG30 PT9 to NG3 PT9 dummy- Adaptation: Not needed.
+177409	 - 1_766	 - fomins	 - not needed
+177219	 - 1_765	 - kalyvas	 - -not needed
+177218	 - 1_764	 - kalyvas	 - -not needed
+176967	 - 1_763	 - lukasevi	 - not needed
+176828	 - 1_762	 - siatos	 - Revert opf dummy commit- Adaptation: Not needed.
+176826	 - 1_761	 - siatos	 - dummy commit to prepare for isu PT8 to PT8 dummy- Adaptation: Not needed.
+176050	 - 1_760	 - lukasevi	 - Not needed.
+175221	 - 1_759	 - kalyvas	 - -not needed
+175220	 - 1_758	 - kalyvas	 - -not needed
+174931	 - 1_757	 - kalyvas	 - -not needed
+174930	 - 1_756	 - kalyvas	 - -not needed
+174920	 - 1_755	 - kalyvas	 - -none
+174919	 - 1_754	 - kalyvas	 - -none
+174882	 - 1_753	 - kalyvas	 - -not needed
+174881	 - 1_752	 - kalyvas	 - -not needed
+174871	 - 1_751	 - kalyvas	 - -none
+174870	 - 1_750	 - kalyvas	 - -none
+174783	 - 1_749	 - kalyvas	 - -testing the scripts
+174782	 - 1_748	 - kalyvas	 - -testing the scripts
+174711	 - 1_747	 - notkola	 - Not needed
+174465	 - 1_746	 - kalyvas	 - -testing the tools
+174464	 - 1_745	 - kalyvas	 - -test the scripts
+174389	 - 1_744	 - siatos	 - Missing messages from ipc_encoding_scheme.conf- Adaptation:  Not needed.
+174233	 - 1_741	 - kalyvas	 - -no
+174232	 - 1_740	 - kalyvas	 - -no
+174227	 - 1_739	 - kalyvas	 - -no
+174226	 - 1_738	 - kalyvas	 - -no
+174223	 - 1_737	 - kalyvas	 - -no
+174222	 - 1_736	 - kalyvas	 - -no
+173793	 - 1_733	 - siatos	 - Revert dummy commit- Adaptation: Not needed.
+173792	 - 1_732	 - siatos	 - Dummy commit to prepare isu build NG30 PT7 - Adaptation: Not needed.
+173230	 - 1_731	 - lledoviv	 - -None needed
+172774	 - 1_730	 - siatos	 - Added missing entry in ipc_encoding_scheme.conf- Adaptation not needed.
+172767	 - 1_729	 - mentakis	 - - Modify CLI command "show fastpath-cpu-load" so as the script 
+"fetch_oct_stats.sh" not to be used. Instead of this, fastpath CPU load is now retrieved by gwup_proxy code. No adaptation is needed on upgrade.
+
+172679	 - 1_728	 - kimaenpa	 - -no changes to adaptation
+172389	 - 1_723	 - kalyvas	 - -not needed...
+
+172260	 - 1_721	 - siatos	 - Dummy change revert to test NG30 PT5 isu - Adaptation not needed.
+172259	 - 1_720	 - siatos	 - Dummy change to test NG3.0 PT5 - Adaptation not needed.
+171199	 - 1_719	 - kalyvas	 - -dummy commit
+171197	 - 1_718	 - kalyvas	 - -revert
+170480	 - 1_717	 - pelekano	 - -Intranode message, adaptation is not needed.
+170288	 - 1_716	 - siatos	 - Dunny change revert  NG30 PT4- Adaptation not needed.
+170282	 - 1_715	 - siatos	 - Dummy change for NG30 PT4 - Adaptation: Not needed
+170024	 - 1_714	 - pelekano	 - -no adaptation needed. Intranode message changed
+169842	 - 1_713	 - siatos	 - Updated ipc_encoding_scheme.conf for libisu to compile - Adaptation: Not needed.
+169779	 - 1_712	 - ampatzid	 - - no adaptation needed
+169768	 - 1_711	 - ampatzid	 - - No adaptation needed
+169713	 - 1_709	 - pelekano	 - - No adaptation needed
+169675	 - 1_708	 - keezhpat	 - - NO adaptation needed
+169615	 - 1_707	 - keezhpat	 - -This commit removes obsolete messages and no adaptation needed in NG3.0 as there is no ISU to NG3.0 from pre NG3.0 release.
+169436	 - 1_706	 - keezhpat	 - -Not needed as the message changes affect intra node messages between SC and fastpath.
+169006	 - 1_703	 - jelkins	 - - no adaptation needed; added a new interface between pem_ctrl and ha_ctrl (new to NG3.0).
+168978	 - 1_702	 - bimplis	 - -No adaptation is required.
+168712	 - 1_701	 - siatos	 - revert of dummy commit -Not needed.
+168711	 - 1_700	 - siatos	 - Dummy commit to check lvn follower-Not needed
+167977	 - 1_699	 - siatos	 - Removed unnecessary tag from ipc_encoding_scheme.conf- Adaptation: Not needed
+167424	 - 1_698	 - pelekano	 - -GWUP_SC_UPDATE_AN_ENDP_REQ and GWUP_SC_UPDATE_AN_ENDP_RESP intranode messages marked obsolete.
+No adaptation required
+167146	 - 1_697	 - pelekano	 - ---GWUP_SC_UPDATE_AN_REMOTE_ENDPOINT_CMD is only used as intra-node message (SC-GWUP interface). No adaptation is required.
+166587	 - 1_696	 - kimaenpa	 - -no changes to current adaptation.
+166285	 - 1_695	 - juhhytti	 - direct copy from session_type to session_type
+165818	 - 1_694	 - juhhytti	 - N/A
+165808	 - 1_693	 - juhhytti	 - N/A
+165442	 - 1_692	 - ujmarkvi	 - HA_SYNC_REQUEST_TAG_OLD_SUBSCRIBER_ID:libsync_item_hdr_t;
+
+HA_SYNC_TAG_OLD_SUBSCRIBER_ID:libsync_item_hdr_t:u32;
+
+Updated ipc_encoding_conf as requested. Relates to my previous change 1_675. 
+
+Old SC shall ignore this TAG when encountered.
+165387	 - 1_691	 - benis	 - - This is re factoring of the structures used for MAB synchronization. If received from an old SC(after revision 165198) then adaptation is needed.
+165342	 - 1_690	 - siatos	 - Add missing entries in ipc_encoding_scheme.conf and updated public_defs.h - Adaptation not needed.
+165341	 - 1_689	 - e0237151	 - Added internal PEM_CTRL_GWUP_HB_OUT message between pem_ctrl process and fastpath. No ISU needed.
+165249	 - 1_688	 - aalhonie	 - -M: HA_SYNC_TAG_RAB_RELEASE. When received from old sc, payload must be changed to empty sc_ha_rab_bearer_list_t structure.
+
+165247	 - 1_687	 - pelekano	 - --GWUP_SC_UNKNOWN_ENDPOINT_IND is only used as intra-node message (SC-GWUP interface). No adaptation is required.
+165198	 - 1_686	 - benis	 - -Added new sync ha type
+164964	 - 1_685	 - keezhpat	 - -It needs adaptation as the interfaces are modifed and new interace is added that will be used to sent & recv single charging sync messages.
+164548	 - 1_684	 - lukasevi	 - Not needed.
+164461	 - 1_683	 - helokunn	 - Removed CPM_IPPC_READY_REQ
+Removed  CPM_IPPC_READY_RSP
+
+
+163972	 - 1_682	 - pelekano	 - -GWUP_SC_DELETE_SESSION_IND and
+GWUP_SC_DELETE_BEARER_IND are only intra-node messages (SC-GWUP interface). No adaptation is required.
+
+163917	 - 1_681	 - keezhpat	 - -The code change is due to the revert of 163902. So no adaptation needed here as effectively no code change at all.
+163902	 - 1_680	 - keezhpat	 - -No adaptation needed as the same code is reverted in later commit
+163259	 - 1_679	 - vlaev	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+162836	 - 1_678	 - kstogsd1	 - -removed  GWUP_ENABLE_IFACE_STATUS
+162448	 - 1_677	 - benis	 - -na
+162353	 - 1_676	 - lledoviv	 - No semantical change.  The field has been restructured so that it doesn't have holes (thus reducing the size).
+162345	 - 1_675	 - ujmarkvi	 - NA
+162264	 - 1_674	 - benis	 - -NA
+162062	 - 1_673	 - szerepi	 - -not needed
+162041	 - 1_672	 - szerepi	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+161981	 - 1_671	 - ampatzid	 - Not needed, intra node message
+161763	 - 1_668	 - benis	 - -not needed
+161715	 - 1_667	 - qa4758	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+161286	 - 1_665	 - lukasevi	 - Not needed.
+160950	 - 1_664	 - tsintzir	 - Added new external messages:
+-GTPV2_MODIFY_ACCESS_BEARERS_REQUEST
+-GTPV2_MODIFY_ACCESS_BEARERS_RESPONSE
+
+Added new internal messages between gtpc_sig and session_control processes:
+-GTPCV2_SC_MODIFY_ACCESS_BEARERS_REQUEST
+-GTPCV2_SC_MODIFY_ACCESS_BEARERS_RESPONSE
+160885	 - 1_663	 - kimaenpa	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+160524	 - 1_662	 - toweckst	 - peer_type moved to gtpc_msg_interface_t.type. gtpc_msg_interface_t.ext_if_users is the new field and has meaning only in NG initated requests (mandatory). Information shall be mapped from type field.
+160301	 - 1_661	 - helokunn	 - no functional changes, no adaptation either
+160266	 - 1_660	 - kstogsd1	 - -adaptation not needed (internal message).
+159895	 - 1_659	 - toweckst	 - peer_if_type name changed to peer_type in gtpc_sig_sc_header. Removed interface_types from messages means that information is inside the gtpc_sig_sc_header.peer_typ
+159651	 - 1_658	 - melomaa	 - -Not needed. Messages were not used in previous releases.
+158943	 - 1_657	 - e0252573	 - not needed
+158718	 - 1_656	 - helokunn	 - Added CPM_IPPC_MSG_READY_REQ
+Not backwards compatible, does not suppot ISUG.
+158560	 - 1_655	 - lukasevi	 - Not needed.
+158446	 - 1_653	 - melgosa	 - - Added new field (service_id) to the bearer result code table. Default value 0.
+Note: Also, removed 1 entry; now 9 per bearer.
+157941	 - 1_652	 - e0252573	 - not needed
+157918	 - 1_651	 - e0252573	 - not needed
+157462	 - 1_650	 - e0237151	 - - Not needed.
+157399	 - 1_649	 - helokunn	 - Added new message SC_IP_POOL_CLEAN_UP_POOL_IDS_REQ, not backwards compatible, default will with zero.
+157256	 - 1_648	 - jonkorho	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+156958	 - 1_647	 - melomaa	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+156947	 - 1_646	 - melomaa	 - -Not needed
+156941	 - 1_645	 - melomaa	 - -Not needed because ISUG not supported from NG2.x to NG3.0
+156888	 - 1_644	 - travlos	 - A new LIBMSG interface INTERFACE_TYPE_SB_SAB_SIG is created. A new message SB_SAB_SIG_MSG_DELETE_BEARER is sent from SB to SAB via INTERFACE_TYPE_SB_SAB_SIG, whenever a bearer is removed from bearer DB of SB (e.g. in PDP CTX deactivation).
+156592	 - 1_643	 - jelkins	 - - not needed (the code was never released / NG3.0 only)
+156161	 - 1_642	 - lukasevi	 - Not needed.
+156031	 - 1_641	 - lukasevi	 - Not needed.
+156020	 - 1_640	 - lukasevi	 - Not needed
+155812	 - 1_639	 - morfis	 - No action needed. Only for future isug if the isu path also covers this change then the release team is responsible to take corrected layouts into consideration.
+155451	 - 1_638	 - melomaa	 - - not needed
+154856	 - 1_637	 - aalhonie	 - - No adaptation. Rule transfer sync implemented: new tag HA_SYNC_TAG_BEARER_RULE_TRANSFER
+154831	 - 1_636	 - helokunn	 - Added intra node messages, no adaptation needed
+
+
+154758	 - 1_635	 - e0237151	 - Not needed. New functionality is not yet delivered to production.
+154517	 - 1_634	 - juhhytti	 - -Intra node message change, no ISUG needed
+154496	 - 1_633	 - keezhpat	 - - This is intra node message change. A new message is introduced between GWUP-PROXY and GWUP in trunk.
+154383	 - 1_632	 - keezhpat	 - -Intra node message change, no ISUG needed
+154378	 - 1_631	 - keezhpat	 - -Intra node message, no adaptation needed
+153826	 - 1_630	 - anskauto	 - AS -> CLA
+-sc_sys_ctrl_update_req_t
+ copy active_bearer_count value to all indexes
+ of capacity_used
+ 
+ 
+CLA -> AS
+-sc_sys_ctrl_update_resp_t
+ sys_ctrl_resp
+ if sys_ctrl_resp == SC_SYS_CTRL_PDP_ACTIVATION_DENY
+ then SC_SYS_CTRL_DPP_ACTIVATION_DENY
+ else SC_SYS_CTRL_PDP_ACTIVATION_ALLOW
+
+153793	 - 1_629	 - helokunn	 - subnetv4 added into session. Affects to synchronisation of session_ctrl data.
+Fill new field with 0.
+
+153652	 - 1_628	 - koropoul	 - -
+153562	 - 1_628	 - koropoul	 - -Adding two new message types in interface of 
+HaCtrl<-->SessionCtrl.
+Both needed in specific feature which for first time ISU is not applicable
+152385	 - 1_627	 - melomaa	 - - not needed
+152131	 - 1_626	 - aalhonie	 - - not needed
+152123	 - 1_625	 - Markku Virtanen	 - NA
+151581	 - 1_624	 - ampatzid	 - - Intra node message no adaptation needed
+151166	 - 1_623	 - notkola	 - Not needed
+149458	 - 1_622	 - e0337461	 - - not needed. Changes are made for NG3.0 which is not yet in production.
+149379	 - 1_621	 - koropoul	 - -
+148902	 - 1_620	 - melomaa	 - -Not needed
+147632	 - 1_619	 - finocchi	 - - ISU adaptation needed for HA synchronisation messages. "gtpcv2_apn_restriction_t    apn_restriction;" moved from non_ha to ha part of subscriber database.
+
+In case of synch from old to new, defaults ("0") should be set. In synch from new to old, apn_restriction can simply be discarded.
+147578	 - 1_618	 - aalhonie	 - -Adaptation not needed, because new code needs only HA_SYNC_TAG_BEARER_RULE_BUF and not also old tag HA_SYNC_TAG_BEARER_RULE_BUF, which was removed.
+147042	 - 1_617	 - louzakou	 - -"libtrace_dbd_dump_req_msg_t" needs adaptation regarding "filter" struct member. 
+At ipc_encoding_scheme TRACE_INFO_TYPE_DB_DUMP msg is obsolete and TRACE_INFO_TYPE_DB_DUMP_REQ and TRACE_INFO_TYPE_DB_DUMP_RESP were inserted.
+146539	 - 1_616	 - apmattil	 - - none
+146475	 - 1_615	 - lukasevi	 - Adaptation is not needed, because changed structures aren't used yet in any delivery.
+145905	 - 1_614	 - lukasevi	 - Not needed. Involved process is not yet in production.
+145462	 - 1_613	 - koropoul	 - -New struct to carry the procedure's id (u32)to SC for "graceful shutdown request" and "status shutdown query" called
+"sc_ha_ctrl_shutdown_req_t".
+Transaction (procedure) id added in "sc_ha_ctrl_shutdown_status_ack_t"
+145326	 - 1_612	 - msuhonen	 - -Not needed
+145141	 - 1_611	 - msuhonen	 - -
+145139	 - 1_610	 - msuhonen	 - -
+145129	 - 1_609	 - msuhonen	 - -
+145128	 - 1_608	 - msuhonen	 - -
+144653	 - 1_607	 - ujmarkvi	 - sc_ha_dynrule_t___dynrule___status: up_dynrule_t structs status bit field size has changed from 1 bit to 3 bits.  ISUG adaptation is needed, as the rule status is synchronized to standby peer SC.
+
+NG_FLOW_STATE_ENABLED == NG_FLOW_STATUS_ACTIVE
+NG_FLOW_STATE_DISABLED == NG_FLOW_STATUS_INACTIVE
+144242	 - 1_606	 - ujmarkvi	 - -
+144223	 - 1_605	 - ujmarkvi	 - -
+143357	 - 1_603	 - mentakis	 - - Modify CLI command "show fastpath-cpu-load" so as the script 
+"fetch_oct_stats.sh" not to be used. Instead of this, fastpath CPU load is now retrieved by gwup_proxy code. No adaptation is needed on upgrade.
+
+143057	 - 1_602	 - aalhonie	 - - ng_rule_status_t, all new fields can be set to zero, since the new structure ng_rule_status_t is not used in any interface, that may need adaptation.
+143000	 - 1_601	 - mentakis	 - -
+142985	 - 1_600	 - mentakis	 - -
+141871	 - 1_599	 - lukasevi	 - -
+141869	 - 1_598	 - lukasevi	 - -
+141868	 - 1_597	 - lukasevi	 - -Not needed
+141808	 - 1_596	 - archagge	 - -
+141648	 - 1_595	 - notkola	 - Added two token_str256_t to structure dia_cc_req_common_t. Adaptation: pres field in orig_host and in orig realm must be zero.
+141466	 - 1_594	 - notkola	 - Added two token_str256_t to structure dia_cc_req_common_t. Adaptation: pres field in orig_host and in orig realm must be zero.
+140791	 - 1_592	 - kimaenpa	 - -added new parameter uint64_t   granted_default_quota :32 to charging_pool_t
+Default value is 0xFFFFFFFF
+-added new parameter uint32_t    granted_default_quota to cc_msg_res_rg_t
+Default value is 0xFFFFFFFF
+
+140669	 - 1_591	 - pelekano	 - -Not needed
+140443	 - 1_590	 - helokunn	 - New interface between session_ctrl and ip_pool_ctrl.
+139939	 - 1_589	 - pelekano	 - -Not possible
+138075	 - 1_588	 - notkola	 - New structure install_rule_type_t added to dia_charging_rule_install_t. Adaptation: Not needed.
+137260	 - 1_587	 - jonkorho	 - -new bit-flag added to DB, no adaptation needed
+136612	 - 1_586	 - melgosa	 - - Clean change of variable name from sgw_changed to flags. Default value (0) remains. No adaptation needed on upgrade.
+136212	 - 1_585	 - notkola	 - Added pres parameter to dia_mscc_default_quota_t. Adaptation pres parameter set to 0.
+136045	 - 1_584	 - notkola	 - New TLV dia_client to session_control. Adaptation: Not needed.
+136041	 - 1_583	 - notkola	 - dia_mscc_default_quota_t structure added to dia_mscc_cca_t struct. Default value for cc_total_octets is 0
+136026	 - 1_582	 - papakons	 - -VALIDATOR_CP_LICENSE_PERMISSION_RESP added the msg_version.
+Adaptation: Default value is 0.
+133431	 - 1_581	 - pmadetoj	 - -intra node messages GWUP_SC_PING_GWUP_REQ and GWUP_SC_PING_GWUP_RESP removed. There in no effect to ISUG adaptation.
+132607	 - 1_580	 - siatos	 - Revert previous changes-Adaptation: Not needed
+132606	 - 1_579	 - siatos	 - Change in ipc_encoding scheme to see lvn change -Adaptation: Not needed
+132363	 - 1_578	 - notkola	 - Not needed
+131693	 - 1_578	 - finocchi	 - D: GWUP_WHOLE_BLOCKLIST_REQ
+Renamed: old GWUP_WHOLE_BLOCKLIST_REQ is now named GWUP_BLOCKLIST_REQ
+
+- adaptation not needed (internal message)
+131285	 - 1_577	 - jonkorho	 - ADDED: cpm_sc_msg_rsp_ack_t___rsp_status
+
+- adaptation not needed
+131249	 - 1_576	 - melomaa	 - D: HA_SYNC_TAG_HOST_SERVICE
+
+- Adaption: No action
+131121	 - 1_575	 - javainol	 - A: new define GTPCV2_SC_LAST which is used for internal statistics purposes.
+
+- No adaptation needed
+130997	 - 1_574	 - kouzmitc	 - -A:parameter rg_nbr_with_shared_quota to charging_pool_t
+Adaptation:Default parameter is 0
+D:parameter qhits removed from charging_pool_t
+
+130665	 - 1_573	 - juhhytti	 - M: "GWUP_SC_CHARGING_CHECK_UPD"
+--> "GWUP_SC_CHARGING_CHECK_UPD_OBSOLENT"
+
+No need for adaptation as this is an intra-node message.
+
+
+130078	 - 1_572	 - finocchi	 - A: GWUP_WHOLE_BLOCKLIST_REQ
+M: GWUP_BLOCKLIST_RESP (changed msg number)
+
+- both are internal messages between gwup_proxy and fastpath, so no adaptation needed
+129460	 - 1_571	 - melgosa	 - A: HA_SYNC_TAG_FCI and HA_SYNC_REQUEST_TAG_FCI added for ISUG
+127758	 - 1_570	 - anskauto	 - A: sc_session_old_t an_protocol - Adaptation:  Default value is 0
+125699	 - 1_569	 - gkellas	 - M: sc_session_ha_t modified "u8 first_ra" to "sc_ra_flags_t ra_flags" - Adaptation:  Default value is 0
+125440	 - 1_568	 - kouzmitc	 - M:added new fields time_t future_tariff_time and time_t future_reporting_time to subs_charging_data_t; - Adaptation:  Default value is 0
+125225	 - 1_567	 - jonkorho	 - A:SC_HA_SLOWLOOP_IP_FRAGMENTS_ALL - Adaptation:  No action
+124752	 - 1_566	 - r1taylor	 - Interface types INTERFACE_TYPE_SC_LIBC_SHM_CONN_INFO and INTERFACE_TYPE_SC_CLIEC_SHM_CONN_INFO are now obsolete - Adaptation:  No action
+124722	 - 1_565	 - r1taylor	 - SVN revert of 124702 - Adaptation:  No action
+124702	 - 1_564	 - r1taylor	 - Interface types INTERFACE_TYPE_SC_LIBC_SHM_CONN_INFO and INTERFACE_TYPE_SC_CLIEC_SHM_CONN_INFO are now obsolete - Adaptation:  No action
+124380	 - 1_563	 - melgosa	 - A: HA_SYNC_REQUEST_TAG_FCI - Adaptation:  No action
+124111	 - 1_562	 - gkellas	 - A: sc_session_ha_t added new field u8 first_ra - Adaptation:  Default value is 0
+123866	 - 1_561	 - tjlindqv	 - Following interface types: INTERFACE_TYPE_REPORTER_GWUP, INTERFACE_TYPE_GWUP_DNS_DOWN, INTERFACE_TYPE_GWUP_DNS_UP, INTERFACE_TYPE_GWUP_CHARGING_UP, INTERFACE_TYPE_GWUP_CHARGING_DOWN marked as obsolete and created new interfaces INTERFACE_TYPE_GWUP_DNS, INTERFACE_TYPE_GWUP_REPORTER for those. This is done because messaging mechanism changed - Adaptation:  No action
+123842	 - 1_560	 - morfis	 - A: 2 new messages for SC FP communication GWUP_SC_DELETE_SESSION_REQ,GWUP_SC_DELETE_SESSION_RESP - Adaptation:  No action
+123402	 - 1_559	 - helokunn	 - encoding scheme change needed in -r123197 - Adaptation:
+123322	 - 1_558	 - melomaa	 - A: SC_HA_PROC_SLOWLOOP_IP_FRAGMENTS to sc_types.h A: SC_HA_PROC_WARM_SLOWLOOP_IP_FRAGMENTS to sc_types.h - Adaptation:  No action
+123267	 - 1_557	 - archagge	 - A:gwup_sc_error_ind_t - Adaptation:  No action
+123197	 - 1_556	 - helokunn	 - A: CPM_SC_MSG_RSP_ACK - Adaptation:  No action
+123105	 - 1_555	 - notkola	 - A: New msg type GWUP_CHARGING_SINGLE_DATA_SYNC_MSG - Adaptation:  No Action
+122918	 - 1_554	 - jonkorho	 - A: HA_SYNC_REQUEST_TAG_IP_POOL_FRAGMENT:libsync_item_hdr_t A: HA_SYNC_TAG_IP_POOL_FRAGMENT:cpm_cpm_sync_fragment_t:libsync_item_hdr_t;ADDED: cpm_cpm_sync_fragment_t___ip_pool_id  ADDED: cpm_cpm_sync_fragment_t___fragment_id ADDED: cpm_cpm_sync_fragment_t___service___type ADDED: cpm_cpm_sync_fragment_t___service___service_number - Adaptation:  No action
+122831	 - 1_553	 - toshniwa	 - A:u32 oplog_id added to gtpc_sig_sc_header_t - Adaptation:  No action
+122830	 - 1_552	 - melgosa	 - A: sc_list_of_fci_t fci - Adaptation:  No action
+122816	 - 1_551	 - archagge	 - none - Adaptation:  No action
+122790	 - 1_550	 - archagge	 - none - Adaptation:  No action
+122638	 - 1_549	 - touloupi	 - A: GWUP_SC_DUMP_BEARER_REQ, GWUP_SC_DUMP_BEARER_RSP - Adaptation:  No action
+122633	 - 1_548	 - javainol	 - none - Adaptation:  No action
+122608	 - 1_547	 - pelekano	 - - Adaptation:  No action
+122604	 - 1_546	 - archagge	 - none - Adaptation:  No action
+122560	 - 1_545	 - archagge	 - none - Adaptation:  No action
+122554	 - 1_544	 - archagge	 - none - Adaptation:  No action
+122462	 - 1_543	 - helokunn	 - none - Adaptation:  No action
+122454	 - 1_542	 - jonkorho	 - A: HA_SYNC_TAG_IP_POOL_FRAGMENT - Adaptation:  No action
+122431	 - 1_541	 - spgupta	 - A: a new member named out_of_credit into structure dia_common_srlz.h - Adaptation:  No action
+122273	 - 1_540	 - q5xiao	 - D: GWUP_SC_DYNAMIC_PCC_RULES_REQ, GWUP_SC_DYNAMIC_PCC_RULES_RESP - Adaptation:  No action
+122256	 - 1_539	 - q5xiao	 - A: GWUP_SC_DYNAMIC_PCC_RULES_REQ, GWUP_SC_DYNAMIC_PCC_RULES_RESP - Adaptation:  No action
+121976	 - 1_538	 - morfis	 - A: User_info_present New field (u8) in sc_docomo_extension_t - Adaptation:  Default Value: 0
+121320	 - 1_537	 - louzakou	 - M: CLI_TRACE_CTRL_SUBS_INFO_REQ - Adaptation:  No action
+121262	 - 1_536	 - e0337461	 - A: NF_CONF_MSG_MODIFY_REQ, A: NF_CONF_MSG_MODIFY_RESP, A: NF_SYNC_MSG - Adaptation:  No action.
+121095	 - 1_535	 - apmattil	 - GWUP_BLOCKLIST_REQ - Adaptation:  No action
+121095	 - 1_535	 - apmattil	 - GWUP_BLOCKLIST_RESP - Adaptation:  No action
+120244	 - 1_534	 - georgaka	 - A: validator_cp_message_t___msg_data___validator_cp_license_permission_req___license_req_info___8___ - Adaptation:  No action
+120244	 - 1_534	 - georgaka	 - A: validator_cp_message_t___msg_data___validator_cp_license_permission_resp___license_resp_info___8___ - Adaptation:  No action
+120223	 - 1_533	 - kouzmitc	 - A:uint32_t dia_active_triggers added to gwup_sc_modify_bearer_req_t - Adaptation:  No action
+120050	 - 1_533	 - tzoulis	 - A: LIBIF_CONF_CC_CONF_STATUS_UPDATE_MSG, cc_configuration_status_msg_t, A: LIBIF_CONF_CC_CONF_STATUS_UPDATE_ACK_MSG, cc_conf_state_t - Adaptation:  No action
+120036	 - 1_532	 - louzakou	 - M: CLI_TRACE_CTRL_SUBS_INFO_REQ - Adaptation:  No action
+119863	 - 1_531	 - myllarin	 - A: u32 ebi_list to following structs: gtpcv2_create_session_request_t, gtpcv2_create_session_response_t,gtpcv2_modify_bearer_request_t,
+gtpcv2_modify_bearer_response_t,gtpcv2_create_bearer_request_t,
+gtpcv2_create_bearer_response_t,gtpcv2_update_bearer_request_t,gtpcv2_update_bearer_response_t,
+gtpcv2_delete_bearer_request_t,gtpcv2_delete_bearer_response_t,gtpcv2_release_access_bearer_response_t,
+gtpcv2_create_idft_request_t,gtpcv2_delete_bearer_command_t 
+
+Adaptation: No action
+119470	 - 1_530	 - kalyvas	 - M:ipc_encoding scheme - Adaptation:  No action
+119469	 - 1_529	 - kalyvas	 - M:ipc encoding scheme - Adaptation:  No action
+119446	 - 1_528	 - gkellas	 - A: time_t traffica_reporting_time added to sc_traffica_extension_t - Adaptation:  No action
+119310	 - 1_527	 - jouhaapa	 - A:New TLV id RC_TLV_ID_PENDING_ACKS_C A: new structures for TLV data radius_client_ack_item_t and radius_client_tlv_ack_t - Adaptation:  No action
+119223	 - 1_526	 - notkola	 - A: New TLV ids CM_TLV_ID_PS_FURNISH_CHARGING_INFO_CMD_C and CM_TLV_ID_PS_FURNISH_CHARGING_INFO_C - Adaptation:  No action
+119091	 - 1_525	 - notkola	 - A: New structure dia_mscc_fci_t in dia_mscc_t - Adaptation:  Fill structure with value 0
+119032	 - 1_524	 - tietavai	 - A: SC_HA_PROC_SLOWLOOP_TUNNEL_ID, SC_HA_PROC_WARM_SLOWLOOP_TUNNEL_ID, SC_HA_PROC_SLOWLOOP_TUNNEL_TYPE, SC_HA_PROC_WARM_SLOWLOOP_TUNNEL_TYPE - Adaptation:  No action
+118986	 - 1_523	 - louzakou	 - M: CLI_TRACE_CTRL_SUBS_INFO_REQ, TRACE_INFO_TYPE_DB_DUMP - Adaptation:  No action
+118760	 - 1_522	 - apmattil	 - GWUP_BLOCKCLIST_REQ - Adaptation:  No action
+118760	 - 1_522	 - apmattil	 - GWUP_BLOCKCLIST_RESP - Adaptation:  No action
+118591	 - 1_521	 - mantzari	 - A: cli_trace_ctrl_subs_info_req_t___msisdn___pres cli_trace_ctrl_subs_info_req_t___msisdn___numb_sys_pres cli_trace_ctrl_subs_info_req_t___msisdn___val___len cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___0___ cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___1___ ...cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___9___ cli_trace_ctrl_subs_info_req_t___filter - Adaptation:  No action
+118542	 - 1_520	 - msuhonen	 - Fix scheme typo: CPM_SC_MSG_RELEASE_FRAGMENT_RSP:cpm_sc_msg_release_fragment_rsp_t - Adaptation:  No action
+118528	 - 1_519	 - mantzari	 - D: cli_trace_ctrl_subs_info_req_t___msisdn___pres cli_trace_ctrl_subs_info_req_t___msisdn___numb_sys_pres cli_trace_ctrl_subs_info_req_t___msisdn___val___len cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___0___ cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___1___ ...cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___9___ cli_trace_ctrl_subs_info_req_t___filter - Adaptation:  No action
+118522	 - 1_518	 - mantzari	 - A: cli_trace_ctrl_subs_info_req_t___msisdn___pres cli_trace_ctrl_subs_info_req_t___msisdn___numb_sys_pres cli_trace_ctrl_subs_info_req_t___msisdn___val___len cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___0___ cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___1___ ...cli_trace_ctrl_subs_info_req_t___msisdn___val___msisdn___9___ cli_trace_ctrl_subs_info_req_t___filter - Adaptation:  No action
+118474	 - 1_517	 - msuhonen	 - Fixed a rule - Adaptation:  No action
+117742	 - 1_516	 - aalhonie	 - A: HA_SYNC_REQUEST_TAG_DIA_DYN_RULE_DATA - Adaptation:  No action
+117614	 - 1_515	 - tietavai	 - renamed TERMINATE_PCC_RULE messages. - Adaptation:  No action
+117503	 - 1_514	 - rentifis	 - A:CLIED_CLIEC_REACTIVATION - Adaptation:  No action
+117498	 - 1_513	 - jrailo	 - A: GWUP_BLOCKCLIST_IND - Adaptation:  No action
+117322	 - 1_512	 - msuhonen	 - New types to layout - Adaptation:  No action
+117183	 - 1_511	 - aalhonie	 - MODIFIED: HA_SYNC_TAG_DIA_DYN_RULE_DATA, HA_SYNC_TAG_BEARER_RULE_BUF - Adaptation:  Not available.
+117058	 - 1_510	 - kouzmitc	 - A:sc_session_ha_t added new field u8 gx_over_gy - Adaptation:  Default value 0
+117040	 - 1_509	 - notkola	 - A: New TLV from SC to DC CM_TLV_ID_GX_OVER_GY_ENABLED_C - Adaptation:  No action
+117026	 - 1_508	 - jonkorho	 - ADDED: cpm_sc_msg_release_fragment_req_t___fragment_data___last_fragment - Adaptation:  Default value FALSE
+116941	 - 1_507	 - silden	 - N/A - Adaptation:
+116883	 - 1_506	 - silden	 - N/A - Adaptation:
+116832	 - 1_505	 - assamal	 - A:CLEC_SC_NOTIFY_SEND_CONN_INFO_REQ and LIBC_SC_NOTIFY_SEND_CONN_INFO_REQ - Adaptation:  No action
+116708	 - 1_504	 - spgupta	 - MODIFIED: dia_client_sc_if_srlz.h - Adaptation:  No action
+116440	 - 1_503	 - anskauto	 - A: bc_type to gtpcv2_ebi_t - Adaptation:  Default value 0
+116094	 - 1_502	 - spgupta	 - M: dia_sc_msg_type_t enum - Adaptation:  No action
+115847	 - 1_501	 - tjlindqv	 - M: featuremem_feature_type_e changed from enum to uint8_t - Adaptation:  No action
+115386	 - 1_500	 - notkola	 - A: DC_SC_MSG_GY_AS_REQ, DC_SC_MSG_GY_AS_RES added to dia_sc_msg_type_t - Adaptation:  No action
+114835	 - 1_499	 - myllarin	 - A: sc_session_ha_t added new field sc_deactivation_status_t deactivation_status - Adaptation:  Fill with default value 0
+114387	 - 1_498	 - touloupi	 - A: clied_cliec_if_user_online_req_t, clied_cliec_tunn_id_t tunnel_id - Adaptation:  Default value in all sub fields should be 0
+114377	 - 1_497	 - assamal	 - D: clied_cliec_if_user_online_req_t, clied_cliec_tunn_id_t tunnel_id - Adaptation:
+114363	 - 1_496	 - assamal	 - A: clied_cliec_if_user_online_req_t, clied_cliec_tunn_id_t tunnel_id - Adaptation:  Default value in all sub fields should be 0
+114092	 - 1_495	 - tietavai	 - M: GWUP_SC_DELETE_SESSION_REQ --> GWUP_SC_TERMINATE_PCC_RULE_IND. GWUP_SC_DELETE_SESSION_RESP --> GWUP_SC_TERMINATE_PCC_RULE_IND_ACK. A: Field acked_fp_trig_sc_events added to gwup_sc_gx_reporting_resp_t and gwup_sc_terminate_pcc_rule_ind_ack_t. - Adaptation:  No action
+113998	 - 1_494	 - tjlindqv	 - A: featuremem_feature_t added field ftype - Adaptation:  No action
+113931	 - 1_493	 - sgangula	 - M: GWUP_SC_CHARGING_* - Adaptation:  No Action
+113925	 - 1_492	 - tjlindqv	 - D: featuremem_feature_t deleted field ftype - Adaptation:  No action
+113920	 - 1_491	 - tjlindqv	 - A: featuremem_feature_t added field ftype - Adaptation:  No action
+113624	 - 1_490	 - lledoviv	 - M: featuremem_enable_status_t - Adaptation:  No action if ng20 source build = 116372. Otherwise, old value FEATUREMEM_ENABLE_STATUS_OK (which is 1 in the old enum) should be mapped to FEATUREMEM_ENABLE_STATUS_OK (which is 5 in the new enum). Old value FEATUREMEM_ENABLE_STATUS_NOK should be mapped to FEATUREMEM_ENABLE_STATUS_NO_MEMORY. In the opposite direction (new-old) OK should be mapped to OK and the rest of the new values should be mapped to NOK.
+113452	 - 1_489	 - tietavai	 - A: GWUP_SC_DELETE_SESSION_RESP - Adaptation:  No action
+113390	 - 1_488	 - kimaenpa	 - M: charging_data_t extended flags from 16 bits to 32 bits. Removed qvolume_multiplier, qvolume_multiplier_ul, qvolume_multiplier_dl, qhits_multiplier, qtime_multiplier. - Adaptation:  Adaptation old to new: if qvolume_multiplier has value then set bit 0x10000 to flags, if qvolume_multiplier_ul has value then set bit 0x20000 to flags, if qvolume_multiplier_dl has value then set bit 0x40000 to flags, if qtime_multiplier has value then set bit 0x80000 to flags, if qhits_multiplier has value then set bit 0x100000 to flags
+113299	 - 1_487	 - iilia	 - D: u8 user_information, sc_docomo_extension_t - Adaptation:
+113299	 - 1_487	 - iilia	 - A: u8 user_information_old added in sc_docomo_extension_t - Adaptation:  Default value 255
+113299	 - 1_487	 - iilia	 - A: u8 user_information_new added in sc_docomo_extension_t - Adaptation:  Default value 255
+113299	 - 1_487	 - iilia	 - A: u8 user_info_has_changed added in sc_docomo_extension_t - Adaptation:  Default value 255
+113238	 - 1_486	 - juhhytti	 - A: GWUP_SC_CHARGING_CHECK_UPD - Adaptation:  No action
+113238	 - 1_486	 - juhhytti	 - ADDED: gwup_sync_charging_data_common_t___volume_limit - Adaptation:  Fill with default value 0
+113238	 - 1_486	 - juhhytti	 - ADDED: gwup_sync_charging_data_common_t___time_interim - Adaptation:  Fill with default value 0
+113230	 - 1_485	 - helne	 - ? - Adaptation:
+113106	 - 1_484	 - msuhonen	 - Tool update -
+112817	 - 1_483	 - msuhonen	 - Scheme and tool fixes -
+112776	 - 1_482	 - juhhytti	 - D: fields deleted. Can be ignored as are not used - Adaptation:
+112713	 - 1_481	 - lledoviv	 - M: cli_featuremem_enable_req_t - Adaptation:  Member feature becomes array of features. Copy old feature to first member of the array and set second member to zeros
+112489	 - 1_480	 - lledoviv	 - D: typedef uint32_t featuremem_feature_t - Adaptation:
+112489	 - 1_480	 - lledoviv	 - D: typedef uint32_t featuremem_block_purpose_t - Adaptation:
+112489	 - 1_480	 - lledoviv	 - A: typedef struct { uint32_t } featuremem_feature_t - Adaptation:  Copy from the old uint32_t type inside the struct
+112489	 - 1_480	 - lledoviv	 - A: typedef struct { uint32_t } featuremem_block_purpose_t - Adaptation:  Copy from the old uint32_t type inside the struct
+112375	 - 1_479	 - iilia	 - A: u8 user_information added in sc_docomo_extension_t - Adaptation:  Default value 0
+112282	 - 1_478	 - jrailo	 - M:sc_session_t, sc_session_radius_t - Adaptation:  No action
+112005	 - 1_477	 - katachan	 - A:token_u8_t (henb_indication) added in dcm_customization_t - Adaptation:  No action
+112005	 - 1_477	 - katachan	 - A: uint8_t (suppress_echo_req) added in bearer_req_t - Adaptation:  No action
+112005	 - 1_477	 - katachan	 - A:uint8_t (suppress_echo_req) added in gwup_sc_modify_bearer_req_t - Adaptation:  No action
+111964	 - 1_476	 - mfoukara	 - A: token_str1_t dcm_customization_t - Adaptation:  No action
+111717	 - 1_475	 - apmattil	 - A:GWUP_SC_DELETE_SESSION_REQ - Adaptation:  No action
+111545	 - 1_474	 - mukhi	 - A: lie_context_t - Adaptation:  No action
+111545	 - 1_474	 - mukhi	 - A: x3_tunnel_status_e A: x3_tunnel_t - Adaptation:  No action
+111478	 - 1_473	 - kouzmitc	 - D:parameter charging_started from charging_data_t - Adaptation:
+111478	 - 1_473	 - kouzmitc	 - A:parameterlast_activity_before_def_quota to charging_data_t - Adaptation:  Default value 0
+111332	 - 1_472	 - psourlis	 - A: SC_HA_PROC_SLOWLOOP_SESS_PROF_IP_VERSION A: SC_HA_PROC_WARM_SLOWLOOP_SESS_PROF_IP_VERSION - Adaptation:  No action
+111318	 - 1_471	 - lledoviv	 - - None
+111250	 - 1_470	 - siligeri	 - M: ng_filter_t new param packet_filter_usage added - Adaptation:  Default value 0
+111243	 - 1_469	 - koltsida	 - Addition of CLI_IKE_CTRL_VPN_PROFILE_INFO_REQ,CLI_IKE_CTRL_VPN_PROFILE_INFO_RESP,CLI_SC_VPN_TUNNEL_STATE_REQ,CLI_SC_VPN_TUNNEL_STATE_RESPto ipc_encoding_scheme.conf - Adaptation:  No action
+111216	 - 1_468	 - rentifis	 - A:CLIED_CLIEC_REACTIVATION - Adaptation:  No action
+110776	 - 1_467	 - tsintzir	 - Addition of CLI_SC_BEARER_DISCONNECT_REQ CLI_SC_BEARER_DISCONNECT_RESP in ipc_encoding_scheme.conf - Adaptation:  No action
+110717	 - 1_466	 - helokunn	 - A: SC_HA_IP_FRAGMENT - Adaptation:  No action
+110514	 - 1_465	 - msuhonen	 - Merged HA_SYNC_TAG_BEARER_FILTER_BUF rules from ng10 encoding scheme - No action
+110464	 - 1_464	 - msuhonen	 - Start following changes of enum pft_u8_tag_t - Adaptation:  No action
+110441	 - 1_463	 - tsintzir	 - A: CLI_SC_BEARER_DISCONNECT_REQ  A: CLI_SC_BEARER_DISCONNECT_RESP - Adaptation:  No action
+110113	 - 1_462	 - helne	 - Looks like it was done by helne, but actually it's due to tool fix r109962 - No action
+110074	 - 1_461	 - siatos	 - Updated rule in ipc_encoding_scheme.conf for: M=CDR_COLLECTOR_SC_RECEIVE_CDR from RULE1:T=libcdr_msg_t to RULE1:T=cdr_collector_sc_receive_cdr_isupld_t - Adaptation:  No action
+109931	 - 1_460	 - pelekano	 - A: HA_SYNC_TAG_DIA_RULEBASES - Adaptation:  No Action
+109478	 - 1_459	 - melomaa	 - M: cpm_route_t  D: cpm_service_t - Adaptation:  No Action
+109250	 - 1_458	 - pelekano	 - M: sc_session_ha_t - Adaptation:  No Action
+109104	 - 1_457	 - toshniwa	 - A: TRACE_INFO_TYPE_EVENT_SUBSCRIBER_DUMP D: TRACE_INFO_TYPE_EVENT_DB_DUMP_CREATE_SUCCESS D: TRACE_INFO_TYPE_EVENT_DB_DUMP_CREATE_FAIL D: TRACE_INFO_TYPE_EVENT_DB_DUMP_UPDATE_SUCCESS D: TRACE_INFO_TYPE_EVENT_DB_DUMP_UPDATE_FAIL D: TRACE_INFO_TYPE_EVENT_DB_DUMP_DELETE - Adaptation:  No Action
+109087	 - 1_456	 - sohman	 - M: reverted change to ng_ip_address_t - Adaptation:  No action
+109037	 - 1_455	 - sohman	 - M: changed order of members of ng_ip_address_t - Adaptation:  No action
+109014	 - 1_454	 - kravisha	 - A:Added hadling for msg CDR_COLLECTOR_HA_CTRL_REVERT_SWO_NOTIFY and sent ack with CDR_COLLECTOR_HA_CTRL_REVERT_SWO_NOTIFY_ACK in cdr_collector side - Adaptation:  No action
+108975	 - 1_453	 - helokunn	 - D: apn_ambr - Adaptation:  No action
+108196	 - 1_452	 - vibasava	 - M:In ha_sync_tag_t added one more tag HA_SYNC_TAG_X3_TUNNEL_DB which is used for x3 tunnel db ha_sync - Adaptation:  No action
+108196	 - 1_452	 - vibasava	 - M: In proc_ha_data_t (lie_proc_data.h)added x3tunnel_sync_type removed gencc_sync_type and modified the libsync_tlv_data_container_t ha_tbl array size to LIBSYNC_MAX_LIBC_HA_SYNC_ITEMS from LIBSYNC_MAX_SC_HA_SYNC_ITEMS - Adaptation:  No action
+107753	 - 1_451	 - kalyvas	 - Reverting previous change. - Adaptation:  No action
+107749	 - 1_450	 - kalyvas	 - Changed for testing purposes an entry in ipc_encoding_scheme.conf. Was reverted afterwards. - Adaptation:  No action
+107638	 - 1_449	 - toshniwa	 - A: TRACE_INFO_TYPE_EVENT_DB_DUMP_CREATE_SUCCESS A: TRACE_INFO_TYPE_EVENT_DB_DUMP_CREATE_FAIL A: TRACE_INFO_TYPE_EVENT_DB_DUMP_UPDATE_SUCCESS A: TRACE_INFO_TYPE_EVENT_DB_DUMP_UPDATE_FAIL A: TRACE_INFO_TYPE_EVENT_DB_DUMP_DELETE - Adaptation:  No action
+107376	 - 1_448	 - kouzmitc	 - A:added new parameters ul_bytes_def_quota and dl_bytes_def_quota to charging_data_t - Adaptation:  Default value 0
+107275	 - 1_447	 - vlaev	 - M: HA_SYNC_TAG_DIA_SESSION dia_session_ha_sync_t-pcrf_conn_info_t-selected_server - Adaptation:  Default value 0 (PRIMARY_SERVER_SELECTED)
+107199	 - 1_446	 - spgupta	 - M: Changed the data type of up_dynrule_id_t to uin16_t - Adaptation:  No action
+107163	 - 1_445	 - jonkorho	 - A: CPM_SC_MSG_ALLOCATE_FRAGMENT_REQ = CENTRAL_POOL_MGR_SC_MSG_NBR_BASE + 5, A: CPM_SC_MSG_ALLOCATE_FRAGMENT_RSP = CENTRAL_POOL_MGR_SC_MSG_NBR_BASE + 6,A: CPM_SC_MSG_RELEASE_FRAGMENT_REQ = CENTRAL_POOL_MGR_SC_MSG_NBR_BASE + 7,A: CPM_SC_MSG_RELEASE_FRAGMENT_RSP = CENTRAL_POOL_MGR_SC_MSG_NBR_BASE + 8 - Adaptation:  Default 0
+107147	 - 1_444	 - spgupta	 - M: Changed the data type of up_dynrule_id_t to uin32_t - Adaptation:  Changes made in earlier commit reverted
+107138	 - 1_443	 - spgupta	 - M: Changed the data type of up_dynrule_id_t to uin16_t - Adaptation:  No action (changes were reverted in commit 107147)
+107003	 - 1_442	 - siligeri	 - M:DC_SC_MSG_GX_ERR_MSG_OBSOLENT to DC_SC_MSG_GX_ERR_MSG_OBSOLETE,DC_SC_MSG_GXC_ERR_MSG_OBSOLENT to DC_SC_MSG_GXC_ERR_MSG_OBSOLETE, DC_SC_MSG_REQ_TIME_OUT_OBSOLENT to DC_SC_MSG_REQ_TIME_OUT_OBSOLETE, DC_SC_MSG_GY_ERR_MSG_OBSOLENT to DC_SC_MSG_GY_ERR_MSG_OBSOLETE, DC_SC_MSG_GY_REQ_TIME_OUT_OBSOLENT to DC_SC_MSG_GY_REQ_TIME_OUT_OBSOLETE - Adaptation:  No action, just marked as obsolete
+106328	 - 1_441	 - touloupi	 - D:clied_cliec_notify_actint_rsp_body_t , clie_x3_ack_t x3_ack D:clied_cliec_notify_deactint_rsp_body_t , clie_x3_ack_t x3_ack D:clied_cliec_if_pdp_ctx_creation_req_body_t , clie_x3_ack_t x3_ack D:clied_cliec_if_pdp_ctx_deleted_req_body_t , clie_x3_ack_t x3_ack D:clied_cliec_if_user_online_req_body_t , clie_x3_ack_t x3_ack - Adaptation:  Default values of removed field 0
+106099	 - 1_440	 - touloupi	 - A: clied_cliec_if_pdp_ctx_creation_rsp_body_t, clied_cliec_tunn_id_t tunnel_id A: clied_cliec_if_user_online_rsp_body_t, clied_cliec_tunn_id_t tunnel_id A: CLIED_CLIEC_IF_X3_TUNNEL_REQ A: CLIED_CLIEC_IF_X3_TUNNEL_RSP
+
+Adaptation: Default value of all structure's contents 0
+106074	 - 1_439	 - touloupi	 - A: clied_cliec_if_pdp_ctx_creation_rsp_body_t, clied_cliec_tunn_id_t tunnel_id A: clied_cliec_if_user_online_rsp_body_t, clied_cliec_tunn_id_t tunnel_id A: CLIED_CLIEC_IF_X3_TUNNEL_REQ A: CLIED_CLIEC_IF_X3_TUNNEL_RSP - Adaptation:  no changes (revert of the previous)
+106070	 - 1_438	 - touloupi	 - A: clied_cliec_if_pdp_ctx_creation_rsp_body_t, clied_cliec_tunn_id_t tunnel_id A: clied_cliec_if_user_online_rsp_body_t, clied_cliec_tunn_id_t tunnel_id A: CLIED_CLIEC_IF_X3_TUNNEL_REQ A: CLIED_CLIEC_IF_X3_TUNNEL_RSP - Adaptation:  no changes (reverted later)
+105895	 - 1_437	 - assamal	 - A: SC_CLIEC_SHM_CONNECTION_INFO_RSP - Adaptation:  No Action
+105467	 - 1_436	 - ujmarkvi	 - A: CM_TLV_ID_INVALID - Adaptation:  no changes
+105342	 - 1_435	 - ujmarkvi	 - A: GTPCV2_SC_DELETE_BEARER_FAILURE_IND - Adaptation:  no changes
+105312	 - 1_433	 - ujmarkvi	 - A: GTPCV2_SC_DELETE_BEARER_FAILURE_IND - Adaptation:  no changes, note this change was reverted in 195313 and restored in 105342
+105065	 - 1_432	 - spgupta	 - M: cm_ha_sync_types.h - Adaptation:  No action
+104999	 - 1_431	 - aalhonie	 - M: libsync_srlz.h - Adaptation:  No action
+104920	 - 1_430	 - aalhonie	 - M: HA_SYNC_TAG_BEARER_FILTER_BUF - Adaptation:  From old to new: no action. From new to old: do not send this tag without payload.
+104482	 - 1_429	 - juhhytti	 - D: GWUP_SC_CHARGING_CHECK_UPD D:gwup_sync_charging_data_common_t___volume_limit D:gwup_sync_charging_data_common_t___time_interim - Adaptation:  No Action
+104373	 - 1_428	 - juhhytti	 - A: GWUP_SC_CHARGING_CHECK_UPD A:gwup_sync_charging_data_common_t___volume_limit A:gwup_sync_charging_data_common_t___time_interim - Adaptation:  Default 0
+104278	 - 1_427	 - vibasava	 - M: sc_libc_delete_lie_ctxt_req_body_t; M:sc_libc_notify_pdp_conn_req_body_t; M:sc_libc_rsp_body_t ; M:sc_libc_shm_conn_info_t; M: sc_libc_create_lie_ctxt_req_body_t - Adaptation:  No Action
+104062	 - 1_426	 - nanou	 - A: SC_HA_PROC_DIA_SESS_FAILOVER - Adaptation:  No Action
+103830	 - 1_425	 - kouzmitc	 - A:added new parameter bytes_after_threshold to charging_pool_t - Adaptation:  datastructure adaptation needed
+103574	 - 1_424	 - papakons	 - M:INTERFACE_TYPE_CONF_CTRL to 68 - Adaptation:  No Action
+103377	 - 1_423	 - devchoud	 - M:libcdr_common_header_t - Adaptation:  No Action
+103186	 - 1_422	 - sumansah	 - A:dpi_res_msg_t___result___sab_bypass sab_bypass_transient - Adaptation:  Default 0
+103186	 - 1_422	 - sumansah	 - A:dpi_res_msg_t___result___sab_bypass sab_bypass_parmanent - Adaptation:  Default 0
+103186	 - 1_422	 - sumansah	 - D:A:dpi_res_msg_t___result___sab_bypass sab_bypass - Adaptation:  No Action
+102815	 - 1_421	 - kouzmitc	 - D:dia_session_ha_sync_t ocs_high_granularity_flg,ocs_rpt_high_granularity_flg - Adaptation:  No Action
+102815	 - 1_421	 - kouzmitc	 - A:dia_session_ha_sync_t flags - Adaptation:  Default 0
+102810	 - 1_420	 - tinyysso	 - A:up_dynrule_t id - Adaptation:  Default 0
+102759	 - 1_419	 - kouzmitc	 - A:dia_session_ha_sync_t ocs_high_granularity_flg,ocs_rpt_high_granularity_flg - Adaptation:  No Action
+102075	 - 1_418	 - vasilogi	 - M: sc_traffica_session_bearer_info_t - Adaptation:  No Action
+101851	 - 1_417	 - mukhi	 - A:clied_cliec_if_header_t, clied_cliec_notify_actint_req_body_t, clied_cliec_notify_actint_req_t, clied_cliec_notify_deactint_req_body_t, clied_cliec_notify_deactint_req_t, - Adaptation:  No Action
+101851	 - 1_417	 - mukhi	 - D:actint_type param of lie_reqid_info_t - Adaptation:  No Action
+101851	 - 1_417	 - mukhi	 - M:sc_clie_client_if_srlz.h - Adaptation:  No Action
+101851	 - 1_417	 - mukhi	 - A:sc_libc_pdp_conn_info_t - Adaptation:  No Action
+101427	 - 1_416	 - finocchi	 - M: sc_traffica_session_bearer_info_t - Adaptation:  No Action
+101427	 - 1_416	 - finocchi	 - D: gtpc_rai_t from sc_session_ha_t structure - Adaptation:  Adapt serving_plmn_id
+101304	 - 1_415	 - mukhi	 - M: clied_cliec_if_msg_type_t - Adaptation:  No Action
+101216	 - 1_414	 - javainol	 - M: ng_filter_t - Adaptation:  New default value 0 for rule_ref parameter
+101070	 - 1_413	 - mantzari	 - ADDED: validator_cp_message_t___msg_data___validator_cp_license_permission_req___license_req_info___7___ - Adaptation:  No Action
+101070	 - 1_413	 - mantzari	 - ADDED: validator_cp_message_t___msg_data___validator_cp_license_permission_resp___license_resp_info___7___ - Adaptation:  No Action
+100985	 - 1_412	 - touloupi	 - A: CLIED_CLIEC_IF_ALARMS - Adaptation:  No Action
+100733	 - 1_411	 - aalhonie	 - A: HA_SYNC_TAG_BEARER_RULE_BUF - Adaptation:  No action
+100671	 - 1_410	 - mantzari	 - A: validator_cp_message_t___msg_data___validator_cp_license_permission_req___license_req_info___6___ - Adaptation:  No action
+100671	 - 1_410	 - mantzari	 - A: validator_cp_message_t___msg_data___validator_cp_license_permission_resp___license_resp_info___6___ - Adaptation:  No action
+100612	 - 1_409	 - spgupta	 - M: dia_apps_new_parse_ip_filter_rule - Adaptation:  No Action
+100572	 - 1_408	 - kopapado	 - A: cc_register_msg_t - Adaptation:  No Action
+100572	 - 1_408	 - kopapado	 - A: cc_ack_msg_t - Adaptation:  No Action
+100572	 - 1_408	 - kopapado	 - A: cc_notify_msg_t - Adaptation:  No Action
+99994	 - 1_407	 - kimaenpa	 - M: sc_failover_continue_t moved from sc_session_ha_t to sc_bearer_ha_t - Adaptation:  From old to new, set failover_continue value from session to bearer.
+99715	 - 1_405	 - mukhi	 - M: gwup_libc_msg_type_t D: lib_client_lie_context_db_srlz.h - Adaptation:  no action
+99708	 - 1_404	 - mukhi	 - M: gwup_clie_client_msg_type_t M: gwup_cliec_cc_req_t - Adaptation:  no action
+99617	 - 1_403	 - iilia	 - A: HA_SYNC_REQUEST_TAG_TRAFFICA - Adaptation:  no action
+99568	 - 1_402	 - javainol	 - M: ng_filter_id_t - Adaptation:  New bit fields internal_id_pres (1 bit) and internal_id (4 bit), default values 0
+99545	 - 1_401	 - tietavai	 - D: session_create_time from sc_session_radius_t structure - Adaptation:  (New to old) if(bearer-ha.create_time ==0) sess-ha.radius.session_create_time = time(NULL); else sess-ha.radius.session_create_time = bearer-ha.create_time;
+99545	 - 1_401	 - tietavai	 - A: create_time to sc_bearer_ha_t structure - Adaptation:  (Old to New) if(sess-ha.radius.session_create_time == 0) bearer-ha.create_time = time(NULL); else bearer-ha.create_time = sess-ha.radius.session_create_time;
+99472	 - 1_400	 - javainol	 - M: ng_filter_id_t - Adaptation:  no action
+99469	 - 1_399	 - javainol	 - M: ng_filter_id_t - Adaptation:  no action
+99311	 - 1_398	 - sotiriou	 - A: gwup_clie_client_cc_req_t - Adaptation:  no action
+99276	 - 1_397	 - mukhi	 - A: del_its_op M: Structure name reverted to del_its_tree_t - Adaptation:  no action
+99268	 - 1_396	 - mukhi	 - M: structure param del_liblie_op of del_liblie_tree_t M: Structure name changed to del_liblie_op - Adaptation:  no action
+99235	 - 1_395	 - mukhi	 - A: lie_client_type to gwup_sc_create_bearer_req_t A: lie_client_type to gwup_sc_modify_bearer_req_t A: lie_client_type to gwup_sc_update_li_req_t - Adaptation:  no action
+99235	 - 1_395	 - mukhi	 - M: GWUP_LIBCIENT_CC_REQ - Adaptation:  no action
+99044	 - 1_394	 - touloupi	 - A: CLIED_CLIEC_IF_STATS - Adaptation:  No action
+98899	 - 1_393	 - kimaenpa	 - A: new tlv CM_TLV_ID_PDN_CONN_ID_C - Adaptation:  No Action
+98873	 - 1_392	 - helokunn	 - A: new field sgw_changed - Adaptation:  Default value 0
+98524	 - 1_391	 - notkola	 - M: monitoring data moved from bearer to session structure - Adaptation:  No action
+98422	 - 1_390	 - touloupi	 - A: CLIED_CLIEC_NOTIFY_ACTINT_RSP, CLIED_CLIEC_NOTIFY_DEACTINT_REQ, CLIED_CLIEC_NOTIFY_DEACTINT_RSP, CLIED_CLIEC_IF_PDP_CTX_CREATION_REQ, CLIED_CLIEC_IF_PDP_CTX_CREATION_RSP, CLIED_CLIEC_IF_PDP_CTX_DELETION_REQ, CLIED_CLIEC_IF_PDP_CTX_DELETION_RSP, CLIED_CLIEC_IF_PDP_CTX_UPDATE_REQ, CLIED_CLIEC_IF_PDP_CTX_UPDATE_RSP, CLIED_CLIEC_IF_USER_ONLINE_REQ, CLIED_CLIEC_IF_USER_ONLINE_RSP - Adaptation:  No action
+98326	 - 1_388	 - gazelas	 - A: CHINA_LI_SB_REROUTE_X3_PACKET - Adaptation:  No action
+98218	 - 1_387	 - aalhonie	 - M: ng_filter_t new param rule_ref added - Adaptation:  From old to new, set parameter to 0xff, from new to old, ignore
+98217	 - 1_386	 - vasilogi	 - A: GTPCSIG_SC_TRAFFICA_ERR - Adaptation:  No action
+98011	 - 1_385	 - touloupi	 - A: CLIED_CLIEC_NOTIFY_ACTINT_REQ - Adaptation:  No action
+98000	 - 1_384	 - rentifis	 - A:validator_cp_message_t___msg_data___validator_cp_license_permission_req___license_req_info___5___, validator_cp_message_t___msg_data___validator_cp_license_permission_resp___license_resp_info___5___ - Adaptation:  No action
+97954	 - 1_383	 - rentifis	 - D:validator_cp_message_t___msg_data___validator_cp_license_permission_req___license_req_info___5___, validator_cp_message_t___msg_data___validator_cp_license_permission_resp___license_resp_info___5___ - Adaptation:  No action
+97945	 - 1_382	 - rentifis	 - A:validator_cp_message_t___msg_data___validator_cp_license_permission_req___license_req_info___5___, validator_cp_message_t___msg_data___validator_cp_license_permission_resp___license_resp_info___5___ - Adaptation:  No action
+97919	 - 1_381	 - mukhi	 - D: lie_gencc_index_map_t datastructure. D: msg_mapper[MAX_LIB_SERVERS] from lie_context_t. D: gencc_msg_count from lie_context_t. A: sigdatatype to lie_context_t. - Adaptation:  no action
+97919	 - 1_381	 - mukhi	 - A: common to process lib_client and clie_client. - Adaptation:  no action
+97919	 - 1_381	 - mukhi	 - D: "reqid_intercept_info" parameter from following datastructures A: "intercept_record_id" to following datastructures. sc_libc_create_lie_ctxt_req_body_t, sc_libc_delete_lie_ctxt_req_body_t, sc_libc_notify_pdp_conn_req_body_t, sc_libc_rsp_body_t, libc_sc_notify_actint_req_body_t, libc_sc_notify_actint_rsp_body_t, libc_sc_notify_deactint_req_body_t, libc_sc_notify_deactint_rsp_body_t, sc_libc_chk_interception_rsp_body_t, sc_libc_shm_conn_info_t A: "last_msg_flag" to datastructures sc_libc_shm_conn_info_t, sc_libc_create_lie_ctxt_req_body_t and sc_libc_delete_lie_ctxt_req_body_t A: "bearer_count" to libc_sc_notify_actint_rsp_body_t - Adaptation:  no action
+97902	 - 1_380	 - siligeri	 - M: DC_SC_MSG_GX_ERR_MSG to DC_SC_MSG_GX_ERR_MSG_OBSOLENT, DC_SC_MSG_GXC_ERR_MSG to DC_SC_MSG_GXC_ERR_MSG_OBSOLENT, DC_SC_MSG_REQ_TIME_OUT to DC_SC_MSG_REQ_TIME_OUT_OBSOLENT, DC_SC_MSG_GY_ERR_MSG to DC_SC_MSG_GY_ERR_MSG_OBSOLENT - Adaptation:  No action, just marked as obsolete
+97776	 - 1_379	 - anskauto	 - A: gtpc_create_pdp_ctxt_req_t___gtpc_sig_sc_header___send_out - Adaptation:  Default value 0
+97776	 - 1_379	 - anskauto	 - A:gtpcv2_message_t_CSRQ_isupld_t___gtpc_sig_sc_header___send_out - Adaptation:  Default value 0
+97664	 - 1_378	 - melomaa	 - M: dpi_result_t, Removed policy_id, added qos_profile_id - Adaptation:  No action
+97507	 - 1_377	 - finocchi	 - D: SC_REPORTER_COLLECT_SES_BEAR_STATS_STATE_MSG, A: SC_TRAFFICA_REQUESTED_REPORT_TYPES_MSG - Adaptation:  No action
+97493	 - 1_376	 - kimaenpa	 - A: new messages GWUP_RATING_ENTRIES_APPROACHING_LIMIT_IND, GWUP_RATING_ENTRIES_APPROACHING_LIMIT_CANCEL_IND, GWUP_RATING_ENTRIES_LIMIT_REACHED_IND, GWUP_RATING_ENTRIES_LIMIT_REACHED_CANCEL_IND - Adaptation:  No action
+97351	 - 1_375	 - nanou	 - D: dia_session_ha_sync_t___failover_continue_timer - Adaptation:  Copy value of old field failover_continue_timer to new field failover_continue_timeout
+97351	 - 1_375	 - nanou	 - A: dia_session_ha_sync_t___failover_continue_timeout - Adaptation:  Copy value of old field failover_continue_timer to new field failover_continue_timeout
+97351	 - 1_375	 - nanou	 - A: dia_session_ha_sync_t___failover_continue_timestamp - Adaptation:  Default value 0
+97038	 - 1_374	 - kimaenpa	 - M: dia_mscc_t has now union for ccr/cca data - Adaptation:  No action
+97010	 - 1_373	 - tinyysso	 - M: dpi_result_t, dynrule_matched removed (dpi_res_msg_t___result___dynrule_matched) - Adaptation:  Default value zero
+96950	 - 1_372	 - helokunn	 - A: CLI_CPM_POOL_STATUS_REQ - Adaptation:  No action
+96950	 - 1_372	 - helokunn	 - A: CLI_CPM_POOL_STATUS_RESP - Adaptation:  No action
+96950	 - 1_372	 - helokunn	 - A: CLI_CPM_POOL_SUMMARY_REQ - Adaptation:  No action
+96950	 - 1_372	 - helokunn	 - A: CLI_CPM_POOL_SUMMARY_RESP - Adaptation:  No action
+96799	 - 1_371	 - tinyysso	 - M: dpi_result_t, dynrule_matched added (dpi_res_msg_t___result___dynrule_matched) - Adaptation:  Default value zero
+96658	 - 1_370	 - ehietala	 - A:added packet_state to dpi_result_t structure - Adaptation:  No action
+96630	 - 1_369	 - msuhonen	 - M: gtpcv2_message_t_CSRQ_isupld_t - Adaptation:  No action
+96630	 - 1_369	 - msuhonen	 - A: cdr_collector_sc_receive_cdr_isupld_t - Adaptation:  No action
+96501	 - 1_368	 - javainol	 - M: ng_rule_t - Adaptation:  No action
+96478	 - 1_367	 - juknousi	 - A: dpi_req_msg_t___request___dpi_keepalive - Adaptation:  Default value 0
+96328	 - 1_366	 - ehietala	 - A:added quota_holding_time to subs_charging_data_t - Adaptation:  No action
+96077	 - 1_365	 - pelekano	 - D: DC_SC_MSG_S6B_ASA_ERR - Adaptation:  No action
+96066	 - 1_364	 - koltsida	 - A: CM_TLV_ID_AUTH_SESSION_STATE_C - Adaptation:  No action
+95833	 - 1_363	 - finocchi	 - D: removed SC_REPORTER_CREATE_BEARER_REQ, SC_REPORTER_UPDATE_BEARER_REQ, SC_REPORTER_DELETE_BEARER_REQ, SC_REPORTER_POLL_BEARER_RESP. We send always SC_REPORTER_SESSION_BEARER_REQ now with a flag inside indicating the msg trigger - Adaptation:  No action
+95801	 - 1_362	 - pelekano	 - M: DC_SC_MSG_CCR_ACK to DC_SC_MSG_CCR_ACK_OBSOLETE - Adaptation:  No action, just marked as obsolete
+95801	 - 1_362	 - pelekano	 - A: DC_SC_MSG_ACK - Adaptation:  No action
+95801	 - 1_362	 - pelekano	 - D: DC_SC_MSG_S6B_ERR_MSG/DC_SC_MSG_S6B_ACK - Adaptation:  No action
+95750	 - 1_361	 - tjlindqv	 - A: GWUP_SC_SET_FILTERS_REQ - Adaptation:  No action
+95750	 - 1_361	 - tjlindqv	 - A: GWUP_SC_SET_FILTERS_RESP - Adaptation:  No action
+95750	 - 1_361	 - tjlindqv	 - M: gwup_sc_modify_bearer_resp_t - Adaptation:  No action
+95474	 - 1_360	 - kimaenpa	 - M: changd usu table from 2 to 4 in dia_mscc_t - Adaptation:  No action
+95400	 - 1_359	 - javainol	 - A: new field to ng_rule_t, qos - Adaptation:  Default value 0
+95386	 - 1_358	 - ujmarkvi	 - gtpc_create_pdp_ctxt_req_t___tft___rule_id - Adaptation:  No action
+95339	 - 1_357	 - koltsida	 - A: CM_TLV_ID_AUTH_REQUEST_TYPE_C - Adaptation:  No action
+95033	 - 1_356	 - toweckst	 - Padding bytes removed from sc_subscriber_ha_t, sc_session_ha_t, sc_bearer_ha_t - Adaptation:  No action
+94903	 - 1_355	 - travlos	 - M: dpi_result_t uint64_t gtpu_ext_prof_id:8 - Adaptation:  Default value 0
+94892	 - 1_354	 - pelekano	 - A: DC_SC_MSG_S6B_ACK/DC_SC_MSG_S6B_ASA_ERR - Adaptation:  No action
+94479	 - 1_353	 - kouzmitc	 - M:moved quota_consumption_time from charging_data_t to charging_pool_t - Adaptation:  datastructure adaptation needed
+94420	 - 1_352	 - pelekano	 - A:DC_SC_MSG_S6B_ERR_MSG A:CM_TLV_ID_S2_PGW_ADDRESS - Adaptation:  No action
+94376	 - 1_351	 - pelekano	 - D:DC_SC_MSG_S6B_ERR_MSG D:CM_TLV_ID_S2_PGW_ADDRESS - Adaptation:  No action
+94369	 - 1_350	 - pelekano	 - A:DC_SC_MSG_S6B_ERR_MSG A:CM_TLV_ID_S2_PGW_ADDRESS - Adaptation:  No action
+93653	 - 1_349	 - kouzmitc	 - M:moved last_activity parameter before quota_granted_time parameter in charging_pool_t. Modified qvolume_multiplier,qvolume_multiplier_ul,qvolume_multiplier_dl,qhits_multiplier,qtime_multiplier from 64 bits to 32 bits in charing_data_t - Adaptation:  datastructure adaptation needed
+93553	 - 1_348	 - kouzmitc	 - M:moved quota_holding_time from charging_data_t to charging_pool_t - Adaptation:  datastructure adaptation needed
+93553	 - 1_348	 - kouzmitc	 - A:added new parameter last_activity to charging_pool_t - Adaptation:  datastructure adaptation needed
+93233	 - 1_347	 - kimaenpa	 - M: moved volume_threshold and time_threshold from charging_data_t to charging_pool_t - Adaptation:  datastructure adaptation needed
+93033	 - 1_346	 - pelekano	 - A: sc_session_isupld_t___dia_s6b_sess_id_t - Adaptation:  Default value 0
+93033	 - 1_346	 - pelekano	 - M: Renamed gx_profile_id to dia_profile_id in structure dia_session_ha_sync_t - Adaptation:  No action
+92974	 - 1_345	 - saarinen	 - M: modified struct ng_filter_t member variable id - Adaptation:  In old version of ng_filter_t struct, member variable id was of type u8 id:4. In later version, id is type of ng_filter_id_t.To convert id from old struct to new struct: ng_filter_t old_filter; ng_filter_t new_filter; new_filter.id.gtpc_id_pres = 1;new_filter.id.gtpc_id = old_filter.id;new_filter.id.dia_filter_id_pres = 0;new_filter.id.dia_filter_id = 0;
+92851	 - 1_340	 - toshniwa	 - M: Modified ng_pco_t token type to token_str512_t - Adaptation:  No action
+92620	 - 1_343	 - liakaris	 - M: Added new field in SC_REPORTER_SESSION_BEARER_REQ - Adaptation:  No action
+92614	 - 1_342	 - spgupta	 - M: moved the strcture dia_flow_information_t from dia_client_sc_if_srlz.h to dia_client_types_srlz.h. A: A new structure ng_filter_id_t added to ng_types_srlz.h - Adaptation:  NA
+92592	 - 1_341	 - tsintzir	 - M: The IP address allocation type (addr_alloc_type) in struct sc_ip_connection_t has been replaced by 2 new separate types (addr_alloc_type_ipv4/addr_alloc_type_ipv6) - Adaptation:  N/A
+91386	 - 1_339	 - ashijain	 - A: added GWUP_SC_ICMP_ERROR_IND - Adaptation:  No action
+91339	 - 1_338	 - javainol	 - D: bcm parameter from subscriber ha structure. A: New subscriber flag in subscriber.ha.flags (7th bit) - Adaptation:  Default value zero
+91223	 - 1_337	 - javainol	 - A: new parameter to sc_subscriber_t ha structure (bcm). - Adaptation:  no action
+91013	 - 1_336	 - melomaa	 - A: SC_HA_PROC_WARM_SLOWLOOP_HOST_BASED_ROUTING and SC_HA_PROC_SLOWLOOP_HOST_BASED_ROUTING - Adaptation:  no action
+90376	 - 1_335	 - gazelas	 - A: add new parameter seq_off in gw_pssi_general_t - Adaptation:  No action
+90097	 - 1_334	 - msuhonen	 - fixed layout tool bug - Adaptation:  no action
+89944	 - 1_333	 - koivisto	 - M: dia_common_priv.h, dia_client_sc_if_srlz.h, dia_client_types_srlz.h, sc_session_srlz.h - Adaptation:  No adaptation needs. Revert of r89912 due red sanity (causing huge memory consumption problem in Session_ctrl)
+89912	 - 1_332	 - spgupta	 - A: bear_filter structure defined sc_session_srlz.h - Adaptation:  N/A
+89813	 - 1_331	 - atsourti	 - A: GWUP_SIP_SERVER_DB_GETTING_FULL_IND - Adaptation:  No action
+89506	 - 1_330	 - notkola	 - A: New message type GWUP_SC_CHARGING_DEL_REQ - Adaptation:  N/A
+89302	 - 1_329	 - atsourti	 - A: GWUP_VOIP_CALLS_DB_GETTING_FULL_IND - Adaptation:  No action
+89265	 - 1_328	 - lledoviv	 - A: GWUP_AR_RESP - Adaptation:  No action
+89262	 - 1_327	 - liakaris	 - A: SC_REPORTER_SESSION_BEARER_REQ - Adaptation:  No action
+89197	 - 1_326	 - archagge	 - A: new parameter tunnel_cfg_prof_id in ng_corp_tunnel_t - Adaptation:  default value zero
+89135	 - 1_325	 - koltsida	 - M: LIBCLI_IKE_CTRL_PHASE1_STATUS_MSG - Adaptation:  No action
+89099	 - 1_324	 - saarinen	 - encoding scheme - Adaptation:  No action
+88972	 - 1_323	 - koltsida	 - M: ipsec_phase1_status_t - Adaptation:  No action
+88967	 - 1_322	 - koltsida	 - M: ipsec_phase1_status_t - Adaptation:  No action
+88860	 - 1_321	 - fasourak	 - A: GWUP_REPORTER_VOIP_REPORT_REQ - Adaptation:  No action
+88860	 - 1_321	 - fasourak	 - A: GWUP_REPORTER_VOIP_REPORT_RESP - Adaptation:  No action
+88596	 - 1_320	 - dkonstan	 - A: dpi_request_t uint64_t voiprep :1 - Adaptation:  No action
+88446	 - 1_319	 - dshrivas	 - A: dia_cc_request_t pkt_flt_op - Adaptation:  No action
+88299	 - 1_318	 - foukaras	 - A: SC_REPORTER_COLLECT_SES_BEAR_STATS_STATE_MSG - Adaptation:  No action
+88256	 - 1_317	 - koltsida	 - A: CLI_IKE_CTRL_VPN_PROFILE_INFO_REQ - Adaptation:  No action
+88256	 - 1_317	 - koltsida	 - A: CLI_IKE_CTRL_VPN_PROFILE_INFO_RESP - Adaptation:  No action
+88256	 - 1_317	 - koltsida	 - A: CLI_SC_VPN_TUNNEL_STATE_REQ - Adaptation:  No action
+88256	 - 1_317	 - koltsida	 - A: CLI_SC_VPN_TUNNEL_STATE_RESP - Adaptation:  No action
+87786	 - 1_316	 - pelekano	 - A: sc_session_isupld_t___vpn_profile_id - Adaptation:  Default value 0
+87214	 - 1_315	 - jonkorho	 - A: cpm_sc_msg_host_route_start_req_t___secondary_vrf and cpm_sc_msg_host_route_stop_req_t___secondary_vrf - Adaptation:  Default value INVALID_VRF_ID (0xffff)
+87139	 - 1_314	 - koltsida	 - A: SC_IKE_CTRL_MSG_VPN_STATE_REPORT - Adaptation:  No action
+87139	 - 1_314	 - koltsida	 - A: SC_IKE_CTRL_MSG_VPN_STATE_ACK - Adaptation:  No action
+87139	 - 1_314	 - koltsida	 - A: SC_IKE_CTRL_MSG_VPN_STATE_REQUEST - Adaptation:  No action
+87139	 - 1_314	 - koltsida	 - A: SC_IKE_CTRL_MSG_VPN_STATE_RESPONSE - Adaptation:  No action
+87055	 - 1_313	 - garwa	 - A: GWUP_PROXY_SC_FP_CPU_LOAD_NOTIFY, gwup_proxy_sc_fastpath_cpuload_notify_t - Adaptation:  No action
+86820	 - 1_312	 - lbouloug	 - A: SC_HA_PROC_SLOWLOOP_VPN_PROF A: SC_HA_PROC_WARM_SLOWLOOP_VPN_PROF - Adaptation:  No action
+86756	 - 1_311	 - spgupta	 - A: Synchronization of MK data added after switchover - Adaptation:  N/A
+86724	 - 1_310	 - lledoviv	 - A: CLI_FEATUREMEM_ENABLE_REQ A: CLI_FEATUREMEM_ENABLE_RESP - Adaptation:  No action
+86688	 - 1_309	 - pelekano	 - A: SC_HA_PROC_SLOWLOOP_VPN_ALL A: SC_HA_PROC_WARM_SLOWLOOP_VPN_ALL - Adaptation:  No action
+86321	 - 1_308	 - ujmarkvi	 - A: gtpcv2_bearer_context_t___gtpcv2_fteid_4_instance (instances 4 - 7) - Adaptation:  No action
+86000	 - 1_307	 - jonkorho	 - A: sc_session_isupld_t, connection, u, ip: new field route_advertised - Adaptation:  Default value zero
+85594	 - 1_306	 - juhhytti	 - encoding sceme - Adaptation:  LVNCD8ChargingSyncChange
+85337	 - 1_305	 - javainol	 - D: gtpcv2_bearer_tft_t A: u8 - Adaptation:  Default value 0
+85202	 - 1_304	 - melomaa	 - A: cpm_service_t, HA_SYNC_TAG_HOST_SERVICE, HA_SYNC_REQUEST_TAG_HOST_SERVICE - Adaptation:  N/A
+84585	 - 1_303	 - kainonen	 - Modified gtpcv2_create_session_request_t - Adaptation:  No action
+84385	 - 1_302	 - juhhytti	 - encoding sceme - Adaptation:  LVNCD8ChargingSyncChange
+84313	 - 1_301	 - juhhytti	 - encoding sceme - Adaptation:  LVNCD8ChargingSyncChange
+84116	 - 1_299	 - aalhonie	 - A: HA_SYNC_TAG_BEARER_FILTER_BUF - Adaptation:  No action
+84075	 - 1_298	 - szerepi	 - A: CM_TLV_ID_BEARER_ID_C - Adaptation:  No action
+83410	 - 1_297	 - notkola	 - A/D/M: charging data and pool data syncronization structures changed - Adaptation:  LVNCD8ChargingSyncChange
+83297	 - 1_296	 - dshrivas	 - A:dia_charging_rule_definition_t - Adaptation:  No action
+83297	 - 1_296	 - dshrivas	 - A:dia_flow_information_t - Adaptation:  No action
+83297	 - 1_296	 - dshrivas	 - A:dia_flows_t - Adaptation:  No action
+83297	 - 1_296	 - dshrivas	 - A:dia_flow_number_t - Adaptation:  No action
+83176	 - 1_295	 - kalyvas	 - M:ipc_encoding_scheme.conf - Adaptation:  No action
+82988	 - 1_293	 - spanara	 - M:ipc_encoding_scheme.conf - Adaptation:  No action
+82941	 - 1_292	 - javainol	 - D: sc_session_t structure ha.dti_flags A: sc_bearer_t structure ha.dti_flag - Adaptation:  Session structure dti_flags moved to bearer. Adaptation needed. (Old to new) session dti_flags value must be set to bearer. (New to old) Default bearer (bearer id stored to session) value must be set to session dti_flags.
+82894	 - 1_291	 - helokunn	 - M: synchronisation tag added - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_msg_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_msg_ack_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_msg_header_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_if_header_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_cdrcollector_if_header_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_common_header_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_format_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_cdr_format_version_t - Adaptation:  No action
+82882	 - 1_290	 - spanara	 - A:libcdr_gtpp_if_header_t - Adaptation:  No action
+82556	 - 1_289	 - kalyvas	 - M:cm_tlv_ids_srlz.h - Adaptation:  No action
+82439	 - 1_288	 - r1taylor	 - M: MAX_FILTERS - Adaptation:  No action
+82384	 - 1_287	 - notkola	 - A: New strctures sync_charging_data_t and sync_charging_pool_t - Adaptation:  No action
+82323	 - 1_286	 - javainol	 - M: libsync_item_hdr_t - Adaptation:  No action
+82308	 - 1_285	 - javainol	 - M: HA_SYNC_TAG_ACCT_INTERIM_TMR - Adaptation:  Radius Interim timer coming from old version needs to have bearer id replacing session id. Radius Interim timer sent to old version needs to have session id instead of bearer_id. Similar adaptation that has been made for CDR timer in LVN change 1_186 (svn revision 70056).
+82067	 - 1_284	 - juhhytti	 - A: ref count - Adaptation:  LVNCD8ChargingSyncChange
+81651	 - 1_283	 - notkola	 - D: removed parameter chargingdb_id from structure gw_pssi_general_t - Adaptation:  No action
+81516	 - 1_282	 - melgosa	 - sc/fp i/f D: next_tariff_collect_time - Adaptation:  N/A
+81490	 - 1_281	 - dpadhi	 - A,M:added,modified structure - Adaptation:  N/A
+81488	 - 1_280	 - ujmarkvi	 - A: HA_SYNC_TAG_BEARER_FILTER_BUF tag - Adaptation:  http://sky.dev.salab.noklab.net/~msuhonen/ng/bearer_filters_in_warmup.txt
+81386	 - 1_279	 - kouzmitc	 - A: future_tariff_time A: collect_time_seconds_offset - Adaptation:  N/A
+80836	 - 1_279	 - juhhytti	 - A/D: charing_data and charging_pool - Adaptation:  LVNCD8ChargingSyncChange
+80715	 - 1_278	 - ashijain	 - A,M,D:added,modified,deleted structures and internal message types - Adaptation:  http://viini.dev.salab.noklab.net/twiki/bin/view/SA/LVNAffectingChangesTable80715
+80445	 - 1_277	 - jonkorho	 - A: sc_session_isupld_t, connection (new field dhcp_server_id - Adaptation:  Default value 0
+80402	 - 1_276	 - spanara	 - A: GTPP_CDR_COLLECTOR_RECEIVE_CDR - Adaptation:  No Action
+80402	 - 1_276	 - spanara	 - A: GTPP_CDR_COLLECTOR_ACK - Adaptation:  No Action
+80353	 - 1_275	 - notkola	 - M: Charging Characteristics value changes - Adaptation:  No action
+80314	 - 1_274	 - psourlis	 - A: GWUP_EMAIL_TRANSACTIONS_DB_GETTING_FULL_IND - Adaptation:  No Action
+80025	 - 1_273	 - ujmarkvi	 - A: brought back 1_270: ujmarkvi A: libsync_hdr_t___seqno - Adaptation:  No action
+79995	 - 1_272	 - helokunn	 - timer synchronisation in session control - Adaptation:  no action
+79797	 - 1_271	 - ujmarkvi	 - D: libsync_hdr_t___seqno - Adaptation:  NO action
+79775	 - 1_269	 - psourlis	 - A: GWUP_REPORTER_EMAIL_TRANSACTIONS_REPORT_REQ - Adaptation:  No Action
+79775	 - 1_269	 - psourlis	 - A: GWUP_REPORTER_EMAIL_TRANSACTIONS_REPORT_RESP - Adaptation:  No Action
+79753	 - 1_268	 - nanou	 - M: dpi_result_t uint64_t dns_sniff_needed - Adaptation:  Default value 0
+79519	 - 1_267	 - keezhpat	 - A:GWUP_SC_SESSION_FILTERS_REQ, GWUP_SC_SESSION_FILTERS_RESP - Adaptation:  No action
+79515	 - 1_266	 - dshrivas	 - A:tx_exp_behavior in pcrf_conn_info_t - Adaptation:  Default value zero
+79397	 - 1_265	 - juhhytti	 - C: gwup_charging_sync_data_t___subs_charging_data___rg_tbl___0______pool_id - Adaptation:  Can be copied as old 16 bits fits in to new 32 bits
+79397	 - 1_265	 - juhhytti	 - C: gwup_charging_sync_data_t___subs_charging_data___rg_tbl___0______reference_ind - Adaptation:  Can be copied as old 8 bits fits in to new 32 bits
+79397	 - 1_265	 - juhhytti	 - C: gwup_charging_sync_data_t___subs_charging_data___rg_tbl___0______bytes_ul - Adaptation:  32 bits - 32 bits
+79397	 - 1_265	 - juhhytti	 - C: gwup_charging_sync_data_t___subs_charging_data___rg_tbl___0______bytes_dl - Adaptation:  32 bits - 32 bits
+79336	 - 1_264	 - benis	 - A: GWUP_PROXY_WARMUP_MSG - Adaptation:  No action
+79316	 - 1_263	 - mentakis	 - M:SC_REPORTER_POLL_BEARER_REQ - Adaptation:  No action
+79316	 - 1_263	 - mentakis	 - M:SC_REPORTER_CREATE_BEARER_REQ - Adaptation:  No action
+79316	 - 1_263	 - mentakis	 - M:SC_REPORTER_UPDATE_BEARER_REQ - Adaptation:  No action
+79316	 - 1_263	 - mentakis	 - M:SC_REPORTER_DELETE_BEARER_REQ - Adaptation:  No action
+79316	 - 1_263	 - mentakis	 - M:SC_REPORTER_POLL_BEARER_RESP - Adaptation:  No action
+79127	 - 1_263	 - ujmarkvi	 - A: CM_TLV_ID_SESS_START_IND_C - Adaptation:  No action
+79098	 - 1_262	 - melgosa	 - A: flags to sc_change_of_service_condition_t - Adaptation:  Default value zero
+79040	 - 1_261	 - mentakis	 - M:SC_REPORTER_POLL_BEARER_REQ - Adaptation:  No action
+79040	 - 1_261	 - mentakis	 - M:SC_REPORTER_CREATE_BEARER_REQ - Adaptation:  No action
+79040	 - 1_261	 - mentakis	 - M:SC_REPORTER_UPDATE_BEARER_REQ - Adaptation:  No action
+79040	 - 1_261	 - mentakis	 - M:SC_REPORTER_DELETE_BEARER_REQ - Adaptation:  No action
+79040	 - 1_261	 - mentakis	 - M:SC_REPORTER_POLL_BEARER_RESP - Adaptation:  No action
+78964	 - 1_260	 - vibasava	 - D: CDR_COLLECTOR_SC_NODE_IP_RECV - Adaptation:  No action
+78773	 - 1_259	 - mentakis	 - A:SC_REPORTER_POLL_BEARER_REQ - Adaptation:  No action
+78773	 - 1_259	 - mentakis	 - A:SC_REPORTER_CREATE_BEARER_REQ - Adaptation:  No action
+78773	 - 1_259	 - mentakis	 - A:SC_REPORTER_UPDATE_BEARER_REQ - Adaptation:  No action
+78773	 - 1_259	 - mentakis	 - A:SC_REPORTER_DELETE_BEARER_REQ - Adaptation:  No action
+78773	 - 1_259	 - mentakis	 - A:SC_REPORTER_POLL_BEARER_RESP - Adaptation:  No action
+78691	 - 1_258	 - finocchi	 - A: GWUP_REPORTER_COLLECT_SUB_APP_STATS_STATE_MSG - Adaptation:  No action
+78679	 - 1_257	 - mamalis	 - A: GWUP_DNS_DELAYED_DNS_RES - Adaptation:  No action
+78665	 - 1_256	 - sumansah	 - A: dpi_req_msg_t___request___rulebases___rulebases___10___ to dpi_req_msg_t___request___rulebases___rulebases___19___ - Adaptation:  Legacy implementation would receive only the first 10 rulebases instead of all
+78665	 - 1_256	 - sumansah	 - A: sc_session_isupld_t___rulebases___rulebases___rulebases___10___ to sc_session_isupld_t___rulebases___rulebases___rulebases___19___ - Adaptation:  Legacy implementation would receive only the first 10 rulebases instead of all
+78665	 - 1_256	 - sumansah	 - A: sc_session_isupld_t___rulebases___rulebase_time___rulebase_act_time___10___ to sc_session_isupld_t___rulebases___rulebase_time___rulebase_act_time___19___ - Adaptation:  Legacy implementation would receive only the first 10 rulebases instead of all
+78665	 - 1_256	 - sumansah	 - A: sc_session_isupld_t___rulebases___rulebase_time___rulebase_dec_time___10___ to sc_session_isupld_t___rulebases___rulebase_time___rulebase_dec_time___19___ - Adaptation:  Legacy implementation would receive only the first 10 rulebases instead of all
+78645	 - 1_255	 - mfoukara	 - D: GWUP_TRAFFICA_SUB_APP_REPORT - Adaptation:  No action
+78634	 - 1_254	 - edimiski	 - A: dpi_req_msg_t___request___emailtrans - Adaptation:  Default value 0
+78607	 - 1_253	 - javainol	 - M: session-ha.radius.start_send - Adaptation:  Needed
+78589	 - 1_252	 - juknousi	 - A: GWUP_SC_GX_REPORTING_REQ A:GWUP_SC_GX_REPORTING_RESP - Adaptation:  No action
+78547	 - 1_251	 - georgaka	 - M: dpi_request_t - Adaptation:  Default value 0
+78526	 - 1_250	 - benis	 - A: GWUP_PROXY_SYNC_MSG - Adaptation:  No Action
+78456	 - 1_249	 - juhhytti	 - D: gwup_charging_sync_data_t___subs_charging_data___cc_req_seq - Adaptation:  Can be ignored
+78456	 - 1_249	 - juhhytti	 - D: gwup_charging_sync_data_t___subs_charging_data___pool_tbl___0______action - Adaptation:  Can be ignored
+78456	 - 1_249	 - juhhytti	 - D: gwup_charging_sync_data_t___subs_charging_data___pool_tbl___0______pool_rg_bitmask - Adaptation:  Can be ignored
+78409	 - 1_248	 - sotiriou	 - A: GWUP_POP3_SERVER_DB_GETTING_FULL_IND - Adaptation:  No Action
+78169	 - 1_247	 - dkonsrtan	 - M: dpi_request uint64_t pop3serv - Adaptation:  No action
+77951	 - 1_246	 - spgupta	 - A: DC_SC_MSG_DIA_SESS_CANCEL_INFO, DC_SC_MSG_CCR_ACK - Adaptation:  N/A
+77905	 - 1_245	 - sabramar	 - A:DHCP_SIG_SC_ERR_RESPONSE - Adaptation:  No Action
+77905	 - 1_245	 - sabramar	 - A:dhcp_sig_sc_err_resp_t - Adaptation:  Default value 0
+77905	 - 1_245	 - sabramar	 - M:dhcp_sig_sc_internal_ack_t - Adaptation:  Default value 0
+77857	 - 1_244	 - sotiriou	 - A: dpi_request uint64_t pop3_serv - Adaptation:  Default value 0
+77828	 - 1_243	 - kouzmitc	 - M:parameter name changed from last_notif to quota_granted_time in charging_pool_t - Adaptation:  Default value 0
+77774	 - 1_242	 - javainol	 - D: dia_sess_user_data_t - Adaptation:
+77712	 - 1_241	 - spgupta	 - A: dia_sess_user_data_t - Adaptation:
+77686	 - 1_240	 - liakaris	 - A: SC_REPORTER_SC_DATA_REQ - Adaptation:  No action
+77670	 - 1_239	 - sumansah	 - A: dpi_res_msg_t___result___report_id - Adaptation:  Default value 0xFFFFFFFF
+77669	 - 1_238	 - kimaenpa	 - A: CM_TLV_ID_SERVICE_IDENTIFIER_C - Adaptation:  No action
+77587	 - 1_237	 - mfoukara	 - A: GWUP_TRAFFICA_SUB_APP_REPORT - Adaptation:  No action
+77559	 - 1_236	 - mfoukara	 - D: GWUP_TRAFFICA_SUB_APP_REPORT - Adaptation:  No action
+77465	 - 1_235	 - sotiriou	 - A: GWUP_REPORTER_POP3_SERVER_REPORT_REQ - Adaptation:  No Action
+77465	 - 1_235	 - sotiriou	 - A: GWUP_REPORTER_POP3_SERVER_REPORT_RESP - Adaptation:  No Action
+77462	 - 1_234	 - janiwara	 - M: DHCP_SIG_SC_ALLOC_RESPONSE - Adaptation:  No Action
+77462	 - 1_234	 - janiwara	 - D: DHCP_SIG_SC_RENEW_RESPONSE - Adaptation:  No Action
+77462	 - 1_234	 - janiwara	 - M: dhcp_msg_type_t - Adaptation:  Default value 0
+77450	 - 1_233	 - liakaris	 - M: GWUP_SC_CREATE_BEARER_RESP - Adaptation:  Default value 0
+77333	 - 1_232	 - sabramar	 - A:added new structures and internal message types - Adaptation:  http://viini.dev.salab.noklab.net/twiki/bin/view/SA/LVNAffectingChangesTable77333
+76880	 - 1_231	 - saarinen	 - modified ng_rule_t struct - Adaptation:  No action
+76784	 - 1_230	 - georgaka	 - A: GWUP_DNS_CACHE_UPDATE_REQ - Adaptation:  No action
+76784	 - 1_230	 - georgaka	 - D: GWUP_CONFIG_DNS_SNIF_REQ - Adaptation:  No action
+76784	 - 1_230	 - georgaka	 - D: GWUP_CONFIG_DNS_SNIF_RES - Adaptation:  No action
+76784	 - 1_230	 - georgaka	 - D: GWUP_CONFIG_DNS_SNIF_NOK - Adaptation:  No action
+76387	 - 1_229	 - siligeri	 - A: conn_info_t - Adaptation:  Default value 0
+76382	 - 1_228	 - toweckst	 - ng_ue_bearer_id_t changed from u16 to u8 - Adaptation:  lowest byte from u16 copied to u8
+76324	 - 1_227	 - koropoul	 - M: gwup_reporter_sub_app_report_msg_t - Adaptation:  No action
+76239	 - 1_226	 - koropoul	 - M: change the conditions for sending gwup_reporter_sub_app_report_msg_t - Adaptation:  No action
+76127	 - 1_225	 - helokunn	 - A: CPM_SC_MSG_HOST_ROUTE_START_REQ - Adaptation:  No Action
+76127	 - 1_225	 - helokunn	 - A: CPM_SC_MSG_HOST_ROUTE_START_RSP - Adaptation:  No Action
+76127	 - 1_225	 - helokunn	 - A: CPM_SC_MSG_HOST_ROUTE_STOP_REQ - Adaptation:  No Action
+76127	 - 1_225	 - helokunn	 - A: CPM_SC_MSG_HOST_ROUTE_STOP_RSP - Adaptation:  No Action
+75954	 - 1_224	 - juhhytti	 - D:GWUP_SC_CHARGING_INTERIM_REPORT - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_QUER_REQ - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_QUER_RESP - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_RAR_REQ - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_RAR_RESP - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_START_REQ - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_START_RESP - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_TRIG_REQ - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_TRIG_RESP - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_UPDATE_REQ - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_UPDATE_RESP - Adaptation:  No action
+75954	 - 1_224	 - juhhytti	 - A: GWUP_SC_CHARGING_UPDATE_UPD - Adaptation:  No action
+75846	 - 1_223	 - tietavai	 - A:L2TP_CLIENT_SC_MSG_SEND_STOP_CCN - Adaptation:  No action
+75487	 - 1_222	 - mamalis	 - A: GWUP_CONFIG_DNS_SNIF_REQ - Adaptation:  No Action
+75487	 - 1_222	 - mamalis	 - A: GWUP_CONFIG_DNS_SNIF_RES - Adaptation:  No Action
+75487	 - 1_222	 - mamalis	 - A: GWUP_CONFIG_DNS_SNIF_NOK - Adaptation:  No Action
+74868	 - 1_221	 - saarinen	 - modified ng_filter_t struct - Adaptation:  No action
+74615	 - 1_219	 - kimaenpa	 - added service_id to dia_mscc_t - Adaptation:  No action
+74585	 - 1_218	 - saarinen	 - renamed struct ng_tft_t as ng_rule_t - Adaptation:  No action
+74541	 - 1_217	 - janiwara	 - A:GTPCV2_SC_REMOVE_DB_ENTRY - Adaptation:  No action
+74541	 - 1_217	 - janiwara	 - gtpcv2_triggered_cmd_msg_t added to gtpcv2_modify_bearer_command_t. - Adaptation:  Default value zero
+74541	 - 1_217	 - janiwara	 - Added gtpcv2_sig_remove_db_entry_t - Adaptation:  Default value zero
+74437	 - 1_216	 - aalhonie	 - D: dummy parameter - Adaptation:  No action
+74341	 - 1_215	 - aalhonie	 - M: SC_HA_PROC_DELETED D: HA_SYNC_TAG_SESSION A: HA_SYNC_TAG_BEARER; D: HA_SYNC_TAG_CDR_TIMER D: HA_SYNC_TAG_ACCT_INTERIM_TMR D: HA_SYNC_TAG_APN - Adaptation:  In delete procedure, Session tag and header (no data) should be mapped to bearer tag and header (no data). Delete uses now bearer id instead of session id. Other removed tags need no mapping. Note: tags are removed from sync_type SC_HA_PROC_DELETE only.
+74306	 - 1_214	 - juhhytti	 - D: TRACE_INFO_ENABLE - Adaptation:  No action
+74306	 - 1_214	 - juhhytti	 - D: TRACE_INFO_DISABLE - Adaptation:  No action
+74217	 - 1_213	 - juhhytti	 - A: TRACE_INFO_ENABLE - Adaptation:  No action
+74217	 - 1_213	 - juhhytti	 - A: TRACE_INFO_DISABLE - Adaptation:  No action
+74211	 - 1_212	 - juhhytti	 - D: TRACE_INFO_ENABLE - Adaptation:  No action
+74211	 - 1_212	 - juhhytti	 - D: TRACE_INFO_DISABLE - Adaptation:  No action
+74074	 - 1_211	 - sotiriou	 - A: GWUP_IMSI_DOMAIN_DB_GETTING_FULL_IND - Adaptation:  N/A
+73896	 - 1_210	 - saarinen	 - A: CM_TLV_ID_TFT_C - Adaptation:  No action (?)
+73881	 - 1_209	 - assamal	 - M: del_imsi_entry,del_msisdn_entry, del_imei_entry for del_its_tree_t - Adaptation:  Default value is 0
+73699	 - 1_208	 - kainonen	 - Modified gtpcv2_create_session_request_t - Adaptation:  Default value is FALSE (0)
+73686	 - 1_207	 - javainol	 - M: gtpc_create_pdp_ctxt_req_t - Adaptation:  No action
+73571	 - 1_206	 - tzoulis	 - D: license validation messages - Adaptation:  No action
+73128	 - 1_205	 - javainol	 - M: gtpcv2_message_t structure - Adaptation:  http://viini.dev.salab.noklab.net/twiki/bin/view/SA/FC085_000488_2
+72981	 - 1_204	 - sgangula	 - M: CM_TLV_ID_GTPV2_BEARER_CONTEXT_C - Adaptation:  N/A
+72571	 - 1_203	 - msuhonen	 - Added load-balanced gtpc msgs to be followed by tool. Also fixed sync-item-hdr-rule for LIE. Also merged some changes from branches, which causes some more types to be followed. - Adaptation:  No action
+72351	 - 1_202	 - melomaa	 - A: GWUP_AR_REQ - Adaptation:  No action
+72307	 - 1_201	 - melomaa	 - D: GWUP_AR_REQ - Adaptation:  No action
+72301	 - 1_200	 - melomaa	 - A: GWUP_AR_REQ - Adaptation:  No action
+72232	 - 1_199	 - melomaa	 - D: GWUP_AR_REQ - Adaptation:  No action
+72223	 - 1_198	 - melomaa	 - A: GWUP_AR_REQ - Adaptation:  No action
+72025	 - 1_197	 - mfoukara	 - A: GWUP_TRAFFICA_SUB_APP_REPORT - Adaptation:  No action
+71717	 - 1_196	 - papakons	 - reverted 71710 changes - Adaptation:  No action
+71710	 - 1_195	 - papakons	 - license validation removed - Adaptation:  No action (reverted in 71717)
+71368	 - 1_194	 - saarinen	 - A: sc_session_ha.default_bearer_id - Adaptation:  added default bearer id
+71190	 - 1_193	 - notkola	 - A: New tlv token_u32: PDP Context Type - Adaptation:  Token u32. Pres = 1, val = 0
+70612	 - 1_192	 - siligeri	 - A: gxx_new_sess_act_t - Adaptation:  Default value 0
+70595	 - 1_191	 - javainol	 - A: CM_TLV_ID_GTPV2_BEARER_CONTEXT_TO_BE_MODIFIED_C - Adaptation:  No action
+70595	 - 1_191	 - javainol	 - A: CM_TLV_ID_GTPV2_BEARER_CONTEXT_TO_BE_REMOVED_C - Adaptation:  No action
+70593	 - 1_190	 - saarinen	 - A: dia_session_ha_sync_t.cp_bearer_id - Adaptation:  added bearer id to dia session
+70289	 - 1_189	 - saarinen	 - A: sc_bearer_ha_t .dia_gy_sess_id_t D:sc_session_ha.dia_gy_sess_id_t - Adaptation:  moved dia_gy_sess_id_t from session to bearer
+70158	 - 1_188	 - assamal	 - Modified licc_libc_notify_actint_req_body_t. D: licc_libc_activation_msg_t - Adaptation:
+70070	 - 1_187	 - aalhonie	 - M: libsync_item_hdr_t - Adaptation:  No action
+70056	 - 1_186	 - aalhonie	 - M: HA_SYNC_TAG_CDR_TIMER - Adaptation:  CDR timer coming from old version needs to have bearer id replacing session id. CDR timer sent to old version needs to have session id instead of bearer_id.
+69846	 - 1_185	 - siligeri	 - D: conn_fail_ctx_new_t - Adaptation:  Default value 0
+69755	 - 1_184	 - juknousi	 - A:_dpi_res_msg_t___result___sab_bypass___sab_bypass A:_dpi_res_msg_t___result___sab_bypass___sab_bypass_sequence_number - Adaptation:  default values 0
+69685	 - 1_183	 - alakujal	 - A: GTPCV2_SC_MODIFY_BEARER_FAILURE_IND - Adaptation:  N/A
+69644	 - 1_182	 - helokunn	 - D: dcm_cdr_format - Adaptation:  ignore, not used
+69644	 - 1_182	 - helokunn	 - A: cdr_format - Adaptation:  default value 0
+69575	 - 1_181	 - juknousi	 - A:_dpi_req_msg_t___request___flow_rule_id A:_dpi_res_msg_t___sab_bypass___sab_bypass A:_dpi_res_msg_t___sab_bypass___sab_bypass_sequence_number - Adaptation:  default values 0
+69204	 - 1_180	 - melgosa	 - A: fail_hand_cont to sc_change_of_service_condition_t - Adaptation:  Default value zero
+68933	 - 1_178	 - kouzmitc	 - A:sc_session_t ha.failover_continue - Adaptation:  N/A
+68798	 - 1_177	 - helokunn	 - A: dcm_cdr_format - Adaptation:  Default value 0
+68670	 - 1_176	 - juknousi	 - A: dpi_res_msg_t___result___postponed_charging_ul A: dpi_res_msg_t___result___postponed_charging_dl - Adaptation:  Default value 0
+68492	 - 1_175	 - sgangula	 - M: licc_libc_msg_type_t and other messages - Adaptation:  N/A
+68485	 - 1_174	 - iilia	 - A: GWUP_DOMAIN_DB_GETTING_FULL_IND - Adaptation:  N/A
+68482	 - 1_173	 - pelekano	 - A: New CM_TLV_ID_COUNTER_C tlv. - Adaptation:  N/A
+68455	 - 1_172	 - notkola	 - A: New parameter session_failover in pcrt_conn_info_t structure. - Adaptation:  N/A
+68331	 - 1_171	 - sgangula	 - M: Message IDs reordered - Adaptation:  N/A
+68304	 - 1_170	 - notkola	 - A: New parameter failover_action in pcrt_conn_info_t structure. - Adaptation:  N/A
+67883	 - 1_169	 - aprabhu	 - A: New parameter pe_protocol in dia_session_ha_t structure - Adaptation:  default value is ROLE_LTE (0).
+67709	 - 1_168	 - nsavolai	 - M: msg definition modified - Adaptation:  N/A
+67427	 - 1_167	 - kimaenpa	 - M: cc_msg_req_rg_t, added past_tariff_time - Adaptation:  N/A
+67319	 - 1_166	 - kimaenpa	 - M: subs_charging_data_t, flags moved to end of struct - Adaptation:
+67148	 - 1_165	 - kimaenpa	 - M: subs_charging_data_t, flags extended from u8 to u16 - Adaptation:  default value 0 for extension (for 8 MSB)
+67107	 - 1_164	 - jonkorho	 - A: LIBCONF_CP_STATUS_QUERY - Adaptation:  N/A
+67099	 - 1_163	 - jonkorho	 - A: LIBCONF_CP_STATUS_QUERY - Adaptation:  N/A
+67099	 - 1_163	 - jonkorho	 - M: LIBCONF_CP_CONF_STATUS_UPDATE_MSG, new parameter added: progress_ind - Adaptation:  1
+66697	 - 1_162	 - juknousi	 - A: dpi_req_msg_t___request___forward_rule_id - Adaptation:  default value 0
+66643	 - 1_161	 - sotiriou	 - A:dpi_request_t imsi - Adaptation:  default value 0
+66623	 - 1_160	 - toweckst	 - M: u32 session_create_time; --> time_t session_create_time; - Adaptation:
+66530	 - 1_159	 - subramac	 - M: lie_context_t : added new parameters to the structure - Adaptation:  default value 0
+66276	 - 1_158	 - jonkorho	 - M: VALIDATOR_CP_WRITE_PERMISSION_RESP: added new parameter to the message - Adaptation:  default value 0
+66098	 - 1_157	 - alakujal	 - A: GTPV2_MODIFY_BEARER_COMMAND - Adaptation:  N/A
+66098	 - 1_157	 - alakujal	 - A: GTPV2_MODIFY_BEARER_FAILURE_INDICATION - Adaptation:  N/A
+65940	 - 1_156	 - assamal	 - Modified licc_libc_notify_actint_req_body_t. A: licc_libc_activation_msg_t - Adaptation:  0
+65630	 - 1_155	 - subramac	 - M: MAX_CORRELATIONS - Adaptation:  N/A
+65381	 - 1_154	 - tsintzir	 - A: INTERFACE_TYPE_REPORTER_GWUP_SAB - Adaptation:  N/A
+65181	 - 1_153	 - ujmarkvi	 - A: sc_session_t ha.ra_index - Adaptation:  N/A
+65093	 - 1_152	 - juknousi	 - A: dpi_req_msg_t___request___rulebase_hash - Adaptation:  N/A
+65059	 - 1_151	 - r1taylor	 - A: dpi_req_msg_t ___saved_pssi___drop_pkt_after_chg - Adaptation:  N/A
+64580	 - 1_150	 - sotiriou	 - A: dpi_request_t top_domain - Adaptation:  default value 0
+64580	 - 1_150	 - sotiriou	 - A: GWUP_REPORTER_DOMAIN_REPORT_RESP - Adaptation:  N/A
+64486	 - 1_149	 - keezhpat	 - D: dpi_req_msg_t ___saved_pssi___drop_pkt_post_chg - Adaptation:  N/A
+64404	 - 1_148	 - nsavolai	 - gwup-sc interface msg renaming - Adaptation:  not needed as the interface is intra-node.
+64225	 - 1_147	 - dkonstan	 - A: GWUP_REPORTER_DOMAIN_REPORT_REQ - Adaptation:  N/A
+63851	 - 1_146	 - javainol	 - LVN criteria change (related to 1_143) - Adaptation:  n/a
+63789	 - 1_145	 - r1taylor	 - A: dpi_req_msg_t ___saved_pssi___drop_pkt_post_chg - Adaptation:  N/A
+63769	 - 1_144	 - msuhonen	 - LVN criteria change reverted (related to 1_143) - Adaptation:  n/a
+63735	 - 1_143	 - aalhonie	 - A: SC_HA_PROC_SAE_TO_P_HANDOVER - Adaptation:  Map SC_HA_PROC_SAE_TO_P_HANDOVER to SC_HA_PROC_CREATE
+63268	 - 1_142	 - javainol	 - D: new tlv (libsync msg HA_SYNC_TAG_SESSION_TIMER) - Adaptation:  N/A
+63268	 - 1_142	 - javainol	 - M: sc_session_t ha.creation_time - Adaptation:  N/A
+63268	 - 1_142	 - javainol	 - M: sc_session_t ha.expiry_time - Adaptation:  N/A
+63268	 - 1_142	 - javainol	 - M: sc_session_t ha.lifetime_index - Adaptation:  N/A
+63099	 - 1_141	 - ujmarkvi	 - D: sc_session_t, docomo_extensions - Adaptation:  Same than 1_139, except now for docomo extension.
+62878	 - 1_140	 - tinyysso	 - N/A - Adaptation:  N/A
+62543	 - 1_139	 - ujmarkvi	 - D: sc_session_t, tmo_cust_id - Adaptation:  SC HA: Old tmo_cust_id data is copied on SBY sc to a msg under a new tag HTTP_HDR_ENRICHMENT.
+62482	 - 1_138	 - javainol	 - new tlv (libsync msg HA_SYNC_TAG_SESSION_TIMER) - Adaptation:  Default value is monotonic time of node. See libtimer_i_get_current_time
+62482	 - 1_138	 - javainol	 - M: sc_session_t ha.expiry_time - Adaptation:  Time interpretation adaptation needed
+62482	 - 1_138	 - javainol	 - M: sc_session_t ha.lifetime_index - Adaptation:  N/A
+61716	 - 1_137	 - helne	 - M:dpi_req_msg_t (src_address-request.src_address), D:dpi_req_msg_t (request.timestamp, result.timestamp) - Adaptation:  timestamp = current time
+61683	 - 1_136	 - helokunn	 - - Adaptation:  not needed
+61386	 - 1_135	 - spanara	 - Encoding scheme for GTPP_SC_* msgs has been changed since those msgs are intra-node - Adaptation:  N/A
+60935	 - 1_134	 - nsavolai	 - attribute "packed" taken back. reverting 60895. - Adaptation:  not needed, reverting 60895.
+60895	 - 1_133	 - nsavolai	 - attribute "packed" removed. reverted in 60935. - Adaptation:  not needed, reverted in 60935.
+60892	 - 1_132	 - toweckst	 - gtpc_sig_sc_header added to gtpcv2_message_t and it replaces current internal header information, message_ids removed from separate messages - Adaptation:  One-to-one mapping for gtpc_sig_sc_header, fill message_ids to gtpc_sig_sc_header.
+60717	 - 1_131	 - subramac	 - D: LICC_LIBC_SYNC_REQ,LICC_LIBC_SYNC_RSP - Adaptation:  N/A
+60296	 - 1_130	 - saarinen	 - A: new tlv (libsync msg HA_SYNC_TAG_DCM_CUSTOM TLV) - Adaptation:  sc_docomo_extension_t to be moved from session tlv to own tlv
+60180	 - 1_129	 - kimaenpa	 - M: subs_charging_data_t, non_permission_time - Adaptation:  Default value 1
+59916	 - 1_128	 - juknousi	 - A: GWUP_SAB_AVAILABLE_IND, GWUP_NO_SAB_AVAILABLE_IND - Adaptation:  N/A
+59101	 - 1_127	 - juhhytti	 - D: next_quota_flush - Adaptation:  MIN(gwup_charging_sync_data_t___subs_charging_data___next_quota_flush ,gwup_charging_sync_data_t___subs_charging_data___next_interim_update) shall be assigned to gwup_charging_sync_data_t___subs_charging_data___next_interim_update
+58924	 - 1_126	 - kimaenpa	 - D: GWUP_SC_VOLUME_LIMIT_IND - Adaptation:  N/A
+58649	 - 1_125	 - juknousi	 - A: sc_bearer_isupld_t.sab_node - Adaptation:  Default value MAX_SAB_AVAILABILITY_TABLE_INDEX
+58368	 - 1_124	 - juknousi	 - A: dpi_req_msg_t, dpi_res_msg_t - Adaptation:  N/A
+57523	 - 1_120	 - aalhonie	 - D: sc_subscriber_t, sc_session_t, sc_bearer_t A: sc_subcriber_isupld_t, sc_session_isupld_t, sc_bearer_isupld_t - Adaptation:  Mapping between old and new values is needed.
+57493	 - 1_119	 - tinyysso	 - N/A - Adaptation:  N/A
+56602	 - 1_118	 - silden	 - D: libtrace_dbd_dump_rsp_msg_t, src - Adaptation:  field removed from msg
+56602	 - 1_118	 - silden	 - D: cli_trace_ctrl_subs_info_res_t, buff - Adaptation:  field removed from msg
+56427	 - 1_117	 - juhhytti	 - A: GWUP_SC_MONITORING_REQ - Adaptation:  N/A
+56427	 - 1_117	 - juhhytti	 - A: GWUP_SC_MONITORING_RES - Adaptation:  N/A
+56249	 - 1_116	 - helokunn	 - D: sc_bearer_ha_t, next_tariff - Adaptation:  Default value zero
+56002	 - 1_115	 - subramac	 - N/A - Adaptation:  N/A
+55917	 - 1_114	 - juhhytti	 - A: sc_dia_fp_charging_data_t.type - Adaptation:  dia_session_ha_sync_t.rg_chrg.data.type is CHRG_RG
+55882	 - 1_113	 - ujmarkvi	 - N/A - Adaptation:  N/A
+55840	 - 1_112	 - helokunn	 - A: sc_bearer_ha_t, past_tariff_time - Adaptation:  Default value zero
+55808	 - 1_110	 - vlaev	 - A: trace_tracing_header_t .trace_id - Adaptation:  trace_id is a u32_token. Default values for .pres and .val are both zero
+55773	 - 1_108	 - kimaenpa	 - D: GWUP_SC_VOLUME_QUERY_REQ - Adaptation:  N/A
+55773	 - 1_108	 - kimaenpa	 - D: GWUP_SC_VOLUME_QUERY_RESP - Adaptation:  N/A
+55724	 - 1_107	 - tinyysso	 - N/A - Adaptation:  N/A
+55629	 - 1_106	 - melgosa	 - D: sc_eg_cdr_t, .uplink_bytes - Adaptation:  Default value zero
+55629	 - 1_106	 - melgosa	 - D: sc_eg_cdr_t, .downlink_bytes - Adaptation:  Default value zero
+55482	 - 1_105	 - vlaev	 - A: sc_subscriber_ha_t .trace_id - Adaptation:  Default value zero
+55135	 - 1_101	 - melgosa	 - A: sc_change_of_service_condition_t___result_code - Adaptation:  Default value 2001 (sucess)
+55135	 - 1_101	 - melgosa	 - A: sc_eg_cdr_t .tot_ul_bytes - Adaptation:  Copy from/to uplink_bytes
+55135	 - 1_101	 - melgosa	 - A: sc_eg_cdr_t .tot_dl_bytes - Adaptation:  Copy from/to downlink_bytes
+55135	 - 1_101	 - melgosa	 - A:sc_eg_cdr_t .rescode_entry[] - Adaptation:  Default value zero
+53344	 - 1_79	 - keezhpat	 - A: CLI_HACTRL_NODE_RUNNING_STATUS_REQ - Adaptation:  Drop
+53344	 - 1_79	 - keezhpat	 - A: CLI_HACTRL_NODE_RUNNING_STATUS_RESP - Adaptation:  Drop
+52423	 - 1_74	 - tietavai	 - A: sc_bearer_ha_t .radius.buffered_threshold_bytes. - Adaptation:  Default value zero
+51299	 - 1_69	 - tietavai	 - A,D:sc_session_ha_t - Adaptation:  http://viini.dev.salab.noklab.net/twiki/bin/view/SA/LVNAffectingChangesTable51299
+3152	 - 345_2431	 - ewg	 - -
+1	 - 1_692	 - Ujmarkvi	 - HA_SYNC_REQUEST_TAG_OLD_SUBSCRIBER_ID:libsync_item_hdr_t;
+
+HA_SYNC_TAG_OLD_SUBSCRIBER_ID:libsync_item_hdr_t:u32;
+1	 - 1_692	 - ujmarkvi	 - HA_SYNC_REQUEST_TAG_OLD_SUBSCRIBER_ID:libsync_item_hdr_t;
+HA_SYNC_TAG_OLD_SUBSCRIBER_ID:libsync_item_hdr_t:u32;

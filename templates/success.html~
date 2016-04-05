@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+
+<table border="0">
+    <tr>
+        <td colspan="2" align="center"><b><font size="5">Succesfully added in database.</font></b></td>
+    </tr>
+
+</table>
+
+<BR>&nbsp<BR>
+
+<a href="/lvnaffectingtable/">return to the lvn affecting table</a>
+
+
+{% endblock %}

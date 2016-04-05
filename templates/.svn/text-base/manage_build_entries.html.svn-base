@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if initial %}
+ <div>
+  <tr>
+  <td <b> <font size="5">Build Entries for: {{branch}} </font></b></td>
+  </tr>
+ </div> 
+{% endif %}
+
+<body>
+<p>
+&nbsp;&nbsp;&nbsp;</p>
+
+
+&nbsp; 
+&nbsp;
+&nbsp;
+
+{% if  initial  %}
+   <form size="3" action="{% url WeblvnApp.views.manage_build_entries %}" method="post" style="padding: 0; margin: 0" enctype="multipart/form-data"> 
+   {{ entries.management_form }}
+   {% csrf_token %}
+    
+   <input type="hidden" name="branch_name" value="{{ branch }}" />
+   <div align="center" class="divtables">
+   <table border="1" width="800" cellspacing="1" cellpadding="1" border="1">
+   <td class="cCaption" align="center"><b>Build</b></td>
+   <td class="cCaption" align="center"><b>Build Name</b></td>
+   <td class="cCaption" align="center"><b>Release</b></td>
+   <td class="cCaption" align="center"><b>Latest Revision</b></td>
+   <td class="cCaption" align="center"><b>Date Created</b></td>
+   {% for entry in formset.forms %}
+	  {{ entry.id }}
+       <tr>
+	    <td>{{ entry.build }}</td>
+	    <td>{{ entry.build_name }}</td>
+	    <td>{{ entry.rel }}</td>
+	    <td>{{ entry.rev }}</td>
+	    <td>{{ entry.dt }}</td>
+       </tr>
+   {% endfor %}
+ 
+   </table>
+   </div>
+   </form>
+{% endif %}
+</body>
+
+
+<ul>
+<li><a href="/main/" align=right>return to the home page</a>
+<li><a href="/buildstable/" align=right>return to search page for a new search</a>
+</ul>
+
+
+
+{% endblock %}
+
+
+

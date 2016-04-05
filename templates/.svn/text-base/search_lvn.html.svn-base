@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<br/>
+
+
+
+
+
+<div align="center" class="formtables">
+<table border="0" width="400" cellspacing="5" cellpadding="5">
+    <tr>
+        <td class="cHeader" align="center" colspan="5">search for unique lvn per branch</td>
+    </tr>
+    <tr>
+        <td width="100"></td>
+        <td width="300"></td>
+    </tr>
+    <form action="/uniqueLvn/" method="get">
+    {{ form.as_table }}
+    <tr><td/><td/></tr>
+    <tr>
+        <td class="cHeader" align="center" colspan="2">
+            <input type="submit" value="Submit" />
+        </td>
+    </tr>
+    </form>
+</table>
+</div>
+
+<BR>&nbsp</BR>
+
+<font size="0"> 
+<div class="divtables"> 
+ <table border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+   <td>
+      <form action="{% url WeblvnApp.views.show_build_info %}" method="get" style="padding: 0; margin: 0" > 
+	
+		  <input type="text" name="revision" id="id_rev" >
+	  </td>  
+	  <td>
+		 <input type="submit" value="search for LVN in ISO revision" name=""/>
+      </form>
+  </td>
+  </tr>
+</table>
+</font>
+
+
+
+<BR>&nbsp</BR>
+
+<font size="0"> 
+<div class="divtables"> 
+ <table border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+   <td>
+      <form action="{% url WeblvnApp.views.do_svndiff %}" method="get" style="padding: 0; margin: 0" > 
+	
+		  <input type="submit" value="svn diff -c" name=""/>
+	  </td>  
+	  <td>
+		 
+                 <input type="text" name="revision" id="id_rev" >
+      </form>
+  </td>
+  </tr>
+</table>
+</font>
+
+<a href="/main/">return to the home page</a>
+
+<ul>
+
+    <li><font size=+1><b>for whole history of unique LVN changes you can leave empty the LVN field and select the branch you are interested</b></font>
+
+</ul>
+
+
+{% endblock %}

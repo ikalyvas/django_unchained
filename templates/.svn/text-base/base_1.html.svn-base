@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/my_media/lvnproject_1.css" />
+    <title>{% block title %}LVN parsing tool{% endblock %}</title>
+</head>
+
+<body>
+   
+    <div class="dbupdate"></div>
+    <br/>
+    <div class="apptitle"><a class="apptitle" href="/main/">Lamda-Q</a></div>
+    <br/>
+    <div id="content" align="center">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

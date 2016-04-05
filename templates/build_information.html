@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+ <table border="1" align="center" cellpadding="0" cellspacing="0">
+<tr>
+        <td class="cCaption" width="230">Revision {{my_rev}} has LVN of:</td>
+        <td class="cText"><b>{{ res.0.lvn }} </b></td>
+    </tr>
+
+</table>
+
+<BR>&nbsp<BR>
+
+<html>
+<head>
+<script type="text/javascript">
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+</head>
+<body>
+
+<input type="button" value="Go Back" onclick="goBack()" />
+
+</body>
+</html>
+
+
+{% endblock %}
+

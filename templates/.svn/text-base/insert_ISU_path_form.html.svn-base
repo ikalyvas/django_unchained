@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- using js script jaclendar GNU License --->
+<head>
+<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+  <!-- calendar stylesheet -->
+  <link rel="stylesheet" type="text/css" media="all" href="/my_media/calendar/jscalendar/calendar-win2k-cold-1.css" title="win2k-cold-1" />
+  <!-- main calendar program -->
+  <script type="text/javascript" src="/my_media/calendar/jscalendar/calendar.js"></script>
+  <!-- language for the calendar -->
+  <script type="text/javascript" src="/my_media/calendar/jscalendar/lang/calendar-en.js"></script>
+  <!-- the following script defines the Calendar.setup helper function, which makes
+       adding a calendar a matter of 1 or 2 lines of code. -->
+  <script type="text/javascript" src="/my_media/calendar/jscalendar/calendar-setup.js"></script>
+</head>
+
+
+
+<div>
+<tr>
+	<td <b> <font size="5">New ISU path to insert </font></b></td>
+</tr>
+</div>
+
+
+<div align="center" class="divtables">
+    <tr>
+      <!--  <td class="cHeader" align="center" colspan="5">Insert new LVN affected Feature entry </td> -->
+    </tr>
+     <table border="2" width="1000" cellspacing="1" cellpadding="1" border="1">
+      <td class="cCaption2" align="center"><b>Upload_file</b></td>
+      <td class="cCaption2" align="center"><b>src Iso</b></td>
+      <td class="cCaption2" align="center"><b>src Build</b></td>
+      <td class="cCaption2" align="center"><b>src Branch</b></td>
+      <td class="cCaption2" align="center"><b>trg Iso</b></td>
+      <td class="cCaption2" align="center"><b>trg Build</b></td>
+      <td class="cCaption2" align="center"><b>trg Branch</b></td>
+      <td class="cCaption2" align="center"><b>Tester</b></td>
+      <td class="cCaption2" align="center"><b>Test Date</b></td>
+      <td class="cCaption2" align="center"><b>Success</b></td>
+      <td class="cCaption2" align="center"><b>Type</b></td>
+      <td class="cCaption2" align="center"><b>Info</b></td>
+
+
+<form size="3" action="{% url WeblvnApp.views.insert_ISU_path_form %}" method="post" enctype="multipart/form-data"> {% csrf_token %} 
+     
+	 <tr>	
+	 <td> {{ form.result_file }} </td>
+         <td>{{ form.src_iso }}</td>
+	 <td>{{ form.src_build_name }}</td>
+	 <td>{{ form.src_branch }}</td>
+         <td>{{ form.trg_iso }}</td>
+	 <td>{{ form.trg_build_name }}</td>
+	 <td>{{ form.trg_branch }}</td>
+	 <td>{{ form.tester}}</td>
+	 <td><!--{{ form.test_date}} --->
+<!--- <hr /> --->
+<input type="text" name="date" id="f_date_a" />
+<script type="text/javascript">
+    function catcalc(cal) {
+        var date = cal.date;
+        var    field = document.getElementById("f_date_a");
+    }
+    Calendar.setup({
+        inputField      :    "f_date_a",   // id of the input field
+        ifFormat        :    "%d-%m-%Y %H:%M",       // format of the input field
+        showsTime       :    true,
+        timeFormat      :    "24",
+        onUpdate        :    catcalc
+    });
+</script>
+<!--<hr /> -->
+
+
+</td>
+	          <td>{{ form.success}}</td>
+	          <td>{{ form.type_of}}</td>
+	          <td>{{ form.otherInfo}}</td>
+       </tr>
+
+       <tr>
+         
+       </tr>
+<td colspan="5"><center><input type="submit" value="Submit" /></center></td>
+
+  </form>
+</table>
+
+
+</div>
+ 
+{% endblock %}

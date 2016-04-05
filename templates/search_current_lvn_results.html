@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+<title>CURRENT LVN per BRANCH</title>
+</head>
+
+<body>
+<div align="center" class="divtables">
+<font face="arial" size="5">
+    <table border="7" width="700" cellspacing="8" cellpadding="8" border="8">
+    <td class="cCaption"><b>Branch</b></td>
+    <td class="cCaption"><b>LVN</b></td>
+    <td class="cCaption"><b>Author</b></td>
+    <td class="cCaption"><b>Revision</b></td>
+    <td class="cCaption"><b>Date & Time</b></td>
+
+   {% for lvn_entry in lvn_ret %}
+	<tr>	
+	<td class="cText">{{ lvn_entry.branch_name}}</td>
+        <td class="cText">{% if  lvn_entry.layout_rev %}
+<a href="/my_media/svnhistory/{{lvn_entry.rev_id}}.txt"><font color="red" >{{lvn_entry.lvn}}</font></a>
+        {% else %}
+         {{ lvn_entry.lvn}} 
+        {% endif %}</td>
+	<td class="cText">{{ lvn_entry.author}}</td>
+        <td class="cText">{% if  lvn_entry.layout_rev %}
+<a href="/my_media/svnhistory/{{lvn_entry.rev_id}}.txt"><font color="red" >{{lvn_entry.rev_id}}</font></a>
+        {% else %}
+         {{ lvn_entry.rev_id}} 
+        {% endif %}</td>
+       <td class="cText">{{ lvn_entry.commit_date}}</td>
+        </tr>
+        </tr>
+        </tr>
+   {% endfor %}
+   </table>
+</div>
+</body>
+</font>
+<ul>
+<a href="/main/" align="right">return to the home page</a>
+</ul>
+{% endblock %}
